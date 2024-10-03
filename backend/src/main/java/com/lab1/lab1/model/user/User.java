@@ -5,17 +5,18 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Users {
+@Table(name = "users")
+public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
     @Column(nullable = false, unique = true)
     private String login;
+
+    @Column(unique = true)
+    private String token;
 
     @Column(nullable = false)
     private String password;
 
-    boolean isAdmin;
+    Boolean isAdmin;
 }

@@ -181,3 +181,4 @@ README.html
 
 # Ignore info.properties file
 src/main/resources/info.properties
+src/main/resources/application.properties

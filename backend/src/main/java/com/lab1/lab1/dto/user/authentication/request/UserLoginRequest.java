@@ -6,4 +6,5 @@ import lombok.Data;
 public class UserLoginRequest {
     private String login;
     private String password;
+    private Boolean isAdmin;
 }

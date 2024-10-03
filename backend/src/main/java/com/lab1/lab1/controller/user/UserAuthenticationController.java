@@ -2,32 +2,31 @@ package com.lab1.lab1.controller.user;
 
 import com.lab1.lab1.dto.user.authentication.request.UserLoginRequest;
 import com.lab1.lab1.dto.user.authentication.request.UserLogoutRequest;
-import com.lab1.lab1.dto.user.authentication.response.UserLoginResponse;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.lab1.lab1.service.user.AuthenticationService;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/authentication")
+@AllArgsConstructor
 public class UserAuthenticationController {
 
+    private final AuthenticationService service;
+
     @PostMapping("/login")
-    public ResponseEntity<UserLoginResponse> login(@RequestBody UserLoginRequest request) {
-        var response = new UserLoginResponse("login", "token", null);
-        return ResponseEntity.ok(response);
+    public Map<String, Object> login(@RequestBody UserLoginRequest request) {
+        return service.login(request);
     }
 
     @PostMapping("/register")
-    public ResponseEntity<UserLoginResponse> register(@RequestBody UserLoginRequest request) {
-        var response = new UserLoginResponse("login", "token", null);
-        return ResponseEntity.ok(response);
+    public Map<String, Object> register(@RequestBody UserLoginRequest request) {
+        return service.register(request);
     }
 
     @PostMapping("/logout")
-    public ResponseEntity<Void> logout(@RequestBody UserLogoutRequest request) {
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public void logout(@RequestBody UserLogoutRequest request) {
+        service.logout(request);
     }
 }

@@ -1,6 +1,6 @@
 package com.lab1.lab1.controller;
 
-import com.lab1.lab1.service.PasswordEncoderService;
+import com.lab1.lab1.utils.Secutiry;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +17,7 @@ public class HelloWorldController {
     @GetMapping("/password")
     public String password() {
         var password = "Hello, World!";
-        var passwordEncoder = new PasswordEncoderService();
+        var passwordEncoder = new Secutiry();
         var hash = passwordEncoder.getMd5Hash(password);
         return hash + " | " + passwordEncoder.verifyPassword(password, hash) + " | " + passwordEncoder.verifyPassword("password", hash);
     }

@@ -6,7 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class UserLoginResponse {
-    private String login;
     private String token;
     private Boolean isAdminApproved;
 }
