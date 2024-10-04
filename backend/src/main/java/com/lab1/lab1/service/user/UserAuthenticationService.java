@@ -1,9 +1,8 @@
 package com.lab1.lab1.service.user;
 
-import com.lab1.lab1.dto.user.authentication.request.UserLoginRequest;
-import com.lab1.lab1.dto.user.authentication.request.UserLogoutRequest;
+import com.lab1.lab1.dto.user.authentication.UserLoginRequest;
 import com.lab1.lab1.model.user.User;
-import com.lab1.lab1.repository.user.UserAuthenticationRepository;
+import com.lab1.lab1.repository.user.UserRepository;
 import com.lab1.lab1.utils.Secutiry;
 
 import java.util.*;
@@ -14,9 +13,9 @@ import org.springframework.util.StringUtils;
 
 @Service
 @AllArgsConstructor
-public class AuthenticationService {
+public class UserAuthenticationService {
 
-    private final UserAuthenticationRepository repository;
+    private final UserRepository repository;
 
     public Map<String, Object> login(UserLoginRequest request) {
         var secutiry = new Secutiry();
@@ -59,6 +58,15 @@ public class AuthenticationService {
             return Collections.singletonMap("error", "user already exists");
         }
 
+        Boolean isAdmin = request.getIsAdmin();
+        if (Boolean.TRUE.equals(isAdmin)) {
+            isAdmin = false;
+        }
+
+        if (!repository.existsByIsAdmin(true) && Boolean.FALSE.equals(isAdmin)) {
+            isAdmin = true;
+        }
+
         var user = new User();
         try {
             var passwordHash = secutiry.getMd5Hash(request.getPassword());
@@ -66,7 +74,8 @@ public class AuthenticationService {
             user.setPassword(passwordHash);
             user.setLogin(request.getLogin());
             user.setToken(token);
-            user.setIsAdmin(request.getIsAdmin());
+            user.setIsAdmin(isAdmin);
+
             repository.save(user);
         } catch (Exception e) {
             return Collections.singletonMap("error", "Error in creating user");
@@ -79,8 +88,7 @@ public class AuthenticationService {
         return response;
     }
 
-    public void logout(UserLogoutRequest request) {
-        String token = request.getToken();
+    public void logout(String token) {
         if (!StringUtils.hasLength(StringUtils.trimAllWhitespace(token))) return;
         Optional<User> userOpt = repository.findByToken(token);
         if (userOpt.isEmpty()) return;
