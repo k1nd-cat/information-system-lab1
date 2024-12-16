@@ -1,7 +1,6 @@
-package com.lab1.backend.entity.model;
+package com.lab1.backend.entities;
 
 import com.lab1.backend.dto.PersonDto;
-import com.lab1.backend.entity.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

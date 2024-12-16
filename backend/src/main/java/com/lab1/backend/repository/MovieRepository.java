@@ -1,6 +1,6 @@
-package com.lab1.backend.repository.model;
+package com.lab1.backend.repository;
 
-import com.lab1.backend.entity.model.Movie;
+import com.lab1.backend.entities.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

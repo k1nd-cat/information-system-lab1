@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/features/main/presentation/screens/widgets/map_view.dart';
+import 'package:frontend/features/main/presentation/screens/widgets/movie_list.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -7,7 +9,15 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Main Screen")),
-      body: const Center(child: Text("Welcome to the main screen!")),
+      body: const Center(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            MovieListPage(),
+            MoviesMap(),
+          ],
+        ),
+      ),
     );
   }
 }

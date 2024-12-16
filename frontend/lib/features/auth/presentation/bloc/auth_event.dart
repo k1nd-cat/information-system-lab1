@@ -1,10 +1,10 @@
 abstract class AuthEvent {}
 
-class LoginRequested extends AuthEvent {
+class LoginRequest extends AuthEvent {
   final String login;
   final String password;
 
-  LoginRequested({
+  LoginRequest({
     required this.login,
     required this.password,
   });
@@ -21,5 +21,3 @@ class RegisterRequest extends AuthEvent {
     required this.isAdmin,
   });
 }
-
-class ShowRegisterForm extends AuthEvent {}

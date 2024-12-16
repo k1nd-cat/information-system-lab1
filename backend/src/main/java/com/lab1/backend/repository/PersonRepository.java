@@ -1,6 +1,6 @@
-package com.lab1.backend.repository.model;
+package com.lab1.backend.repository;
 
-import com.lab1.backend.entity.model.Person;
+import com.lab1.backend.entities.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PersonRepository extends JpaRepository<Person, String> {

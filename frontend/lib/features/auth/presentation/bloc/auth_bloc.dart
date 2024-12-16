@@ -8,7 +8,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthUseCase loginUseCase;
 
   AuthBloc({required this.loginUseCase}) : super(AuthInitial()) {
-    on<LoginRequested>((event, emit) async {
+    on<LoginRequest>((event, emit) async {
       emit(AuthLoading());
       try {
         final user = await loginUseCase.doLogin(event.login, event.password);
@@ -29,11 +29,5 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(AuthFailure(error: ErrorModel(error: e.toString())));
       }
     });
-
-/*
-    on<ShowRegisterForm>((event, emit)  {
-      emit(RegisterFormState());
-    });
-*/
   }
 }

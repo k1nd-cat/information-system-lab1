@@ -1,11 +1,7 @@
 package com.lab1.backend.dto;
 
-import com.lab1.backend.entity.model.Movie;
-import com.lab1.backend.entity.model.Person;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
+import com.lab1.backend.entities.Movie;
+import com.lab1.backend.entities.Person;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

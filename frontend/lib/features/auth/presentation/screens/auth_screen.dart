@@ -120,7 +120,7 @@ class _AuthScreenState extends State<AuthScreen> {
             onPressed: () {
               BlocProvider.of<AuthBloc>(context).add(
                 !isRegister
-                    ? LoginRequested(
+                    ? LoginRequest(
                         login: loginController.text,
                         password: passwordController.text,
                       )
