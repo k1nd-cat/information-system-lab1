@@ -21,9 +21,10 @@ class User {
         isWaitingAdmin: response.isWaitingAdmin);
   }
 
-  void updateRoleStatus(WebSocketResponse response) {
+  void updateRole(UpdatedRoleResponse response) {
     isWaitingAdmin = response.isWaitingAdmin;
     role = response.role;
+    token = response.token;
   }
 }
 

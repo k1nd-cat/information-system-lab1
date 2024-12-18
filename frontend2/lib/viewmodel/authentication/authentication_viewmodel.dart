@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:frontend2/dto/user_dto.dart';
 import 'package:frontend2/repository/authentication_repository.dart';
+import 'package:frontend2/repository/notifications_repository.dart';
 import 'package:frontend2/viewmodel/localstorage_manager.dart';
 import 'package:stomp_dart_client/stomp_dart_client.dart';
 
@@ -20,6 +21,7 @@ class AuthenticationViewModel with ChangeNotifier {
   final passwordController = TextEditingController();
   final repeatPasswordController = TextEditingController();
   bool isWaitingAdmin = false;
+  late final NotificationsRepository notifications;
   StompClient? _stompClient;
 
   // Ошибки валидации
@@ -36,7 +38,9 @@ class AuthenticationViewModel with ChangeNotifier {
 
   AuthenticationViewModel(this.repository)
       : _isLoading = true,
-        _isAuthenticated = false;
+        _isAuthenticated = false {
+    notifications = NotificationsRepository(onUpdatedStatus);
+  }
 
   Future<void> checkAuthStatus() async {
     _isLoading = true;
@@ -46,6 +50,9 @@ class AuthenticationViewModel with ChangeNotifier {
       if (token != null) {
         final response = await repository.checkToken(token);
         _user = User.fromResponse(response);
+        if (_user.isWaitingAdmin) {
+          notifications.updateStatus(_user.token);
+        }
         _isAuthenticated = true;
       } else {
         _isAuthenticated = false;
@@ -76,7 +83,7 @@ class AuthenticationViewModel with ChangeNotifier {
       _user = User.fromResponse(response);
       saveToken(response.token);
       if (_user.isWaitingAdmin) {
-        initializeSetWaitingAdminStatus(_user.token);
+        notifications.updateStatus(_user.token);
       }
       _isAuthenticated = true;
       notifyListeners();
@@ -106,7 +113,7 @@ class AuthenticationViewModel with ChangeNotifier {
       _user = User.fromResponse(response);
       saveToken(_user.token);
       if (_user.isWaitingAdmin) {
-        initializeSetWaitingAdminStatus(_user.token);
+        notifications.updateStatus(_user.token);
       }
       _isAuthenticated = true;
       return true;
@@ -120,11 +127,16 @@ class AuthenticationViewModel with ChangeNotifier {
   }
 
   Future<void> logout() async {
+    if (_user.isWaitingAdmin) {
+      notifications.deactivateStompClient();
+    }
+
     removeToken();
   }
 
   Future<void> setWaitingAdmin() async {
     _user.isWaitingAdmin = await repository.setWaitingAdmin(user);
+    notifications.updateStatus(_user.token);
     notifyListeners();
   }
 
@@ -136,36 +148,9 @@ class AuthenticationViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  void initializeSetWaitingAdminStatus(String token) {
-    _stompClient = StompClient(
-      config: StompConfig(
-        url: ws, // Replace with your WebSocket endpoint
-        onConnect: onSetWaitingAdminStatus,
-        onStompError: (frame) {
-          print('WebSocket STOMP error: ${frame.body}');
-        },
-        onWebSocketError: (dynamic error) {
-          print('WebSocket connection error: ${error.toString()}');
-        },
-        stompConnectHeaders: {
-          'Authorization': 'Bearer $token', // Add JWT token for authorization
-        },
-        webSocketConnectHeaders: {
-          'Authorization': 'Bearer $token', // Add JWT token for WebSocket connection
-        },
-      ),
-    );
-    _stompClient?.activate();
-  }
-
-  void onSetWaitingAdminStatus(StompFrame frame) {
-    _stompClient?.subscribe(
-      destination: '/user/queue/updates',
-      callback: (StompFrame frame) {
-        final data = jsonDecode(frame.body!);
-        _user.updateRoleStatus(data);
-        notifyListeners();
-      },
-    );
+  void onUpdatedStatus(UpdatedRoleResponse response) {
+    _user.updateRole(response);
+    saveToken(_user.token);
+    notifyListeners();
   }
 }

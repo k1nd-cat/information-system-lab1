@@ -1,9 +1,8 @@
 package com.lab1.backend.service;
 
-import com.lab1.backend.controller.WebSocketController;
 import com.lab1.backend.entities.User;
 import com.lab1.backend.repository.UserRepository;
-import com.lab1.backend.dto.WaitingAdminStatusResponse;
+import com.lab1.backend.dto.UpdatedRoleResponse;
 import lombok.Data;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,7 +18,9 @@ public class UserService {
 
     private final UserRepository repository;
 
-    private final WebSocketController webSocketController;
+    private final WebSocketService webSocketService;
+
+    private final JwtService jwtService;
 
     public User save(User user) {
         return repository.save(user);
@@ -66,10 +67,10 @@ public class UserService {
         user.setRole(User.Role.ROLE_ADMIN);
         user.setIsWaitingAdmin(false);
         save(user);
+        var token = jwtService.generateToken(user);
 
-        var waitingAdminStatusResponse = new WaitingAdminStatusResponse(user.getRole(), user.getIsWaitingAdmin());
-
-        webSocketController.sendWaitingAdminStatusToUser(username, waitingAdminStatusResponse);
+        var updatedRoleResponse = new UpdatedRoleResponse(user.getRole(), user.getIsWaitingAdmin(), token);
+        webSocketService.sendUpdatedRoleForUser(username, updatedRoleResponse);
     }
 
     public void rejectAdmin(String username) {
@@ -82,10 +83,10 @@ public class UserService {
         if (user.getRole() == User.Role.ROLE_USER && user.getIsWaitingAdmin()) {
             user.setIsWaitingAdmin(false);
             save(user);
+            var token = jwtService.generateToken(user);
 
-            var waitingAdminStatusResponse = new WaitingAdminStatusResponse(user.getRole(), user.getIsWaitingAdmin());
-
-            webSocketController.sendWaitingAdminStatusToUser(username, waitingAdminStatusResponse);
+            var updatedRoleResponse = new UpdatedRoleResponse(user.getRole(), user.getIsWaitingAdmin(), token);
+            webSocketService.sendUpdatedRoleForUser(username, updatedRoleResponse);
         } else {
             throw new RuntimeException("Пользователь не может получить роль администратора");
         }

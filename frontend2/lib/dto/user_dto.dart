@@ -37,19 +37,22 @@ class SignInRequest {
   }
 }
 
-class WebSocketResponse {
+class UpdatedRoleResponse {
   Role role;
   bool isWaitingAdmin;
+  String token;
 
-  WebSocketResponse({
+  UpdatedRoleResponse({
     required this.role,
     required this.isWaitingAdmin,
+    required this.token,
   });
 
-  factory WebSocketResponse.fromJson(Map<String, dynamic> json) {
-    return WebSocketResponse(
+  factory UpdatedRoleResponse.fromJson(Map<String, dynamic> json) {
+    return UpdatedRoleResponse(
       role: RoleParsing.fromJson(json['role']),
       isWaitingAdmin: json['isWaitingAdmin'],
+      token: json['token'],
     );
   }
 }

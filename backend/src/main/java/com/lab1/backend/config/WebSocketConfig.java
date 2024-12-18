@@ -1,5 +1,8 @@
 package com.lab1.backend.config;
 
+import com.lab1.backend.service.JwtService;
+import com.lab1.backend.utils.JwtHandshakeHandler;
+import lombok.Data;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
@@ -8,20 +11,21 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 
 @Configuration
 @EnableWebSocketMessageBroker
+@Data
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
+
+    private final JwtService jwtService;
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        // Конфигурация брокера сообщений
-        config.enableSimpleBroker("/queue", "/topic"); // Темы для подписки
-        config.setApplicationDestinationPrefixes("/app"); // Префикс для отправки сообщений
-        config.setUserDestinationPrefix("/user"); // Префикс для отправки персональных сообщений
+        config.enableSimpleBroker("/queue", "/topic");
+        config.setApplicationDestinationPrefixes("/app");
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/ws") // Эндпоинт для WebSocket
-                .setAllowedOriginPatterns(""); // Разрешенные домены
-//                .withSockJS(); // Включаем поддержку SockJS для старых браузеров
+        registry.addEndpoint("/ws")
+                .setAllowedOriginPatterns("*")
+                .setHandshakeHandler(new JwtHandshakeHandler(jwtService));
     }
 }

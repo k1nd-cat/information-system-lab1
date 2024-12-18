@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class WaitingAdminStatusResponse {
+public class UpdatedRoleResponse {
     private User.Role role;
     private Boolean isWaitingAdmin;
+    private String token;
 }
