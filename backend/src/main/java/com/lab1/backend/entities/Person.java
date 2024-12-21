@@ -1,7 +1,6 @@
 package com.lab1.backend.entities;
 
 import com.lab1.backend.dto.PersonDto;
-import com.lab1.backend.dto.PersonRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -60,7 +59,7 @@ public class Person {
         @NotNull
         private Float z; //Поле не может быть null
 
-        public static Location fromDto(PersonRequest.Location dto) {
+        public static Location fromDto(PersonDto.Location dto) {
             if (dto == null) return null;
             return Location.builder()
                     .x(dto.getX())
@@ -82,7 +81,7 @@ public class Person {
         WHITE;
     }
 
-    public static Person fromDto(PersonRequest dto) {
+    public static Person fromDto(PersonDto dto) {
         return Person.builder()
                 .passportID(dto.getPassportID())
                 .name(dto.getName())
@@ -90,6 +89,17 @@ public class Person {
                 .hairColor(dto.getHairColor())
                 .location(Location.fromDto(dto.getLocation()))
                 .nationality(dto.getNationality())
+                .build();
+    }
+
+    public PersonDto toDto() {
+        return PersonDto.builder()
+                .passportID(passportID)
+                .name(name)
+                .eyeColor(eyeColor)
+                .hairColor(hairColor)
+                .location(new PersonDto.Location(location.x, location.y, location.z))
+                .nationality(nationality)
                 .build();
     }
 }

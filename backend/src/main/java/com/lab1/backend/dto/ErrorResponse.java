@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ErrorDto {
+public class ErrorResponse {
 
     @Schema(description = "Сообщение об ошибке", example = "Пользователь уже является администратором")
     private String error;

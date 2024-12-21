@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../constants/urls.dart';
 import '../model/movies.dart';
+import '../viewmodel/localstorage_manager.dart';
 
 class MovieRepository {
   Future<List<Person>> getAllPersons(String token) async {
@@ -22,7 +23,7 @@ class MovieRepository {
     }
   }
 
-  Future<void> create(String token, Movies movie) async {
+  Future<void> create(String token, Movie movie) async {
     final response = await http.post(
       Uri.parse('$url/movie/create'),
       headers: {
@@ -37,7 +38,7 @@ class MovieRepository {
     }
   }
 
-  Future<void> update(String token, Movies movie) async {
+  Future<void> update(String token, Movie movie) async {
     final response = await http.post(
       Uri.parse('$url/movie/update'),
       headers: {
@@ -49,6 +50,24 @@ class MovieRepository {
 
     if (response.statusCode != 200) {
       throw Exception('Не удалось обновить фильм');
+    }
+  }
+
+  Future<List<Movie>> getMovies(int page, int size) async {
+    final token = await getToken();
+    final response = await http.get(
+      Uri.parse('$url/movie/get?page=$page&size=$size'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      var data = json.encode(response.body) as List;
+      return data.map((item) => Movie.fromJson(item)).toList();
+    } else {
+      throw Exception('Не удалось загрузить фильмы');
     }
   }
 }

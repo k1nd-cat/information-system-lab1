@@ -1,6 +1,6 @@
 package com.lab1.backend.entities;
 
-import com.lab1.backend.dto.MovieRequest;
+import com.lab1.backend.dto.MovieDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -36,9 +36,9 @@ public class Movie {
     @NotNull
     private java.util.Date creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
 
-    @Column(nullable = false, name = "oscars_count")
+    @Column(nullable = false, name = "oscar_count")
     @Min(1)
-    private int oscarsCount; //Значение поля должно быть больше 0
+    private int oscarCount; //Значение поля должно быть больше 0
 
     @Column(nullable = false)
     @Positive
@@ -55,7 +55,7 @@ public class Movie {
     private MpaaRating mpaaRating; //Поле может быть null
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "person_id", nullable = false)
+    @JoinColumn(name = "director_id", nullable = false)
     @NotNull
     private Person director; //Поле не может быть null
 
@@ -78,7 +78,6 @@ public class Movie {
 
     @Column(name = "usa_box_office", nullable = true)
     @Positive
-    @NotNull
     private Long usaBoxOffice; //Поле может быть null, Значение поля должно быть больше 0
 
     @Enumerated(EnumType.STRING)
@@ -104,7 +103,7 @@ public class Movie {
         @NotNull
         private Long y; //Поле не может быть null
 
-        public static Coordinates fromDto(MovieRequest.Coordinates dto) {
+        public static Coordinates fromDto(MovieDto.Coordinates dto) {
             return Coordinates.builder()
                     .x(dto.getX())
                     .y(dto.getY())
@@ -124,7 +123,7 @@ public class Movie {
         FANTASY;
     }
 
-    public static Movie fromDto(MovieRequest dto, User user) {
+    public static Movie fromDto(MovieDto dto, User user) {
         final var movie = fromDto(dto);
         movie.setCreationDate(new java.util.Date());
         movie.setModifiable(dto.getIsEditable());
@@ -133,7 +132,7 @@ public class Movie {
         return movie;
     }
 
-    public static Movie fromDto(MovieRequest dto, Movie movieFromDb) {
+    public static Movie fromDto(MovieDto dto, Movie movieFromDb) {
         final var movie = fromDto(dto);
         movie.setId(movieFromDb.getId());
         movie.setCreationDate(movieFromDb.getCreationDate());
@@ -143,7 +142,7 @@ public class Movie {
         return movie;
     }
 
-    private static Movie fromDto(MovieRequest dto) {
+    private static Movie fromDto(MovieDto dto) {
         return Movie.builder()
                 .name(dto.getName())
                 .coordinates(Coordinates.fromDto(dto.getCoordinates()))
@@ -156,12 +155,34 @@ public class Movie {
                                 : Person.fromDto(dto.getScreenwriter())
                 )
                 .operator(Person.fromDto(dto.getOperator()))
-                .oscarsCount(dto.getOscarCount())
+                .oscarCount(dto.getOscarCount())
                 .budget(dto.getBudget())
                 .totalBoxOffice(dto.getTotalBoxOffice())
                 .length(dto.getLength())
                 .goldenPalmCount(dto.getGoldenPalmCount())
                 .usaBoxOffice(dto.getUsaBoxOffice())
+                .build();
+    }
+
+    public MovieDto toDto() {
+        return MovieDto.builder()
+                .id(id)
+                .name(name)
+                .creationDate(creationDate)
+                .coordinates(new MovieDto.Coordinates(coordinates.x, coordinates.y))
+                .genre(genre)
+                .mpaaRating(mpaaRating)
+                .director(director.toDto())
+                .screenwriter(screenwriter.toDto())
+                .operator(operator.toDto())
+                .oscarCount(oscarCount)
+                .budget(budget)
+                .totalBoxOffice(totalBoxOffice)
+                .length(length)
+                .goldenPalmCount(goldenPalmCount)
+                .usaBoxOffice(usaBoxOffice)
+                .creatorName(user.getUsername())
+                .isEditable(modifiable)
                 .build();
     }
 }

@@ -38,8 +38,8 @@ class _AddUpdateMovieScreenState extends State<AddUpdateMovieScreen> {
   dynamic _selectedOperator = 'new';
   bool isEditable = false;
 
-  model.Movies createMovie(model.Movies? movie) {
-    return model.Movies(
+  model.Movie createMovie(model.Movie? movie) {
+    return model.Movie(
       id: movie?.id,
       name: _movieNameController.text,
       coordinates: model.Coordinates(
@@ -65,7 +65,7 @@ class _AddUpdateMovieScreenState extends State<AddUpdateMovieScreen> {
     );
   }
 
-  void initParams(model.Movies? movie) {
+  void initParams(model.Movie? movie) {
     _movieNameController.text = movie?.name ?? '';
     _selectedMovieGenre = movie?.genre ?? model.MovieGenre.WESTERN;
     _selectedMpaaRating = movie?.mpaaRating ?? model.MpaaRating.G;

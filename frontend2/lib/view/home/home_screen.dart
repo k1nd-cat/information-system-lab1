@@ -3,6 +3,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:frontend2/model/user.dart';
 import 'package:frontend2/view/home/widgets/add_movie.dart';
 import 'package:frontend2/view/home/widgets/map_view.dart';
+import 'package:frontend2/view/home/widgets/movie_view.dart';
 import 'package:frontend2/view/home/widgets/show_profile.dart';
 import 'package:frontend2/view/home/widgets/show_waiting_admin.dart';
 import 'package:frontend2/viewmodel/authentication_viewmodel.dart';
@@ -52,9 +53,11 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
-            MoviesMap(),
-            SizedBox(height: 20),
-            AddMovie(),
+            // MoviesMap(),
+            // SizedBox(height: 20),
+            MovieView(),
+            // SizedBox(height: 20),
+            // AddMovie(),
           ],
         ),
       ),

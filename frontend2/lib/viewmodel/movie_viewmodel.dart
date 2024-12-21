@@ -5,7 +5,7 @@ import '../model/movies.dart';
 
 class MovieViewModel with ChangeNotifier {
   final MovieRepository repository;
-  Movies? editableMovie;
+  Movie? editableMovie;
 
   MovieViewModel(this.repository);
 
@@ -13,11 +13,11 @@ class MovieViewModel with ChangeNotifier {
     return await repository.getAllPersons(token);
   }
 
-  createMovie(String token, Movies movie) {
+  createMovie(String token, Movie movie) {
     repository.create(token, movie);
   }
 
-  updateMovie(String token, Movies movie) {
+  updateMovie(String token, Movie movie) {
     repository.update(token, movie);
   }
 }

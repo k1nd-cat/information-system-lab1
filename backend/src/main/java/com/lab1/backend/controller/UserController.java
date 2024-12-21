@@ -1,8 +1,7 @@
 package com.lab1.backend.controller;
 
 import com.lab1.backend.dto.ApproveRejectAdminRequest;
-import com.lab1.backend.dto.ErrorDto;
-import com.lab1.backend.dto.WaitingAdminUsernamesResponse;
+import com.lab1.backend.dto.ErrorResponse;
 import com.lab1.backend.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -11,6 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -29,9 +30,8 @@ public class UserController {
 
     @Operation(summary = "Ждут получения админки")
     @GetMapping("/waiting-admin")
-    public WaitingAdminUsernamesResponse getWaitingAdminUsers() {
-        var usernames = service.getWaitingAdminUsernames();
-        return new WaitingAdminUsernamesResponse(usernames);
+    public List<String> getWaitingAdminUsers() {
+        return service.getWaitingAdminUsernames();
     }
 
     @Operation(summary = "Сделать пользователя администратором")
@@ -48,7 +48,7 @@ public class UserController {
 
     @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorDto error(Exception e) {
-        return new ErrorDto(e.getMessage());
+    public ErrorResponse error(Exception e) {
+        return new ErrorResponse(e.getMessage());
     }
 }

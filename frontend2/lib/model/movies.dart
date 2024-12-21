@@ -1,4 +1,4 @@
-class Movies {
+class Movie {
   int? id;
   late String _name;
   Coordinates coordinates;
@@ -17,7 +17,7 @@ class Movies {
   String? creatorName;
   bool? isEditable;
 
-  Movies({
+  Movie({
     this.id,
     required String name,
     required this.coordinates,
@@ -108,8 +108,8 @@ class Movies {
     _usaBoxOffice = usaBoxOffice;
   }
 
-  factory Movies.fromJson(Map<String, dynamic> json) {
-    return Movies(
+  factory Movie.fromJson(Map<String, dynamic> json) {
+    return Movie(
       id: json['id'],
       name: json['name'],
       coordinates: Coordinates.fromJson(json['coordinates']),

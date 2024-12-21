@@ -57,13 +57,13 @@ public class AuthenticationController {
     // Обработка ошибок аутентификации
     @ExceptionHandler(BadCredentialsException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    public ErrorDto handleBadCredentials(BadCredentialsException ex) {
-        return new ErrorDto("Неверный логин или пароль");
+    public ErrorResponse handleBadCredentials(BadCredentialsException ex) {
+        return new ErrorResponse("Неверный логин или пароль");
     }
 
     @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorDto error(Exception e) {
-        return new ErrorDto(e.getMessage());
+    public ErrorResponse error(Exception e) {
+        return new ErrorResponse(e.getMessage());
     }
 }
