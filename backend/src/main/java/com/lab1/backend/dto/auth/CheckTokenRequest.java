@@ -1,4 +1,4 @@
-package com.lab1.backend.dto;
+package com.lab1.backend.dto.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,6 +1,6 @@
 package com.lab1.backend.entities;
 
-import com.lab1.backend.dto.MovieDto;
+import com.lab1.backend.dto.MovieRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -54,16 +54,16 @@ public class Movie {
     @NotNull
     private MpaaRating mpaaRating; //Поле может быть null
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "person_id", nullable = false)
     @NotNull
     private Person director; //Поле не может быть null
 
-    @ManyToOne
-    @JoinColumn(name = "screenwriter_id")
+    @ManyToOne(optional = true, cascade = CascadeType.ALL)
+    @JoinColumn(name = "screenwriter_id", nullable = true)
     private Person screenwriter;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "operator_id", nullable = false)
     @NotNull
     private Person operator; //Поле не может быть null
@@ -76,8 +76,8 @@ public class Movie {
     @Min(1)
     private int goldenPalmCount; //Значение поля должно быть больше 0
 
-    @Column(name = "usa_box_office", nullable = false)
-    @Min(1)
+    @Column(name = "usa_box_office", nullable = true)
+    @Positive
     @NotNull
     private Long usaBoxOffice; //Поле может быть null, Значение поля должно быть больше 0
 
@@ -94,6 +94,7 @@ public class Movie {
     private User user;
 
     @Data
+    @Builder
     @AllArgsConstructor
     @NoArgsConstructor
     public static class Coordinates {
@@ -102,6 +103,13 @@ public class Movie {
 
         @NotNull
         private Long y; //Поле не может быть null
+
+        public static Coordinates fromDto(MovieRequest.Coordinates dto) {
+            return Coordinates.builder()
+                    .x(dto.getX())
+                    .y(dto.getY())
+                    .build();
+        }
     }
 
     public enum MpaaRating {
@@ -116,30 +124,44 @@ public class Movie {
         FANTASY;
     }
 
-    public static Movie fromDto(MovieDto movieDto, Person director, Person screenwriter, Person operator) {
-        return Movie.builder()
-                .name(movieDto.getName())
-                .coordinates(movieDto.getCoordinates())
-                .creationDate(movieDto.getCreationDate())
-                .oscarsCount(movieDto.getOscarsCount())
-                .budget(movieDto.getBudget())
-                .totalBoxOffice(movieDto.getTotalBoxOffice())
-                .mpaaRating(movieDto.getMpaaRating())
-                .director(director)
-                .screenwriter(screenwriter)
-                .operator(operator)
-                .length(movieDto.getLength())
-                .goldenPalmCount(movieDto.getGoldenPalmCount())
-                .usaBoxOffice(movieDto.getUsaBoxOffice())
-                .genre(movieDto.getGenre())
-                .modifiable(movieDto.isModifiable())
-                .build();
-    }
-
-    public static Movie fromDto(MovieDto movieDto, Person director, Person screenwriter, Person operator, User user) {
-        var movie = Movie.fromDto(movieDto, director, screenwriter, operator);
+    public static Movie fromDto(MovieRequest dto, User user) {
+        final var movie = fromDto(dto);
+        movie.setCreationDate(new java.util.Date());
+        movie.setModifiable(dto.getIsEditable());
         movie.setUser(user);
 
         return movie;
+    }
+
+    public static Movie fromDto(MovieRequest dto, Movie movieFromDb) {
+        final var movie = fromDto(dto);
+        movie.setId(movieFromDb.getId());
+        movie.setCreationDate(movieFromDb.getCreationDate());
+        movie.setModifiable(movieFromDb.modifiable);
+        movie.setUser(movieFromDb.getUser());
+
+        return movie;
+    }
+
+    private static Movie fromDto(MovieRequest dto) {
+        return Movie.builder()
+                .name(dto.getName())
+                .coordinates(Coordinates.fromDto(dto.getCoordinates()))
+                .genre(dto.getGenre())
+                .mpaaRating(dto.getMpaaRating())
+                .director(Person.fromDto(dto.getDirector()))
+                .screenwriter(
+                        dto.getScreenwriter() == null
+                                ? null
+                                : Person.fromDto(dto.getScreenwriter())
+                )
+                .operator(Person.fromDto(dto.getOperator()))
+                .oscarsCount(dto.getOscarCount())
+                .budget(dto.getBudget())
+                .totalBoxOffice(dto.getTotalBoxOffice())
+                .length(dto.getLength())
+                .goldenPalmCount(dto.getGoldenPalmCount())
+                .usaBoxOffice(dto.getUsaBoxOffice())
+                .build();
     }
 }

@@ -1,4 +1,4 @@
-package com.lab1.backend.dto;
+package com.lab1.backend.dto.auth;
 
 import com.lab1.backend.entities.User;
 import io.swagger.v3.oas.annotations.media.Schema;

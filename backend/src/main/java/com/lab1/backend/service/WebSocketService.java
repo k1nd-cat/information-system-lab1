@@ -5,8 +5,8 @@ import lombok.Data;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
-@Service
 @Data
+@Service
 public class WebSocketService {
 
     private final SimpMessagingTemplate messagingTemplate;

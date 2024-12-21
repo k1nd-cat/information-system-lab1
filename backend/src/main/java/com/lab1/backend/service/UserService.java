@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
 @Data
+@Service
 public class UserService {
 
     private final UserRepository repository;
@@ -30,7 +30,6 @@ public class UserService {
         if (repository.existsByUsername(user.getUsername())) {
             throw new RuntimeException("Пользователь с таким именем уже существует");
         }
-
 
         return save(user);
     }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../viewmodel/authentication/authentication_viewmodel.dart';
+import '../viewmodel/authentication_viewmodel.dart';
 
 class LoadingScreen extends StatelessWidget {
   const LoadingScreen({super.key});

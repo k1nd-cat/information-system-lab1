@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:frontend2/viewmodel/authentication/authentication_viewmodel.dart';
-import 'package:frontend2/viewmodel/home/home_viewmodel.dart';
+import 'package:frontend2/viewmodel/authentication_viewmodel.dart';
+import 'package:frontend2/viewmodel/home_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 class ShowWaitingAdmin extends StatefulWidget {
@@ -15,7 +15,7 @@ class _ShowWaitingAdminState extends State<ShowWaitingAdmin> {
 
   Future<void> _dialogBuilder(BuildContext context) async {
     final token =
-        Provider.of<AuthenticationViewModel>(context, listen: false).user.token;
+        Provider.of<AuthenticationViewModel>(context, listen: false).user!.token;
     final homeViewModel = Provider.of<HomeViewModel>(context, listen: false);
 
     return showDialog(
@@ -34,7 +34,10 @@ class _ShowWaitingAdminState extends State<ShowWaitingAdmin> {
               future: homeViewModel.getWaitingAdminUsernames(token),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const CircularProgressIndicator();
+                  return const CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFF2C4CE)),
+                    strokeWidth: 3.0,
+                  );
                 } else if (snapshot.hasError) {
                   return Text('Error: ${snapshot.error}');
                 } else if (!snapshot.hasData || snapshot.data!.isEmpty) {

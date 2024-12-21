@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:frontend2/repository/movie_repository.dart';
 import 'package:frontend2/view/authentication/authentication_screen.dart';
 import 'package:frontend2/view/home/home_screen.dart';
 import 'package:frontend2/view/loading_screen.dart';
+import 'package:frontend2/viewmodel/movie_viewmodel.dart';
+import 'package:provider/provider.dart';
 
 class MovieApp extends StatelessWidget {
   const MovieApp({super.key});
@@ -27,7 +30,6 @@ class MovieApp extends StatelessWidget {
           bodySmall: TextStyle(
             color: Color.fromRGBO(214, 214, 214, 1),
           ),
-
         ),
       ),
       initialRoute: '/',
@@ -36,7 +38,6 @@ class MovieApp extends StatelessWidget {
         '/auth': (context) => const AuthenticationScreen(),
         '/home': (context) => const HomeScreen(),
       },
-      // home: const LoadingScreen(),
     );
   }
 }

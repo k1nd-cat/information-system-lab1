@@ -1,6 +1,7 @@
 package com.lab1.backend.entities;
 
 import com.lab1.backend.dto.PersonDto;
+import com.lab1.backend.dto.PersonRequest;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -38,7 +39,6 @@ public class Person {
     private Color hairColor; //Поле может быть null
 
     @Embedded
-    @NotNull
     private Location location; //Поле может быть null
 
     @Enumerated(EnumType.STRING)
@@ -46,12 +46,8 @@ public class Person {
     @NotNull
     private Country nationality; //Поле не может быть null
 
-    @ManyToOne
-    @NotNull
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
     @Data
+    @Builder
     @AllArgsConstructor
     @NoArgsConstructor
     public static class Location {
@@ -64,6 +60,14 @@ public class Person {
         @NotNull
         private Float z; //Поле не может быть null
 
+        public static Location fromDto(PersonRequest.Location dto) {
+            if (dto == null) return null;
+            return Location.builder()
+                    .x(dto.getX())
+                    .y(dto.getY())
+                    .z(dto.getZ())
+                    .build();
+        }
     }
 
     public enum Country {
@@ -78,21 +82,14 @@ public class Person {
         WHITE;
     }
 
-    public static Person fromDto(PersonDto personDto) {
+    public static Person fromDto(PersonRequest dto) {
         return Person.builder()
-                .passportID(personDto.getPassportID())
-                .name(personDto.getName())
-                .eyeColor(personDto.getEyeColor())
-                .hairColor(personDto.getHairColor())
-                .location(personDto.getLocation())
-                .nationality(personDto.getNationality())
+                .passportID(dto.getPassportID())
+                .name(dto.getName())
+                .eyeColor(dto.getEyeColor())
+                .hairColor(dto.getHairColor())
+                .location(Location.fromDto(dto.getLocation()))
+                .nationality(dto.getNationality())
                 .build();
-    }
-
-    public static Person fromDto(PersonDto personDto, User user) {
-        var person = fromDto(personDto);
-        person.setUser(user);
-
-        return person;
     }
 }

@@ -8,21 +8,20 @@ import 'package:frontend2/repository/notifications_repository.dart';
 import 'package:frontend2/viewmodel/localstorage_manager.dart';
 import 'package:stomp_dart_client/stomp_dart_client.dart';
 
-import '../../constants/urls.dart';
-import '../../exceptions/field_validation_exception.dart';
-import '../../model/user.dart';
+import '../constants/urls.dart';
+import '../exceptions/field_validation_exception.dart';
+import '../model/user.dart';
 
 class AuthenticationViewModel with ChangeNotifier {
   bool _isLoading;
   bool _isAuthenticated;
   AuthenticationRepository repository;
-  late User _user;
+  User? _user;
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
   final repeatPasswordController = TextEditingController();
   bool isWaitingAdmin = false;
   late final NotificationsRepository notifications;
-  StompClient? _stompClient;
 
   // Ошибки валидации
   String? errorMessage;
@@ -34,7 +33,7 @@ class AuthenticationViewModel with ChangeNotifier {
 
   bool get isAuthenticated => _isAuthenticated;
 
-  User get user => _user;
+  User? get user => _user;
 
   AuthenticationViewModel(this.repository)
       : _isLoading = true,
@@ -50,8 +49,8 @@ class AuthenticationViewModel with ChangeNotifier {
       if (token != null) {
         final response = await repository.checkToken(token);
         _user = User.fromResponse(response);
-        if (_user.isWaitingAdmin) {
-          notifications.updateStatus(_user.token);
+        if (_user!.isWaitingAdmin) {
+          notifications.updateStatus(_user!.token);
         }
         _isAuthenticated = true;
       } else {
@@ -82,9 +81,12 @@ class AuthenticationViewModel with ChangeNotifier {
       // Если всё успешно, обновляем состояние
       _user = User.fromResponse(response);
       saveToken(response.token);
-      if (_user.isWaitingAdmin) {
-        notifications.updateStatus(_user.token);
+      if (_user!.isWaitingAdmin) {
+        notifications.updateStatus(_user!.token);
       }
+      usernameController.text = '';
+      passwordController.text = '';
+      repeatPasswordController.text = '';
       _isAuthenticated = true;
       notifyListeners();
       return true;
@@ -111,10 +113,13 @@ class AuthenticationViewModel with ChangeNotifier {
 
       final response = await repository.signIn(userRequest);
       _user = User.fromResponse(response);
-      saveToken(_user.token);
-      if (_user.isWaitingAdmin) {
-        notifications.updateStatus(_user.token);
+      saveToken(_user!.token);
+      if (_user!.isWaitingAdmin) {
+        notifications.updateStatus(_user!.token);
       }
+      usernameController.text = '';
+      passwordController.text = '';
+      repeatPasswordController.text = '';
       _isAuthenticated = true;
       return true;
     } catch (e) {
@@ -127,7 +132,7 @@ class AuthenticationViewModel with ChangeNotifier {
   }
 
   Future<void> logout() async {
-    if (_user.isWaitingAdmin) {
+    if (_user!.isWaitingAdmin) {
       notifications.deactivateStompClient();
     }
 
@@ -135,8 +140,8 @@ class AuthenticationViewModel with ChangeNotifier {
   }
 
   Future<void> setWaitingAdmin() async {
-    _user.isWaitingAdmin = await repository.setWaitingAdmin(user);
-    notifications.updateStatus(_user.token);
+    _user!.isWaitingAdmin = await repository.setWaitingAdmin(user!);
+    notifications.updateStatus(_user!.token);
     notifyListeners();
   }
 
@@ -149,8 +154,8 @@ class AuthenticationViewModel with ChangeNotifier {
   }
 
   void onUpdatedStatus(UpdatedRoleResponse response) {
-    _user.updateRole(response);
-    saveToken(_user.token);
+    _user!.updateRole(response);
+    saveToken(_user!.token);
     notifyListeners();
   }
 }

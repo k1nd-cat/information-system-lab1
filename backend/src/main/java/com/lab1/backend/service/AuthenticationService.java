@@ -1,9 +1,9 @@
 package com.lab1.backend.service;
 
-import com.lab1.backend.dto.AuthenticationResponse;
-import com.lab1.backend.dto.CheckTokenRequest;
-import com.lab1.backend.dto.SignInRequest;
-import com.lab1.backend.dto.SignUpRequest;
+import com.lab1.backend.dto.auth.AuthenticationResponse;
+import com.lab1.backend.dto.auth.CheckTokenRequest;
+import com.lab1.backend.dto.auth.SignInRequest;
+import com.lab1.backend.dto.auth.SignUpRequest;
 import com.lab1.backend.entities.User;
 import lombok.Data;
 import org.springframework.security.authentication.AuthenticationManager;

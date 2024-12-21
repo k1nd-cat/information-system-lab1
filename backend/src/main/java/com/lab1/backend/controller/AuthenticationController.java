@@ -1,6 +1,10 @@
 package com.lab1.backend.controller;
 
 import com.lab1.backend.dto.*;
+import com.lab1.backend.dto.auth.AuthenticationResponse;
+import com.lab1.backend.dto.auth.CheckTokenRequest;
+import com.lab1.backend.dto.auth.SignInRequest;
+import com.lab1.backend.dto.auth.SignUpRequest;
 import com.lab1.backend.service.AuthenticationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

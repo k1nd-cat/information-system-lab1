@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:frontend2/viewmodel/authentication/authentication_viewmodel.dart';
-import 'package:frontend2/viewmodel/home/home_viewmodel.dart';
+import 'package:frontend2/viewmodel/authentication_viewmodel.dart';
+import 'package:frontend2/viewmodel/home_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 import '../../../model/user.dart';
@@ -17,7 +17,7 @@ class ShowProfile extends StatelessWidget {
           return AlertDialog(
             backgroundColor: const Color.fromRGBO(44, 43, 48, 1),
             title: Text(
-              authViewModel.user.username,
+              authViewModel.user!.username,
               style: const TextStyle(color: Color.fromRGBO(214, 214, 214, 1)),
             ),
             content: Column(
@@ -27,14 +27,14 @@ class ShowProfile extends StatelessWidget {
               children: [
                 const SizedBox(height: 12),
                 Text(
-                  'Роль: ${authViewModel.user.role == Role.ROLE_ADMIN ? 'администратор' : 'пользователь'}',
+                  'Роль: ${authViewModel.user!.role == Role.ROLE_ADMIN ? 'администратор' : 'пользователь'}',
                 ),
                 const SizedBox(height: 12),
-                if (authViewModel.user.isWaitingAdmin)
+                if (authViewModel.user!.isWaitingAdmin)
                   const Text(
                     'Запрос на админа отправлен',
                   ),
-                if (!authViewModel.user.isWaitingAdmin && authViewModel.user.role == Role.ROLE_USER)
+                if (!authViewModel.user!.isWaitingAdmin && authViewModel.user!.role == Role.ROLE_USER)
                   Center(
                     child: ElevatedButton(
                       onPressed: () => authViewModel.setWaitingAdmin(),
