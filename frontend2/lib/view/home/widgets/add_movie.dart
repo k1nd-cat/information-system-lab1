@@ -15,10 +15,10 @@ class AddMovie extends StatelessWidget {
       onPressed: () => _dialogBuilder(context),
       style: ElevatedButton.styleFrom(
         foregroundColor: const Color.fromRGBO(44, 43, 48, 1),
-        minimumSize: const Size(300, 54),
+        minimumSize: const Size(507, 54),
         backgroundColor: const Color.fromRGBO(242, 196, 206, 1),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(3),
+          borderRadius: BorderRadius.circular(10),
         ),
       ),
       child: const Text('Добавить фильм'),

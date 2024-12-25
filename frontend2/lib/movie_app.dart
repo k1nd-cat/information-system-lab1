@@ -36,7 +36,7 @@ class MovieApp extends StatelessWidget {
       routes: {
         '/': (context) => const LoadingScreen(),
         '/auth': (context) => const AuthenticationScreen(),
-        '/home': (context) => const HomeScreen(),
+        '/home': (context) => HomeScreen(movieViewModel: Provider.of<MovieViewModel>(context)),
       },
     );
   }

@@ -14,4 +14,8 @@ public class WebSocketService {
     public void sendUpdatedRoleForUser(String username, UpdatedRoleResponse message) {
         messagingTemplate.convertAndSendToUser(username, "/queue/private", message);
     }
+
+    public void sendChangedMoviesNotification(String message) {
+        messagingTemplate.convertAndSend("/topic/broadcast", message);
+    }
 }

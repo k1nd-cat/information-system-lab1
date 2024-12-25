@@ -9,12 +9,20 @@ import 'package:frontend2/viewmodel/movie_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  final movieViewModel = MovieViewModel(MovieRepository());
+  final authenticationViewModel = AuthenticationViewModel(AuthenticationRepository(), movieViewModel.onUpdateMovies);
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => AuthenticationViewModel(AuthenticationRepository())),
-        ChangeNotifierProvider(create: (_) => HomeViewModel(UserRepository())),
-        ChangeNotifierProvider(create: (_) => MovieViewModel(MovieRepository())),
+        ChangeNotifierProvider(
+            create: (_) => authenticationViewModel),
+        ChangeNotifierProvider(
+            create: (_) => HomeViewModel(
+                  userRepository: UserRepository(),
+                  adminRepository: UserRepository(),
+                )),
+        ChangeNotifierProvider(
+            create: (_) => movieViewModel),
       ],
       child: const MovieApp(),
     ),

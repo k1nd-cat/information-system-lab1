@@ -43,8 +43,8 @@ class _AddUpdateMovieScreenState extends State<AddUpdateMovieScreen> {
       id: movie?.id,
       name: _movieNameController.text,
       coordinates: model.Coordinates(
-        int.parse(_xCoordController.text),
-        double.parse(_yCoordController.text),
+        double.parse(_xCoordController.text),
+        int.parse(_yCoordController.text),
       ),
       creationDate: movie?.creationDate,
       oscarCount: int.parse(_oscarCountController.text),
@@ -58,7 +58,7 @@ class _AddUpdateMovieScreenState extends State<AddUpdateMovieScreen> {
       length: int.parse(_lengthController.text),
       goldenPalmCount: int.parse(_goldenPalmCountController.text),
       usaBoxOffice:
-          _isUsaBoxOffice ? double.parse(_usaBoxOfficeController.text) : null,
+          _isUsaBoxOffice ? int.parse(_usaBoxOfficeController.text) : null,
       genre: _selectedMovieGenre,
       creatorName: movie?.creatorName,
       isEditable: movie?.isEditable ?? isEditable,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend2/view/widgets/styled_loading.dart';
 import 'package:provider/provider.dart';
 
 import '../viewmodel/authentication_viewmodel.dart';
@@ -19,15 +20,13 @@ class LoadingScreen extends StatelessWidget {
               .checkAuthStatus(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFF2C4CE)),
-                strokeWidth: 7.0,
-              );
+              return const StyledLoading();
             } else {
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 final authViewModel = Provider.of<AuthenticationViewModel>(
-                    context,
-                    listen: false);
+                  context,
+                  listen: false,
+                );
                 Navigator.popAndPushNamed(
                   context,
                   authViewModel.isAuthenticated ? '/home' : '/auth',

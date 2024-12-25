@@ -22,6 +22,7 @@ class AuthenticationViewModel with ChangeNotifier {
   final repeatPasswordController = TextEditingController();
   bool isWaitingAdmin = false;
   late final NotificationsRepository notifications;
+  final void Function(String message) onUpdateMovies;
 
   // Ошибки валидации
   String? errorMessage;
@@ -35,10 +36,10 @@ class AuthenticationViewModel with ChangeNotifier {
 
   User? get user => _user;
 
-  AuthenticationViewModel(this.repository)
+  AuthenticationViewModel(this.repository, this.onUpdateMovies)
       : _isLoading = true,
         _isAuthenticated = false {
-    notifications = NotificationsRepository(onUpdatedStatus);
+    notifications = NotificationsRepository(onUpdatedStatus, onUpdateMovies);
   }
 
   Future<void> checkAuthStatus() async {

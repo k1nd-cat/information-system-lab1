@@ -5,10 +5,41 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
 import java.util.Optional;
 
 public interface MovieRepository extends JpaRepository<Movie, Long> {
     Optional<Movie> findMovieById(long id);
 
-    Page<Movie> findAll(Pageable pageable);
+//    Page<Movie> findAll(Pageable pageable);
+
+    List<Movie> findAll();
+
+    @Query(
+            value = "SELECT * FROM get_movies_by_prefix(:prefixName)",
+            nativeQuery = true
+    )
+    List<Movie> findByPrefixName(@Param("prefixName") String prefixName);
+
+    @Query(
+            value = "SELECT * FROM get_movies_by_golden_palm_count(:minGoldenPalmCount)",
+            nativeQuery = true
+    )
+    List<Movie> findByMinGoldenPalmCount(@Param("minGoldenPalmCount") Integer minGoldenPalmCount);
+
+    @Query(
+            value = "SELECT * FROM get_movies_with_unique_usa_box_office()",
+            nativeQuery = true
+    )
+    List<Movie> findByUniqueUsaBoxOffice();
+
+    @Query("SELECT COUNT(DISTINCT m) FROM Movie m " +
+            "JOIN m.director d " +
+            "JOIN m.screenwriter s " +
+            "JOIN m.operator o " +
+            "WHERE d.passportID = :personId OR s.passportID = :personId OR o.passportID = :personId")
+    Long countMoviesWithPerson(@Param("personId") String personId);
 }

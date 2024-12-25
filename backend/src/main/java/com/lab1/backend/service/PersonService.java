@@ -20,4 +20,8 @@ public class PersonService {
     public List<Person> getAll() {
         return repository.findAll();
     }
+
+    public void deletePerson(String id) {
+        repository.deleteById(id);
+    }
 }

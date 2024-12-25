@@ -3,6 +3,7 @@ package com.lab1.backend.controller;
 import com.lab1.backend.dto.ApproveRejectAdminRequest;
 import com.lab1.backend.dto.ErrorResponse;
 import com.lab1.backend.service.UserService;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -23,32 +24,41 @@ public class UserController {
     private UserService service;
 
     @GetMapping("/request-admin")
-    @Operation(summary = "Запросить админку, если пользователь не администратор")
+    @Operation(summary = "Запросить роль администратора")
     public void setWaitingAdmin() {
         service.setWaitingAdmin();
     }
 
+    @Deprecated
     @Operation(summary = "Ждут получения админки")
     @GetMapping("/waiting-admin")
     public List<String> getWaitingAdminUsers() {
         return service.getWaitingAdminUsernames();
     }
 
+    @Deprecated
     @Operation(summary = "Сделать пользователя администратором")
     @PostMapping("approve-admin")
     public void approveAdmin(@RequestBody @Valid ApproveRejectAdminRequest request) {
         service.approveAdmin(request.getUsername());
     }
 
+    @Deprecated
     @Operation(summary = "Отклонить запрос пользователя на роль администратора")
     @PostMapping("reject-admin")
     public void rejectAdmin(@RequestBody @Valid ApproveRejectAdminRequest request) {
         service.rejectAdmin(request.getUsername());
     }
 
+    @ExceptionHandler(ExpiredJwtException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ErrorResponse error(ExpiredJwtException e) {
+        return new ErrorResponse("Пользователь не авторизирован в системе");
+    }
+
     @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse error(Exception e) {
-        return new ErrorResponse(e.getMessage());
+        return new ErrorResponse("Не удалось выполнить запрос");
     }
 }

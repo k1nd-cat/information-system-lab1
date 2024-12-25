@@ -1,16 +1,19 @@
 package com.lab1.backend.service;
 
 import com.lab1.backend.dto.MovieDto;
+import com.lab1.backend.dto.MoviesPageRequest;
+import com.lab1.backend.dto.MoviesPageResponse;
 import com.lab1.backend.entities.User;
 import com.lab1.backend.entities.Movie;
 import com.lab1.backend.repository.MovieRepository;
 import lombok.Data;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @Data
@@ -23,12 +26,15 @@ public class MovieService {
 
     private final PersonService personService;
 
+    private final WebSocketService webSocketService;
+
     public void createMovie(MovieDto request) {
         final var user = userService.getCurrentUser();
         final var movie = Movie.fromDto(request, user);
         safetyUpdatePerson(movie);
         repository.save(movie);
         // TODO: Добавить websocket
+        webSocketService.sendChangedMoviesNotification("Фильм обновлён");
     }
 
     public void updateMovie(MovieDto request) {
@@ -43,12 +49,19 @@ public class MovieService {
         safetyUpdatePerson(movie);
         repository.save(movie);
         // TODO: Добавить websocket
+
+        webSocketService.sendChangedMoviesNotification("Фильм изменён");
     }
 
     public void deleteMovie(MovieDto request) {
         if (request.getId() == null) throw new RuntimeException("Невозможно идентифицировать фильм для удаления");
         final var movie = repository.findMovieById(request.getId())
                 .orElseThrow(() -> new RuntimeException("Невозиожно найти фильм для удаления"));
+
+        boolean canDeleteDirector = repository.countMoviesWithPerson(movie.getDirector().getPassportID()) == 1;
+        boolean canDeleteScreenwriter = movie.getScreenwriter() == null || repository.countMoviesWithPerson(movie.getScreenwriter().getPassportID()) == 1;
+        boolean canDeleteOperator = repository.countMoviesWithPerson(movie.getOperator().getPassportID()) == 0;
+
         final var creator = movie.getUser();
         final var user = userService.getCurrentUser();
         if (!(user.getRole() == User.Role.ROLE_ADMIN || Objects.equals(user.getUsername(), creator.getUsername()))) {
@@ -56,7 +69,18 @@ public class MovieService {
         }
 
         repository.delete(movie);
+
+        if (canDeleteDirector) {
+            personService.deletePerson(movie.getDirector().getPassportID());
+        }
+        if (canDeleteScreenwriter && movie.getScreenwriter() != null) {
+            personService.deletePerson(movie.getScreenwriter().getPassportID());
+        }
+        if (canDeleteOperator) {
+            personService.deletePerson(movie.getOperator().getPassportID());
+        }
         // TODO: Добавить websocket
+        webSocketService.sendChangedMoviesNotification("Фильм удалён");
     }
 
     private void safetyUpdatePerson(Movie movie) {
@@ -71,11 +95,54 @@ public class MovieService {
         movie.setOperator(operator);
     }
 
+    public MoviesPageResponse getMoviesPage(MoviesPageRequest request) {
+        if (
+                request.getNamePrefix() == null
+                || request.getMinGoldenPalmCount() == null
+                || request.getIsUsaBoxOfficeUnique() == null
+        )
+            throw new IllegalArgumentException("Значения полей для фильтрации должны быть объявлены");
+
+        List<Movie> moviesByPrefix = repository.findByPrefixName(request.getNamePrefix());
+        List<Movie> moviesByGoldenPalmCount = repository.findByMinGoldenPalmCount(request.getMinGoldenPalmCount());
+        List<Movie> moviesByUniqueUsaBoxOffice = request.getIsUsaBoxOfficeUnique() ? repository.findByUniqueUsaBoxOffice() : null;
+
+        moviesByPrefix.retainAll(moviesByGoldenPalmCount);
+        if (moviesByUniqueUsaBoxOffice != null) {
+            moviesByPrefix.retainAll(moviesByUniqueUsaBoxOffice);
+        }
+
+        var movies = moviesByPrefix;
+        int fromIndex = (request.getPage() - 1) * request.getSize();
+        int toIndex = Math.min(fromIndex + request.getSize(), movies.size());
+        var pageCount = (int) Math.ceil((double) movies.size() / request.getSize());
+        movies = movies.subList(fromIndex, toIndex);
+        var movieDtos = movies.stream().map(Movie::toDto).toList();
+
+        if (fromIndex > toIndex) {
+            throw new IllegalArgumentException("Текущей страницы не существует");
+        }
+
+
+        return MoviesPageResponse.builder()
+                .pageCount(pageCount)
+                .movies(movieDtos)
+                .build();
+    }
+
+    @Deprecated
     public List<MovieDto> getMovies(int page, int size) {
         final Pageable pageable = PageRequest.of(page, size);
         final var movies = repository.findAll(pageable);
         return movies.getContent().stream()
                 .map(Movie::toDto).toList();
+    }
 
+    @Deprecated
+    public Map<String, Long> getMoviesCount() {
+        final var count = repository.count();
+        final var response = new HashMap<String, Long>();
+        response.put("count", count);
+        return response;
     }
 }

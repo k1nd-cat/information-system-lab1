@@ -3,6 +3,7 @@ package com.lab1.backend.service;
 import com.lab1.backend.entities.User;
 import com.lab1.backend.repository.UserRepository;
 import com.lab1.backend.dto.UpdatedRoleResponse;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Data
 @Service
+@AllArgsConstructor
 public class UserService {
 
     private final UserRepository repository;
@@ -50,6 +52,7 @@ public class UserService {
         return getByUsername(username);
     }
 
+    @Deprecated
     public void approveAdmin(String username) {
         var currentUser = this.getCurrentUser();
         if (currentUser.getRole() != User.Role.ROLE_ADMIN) {
@@ -72,6 +75,7 @@ public class UserService {
         webSocketService.sendUpdatedRoleForUser(username, updatedRoleResponse);
     }
 
+    @Deprecated
     public void rejectAdmin(String username) {
         var currentUser = this.getCurrentUser();
         if (currentUser.getRole() != User.Role.ROLE_ADMIN) {
@@ -91,6 +95,7 @@ public class UserService {
         }
     }
 
+    @Deprecated
     public List<String> getWaitingAdminUsernames() {
         var user = this.getCurrentUser();
         if (user.getRole() != User.Role.ROLE_ADMIN)

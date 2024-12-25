@@ -12,7 +12,7 @@ class Movie {
   Person operator;
   late int _length;
   late int _goldenPalmCount;
-  late double? _usaBoxOffice;
+  late int? _usaBoxOffice;
   MovieGenre genre;
   String? creatorName;
   bool? isEditable;
@@ -31,7 +31,7 @@ class Movie {
     required this.operator,
     required int length,
     required int goldenPalmCount,
-    required double? usaBoxOffice,
+    required int? usaBoxOffice,
     required this.genre,
     this.creatorName,
     this.isEditable,
@@ -99,9 +99,9 @@ class Movie {
     _goldenPalmCount = goldenPalmCount;
   }
 
-  double? get usaBoxOffice => _usaBoxOffice;
+  int? get usaBoxOffice => _usaBoxOffice;
 
-  set usaBoxOffice(double? usaBoxOffice) {
+  set usaBoxOffice(int? usaBoxOffice) {
     if (usaBoxOffice != null && usaBoxOffice <= 0) {
       throw Exception('Значение поля должно быть больше 0');
     }
@@ -226,16 +226,16 @@ class Person {
 }
 
 class Coordinates {
-  late int _x;
-  double y;
+  late double _x;
+  int y;
 
-  Coordinates(int x, this.y) {
+  Coordinates(double x, this.y) {
     this.x = x;
   }
 
-  int get x => _x;
+  double get x => _x;
 
-  set x(int x) {
+  set x(double x) {
     if (x <= -946) {
       throw Exception('Значение поля должен быть больше -946');
     }

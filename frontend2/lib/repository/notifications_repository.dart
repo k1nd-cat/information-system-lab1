@@ -7,9 +7,10 @@ import '../constants/urls.dart';
 
 class NotificationsRepository {
   void Function(UpdatedRoleResponse response) onUpdatedStatus;
+  void Function(String message) onUpdateMovies;
   late StompClient _stompClient;
 
-  NotificationsRepository(this.onUpdatedStatus);
+  NotificationsRepository(this.onUpdatedStatus, this.onUpdateMovies);
 
   void updateStatus(String token) {
     _stompClient = StompClient(
@@ -28,7 +29,15 @@ class NotificationsRepository {
       callback: (frame) {
         var updatedRole = UpdatedRoleResponse.fromJson(json.decode(frame.body!));
         onUpdatedStatus(updatedRole);
-        deactivateStompClient();
+        // deactivateStompClient();
+      },
+    );
+
+    _stompClient.subscribe(
+      destination: '/topic/broadcast',
+      callback: (frame) {
+        print('Public message: ${frame.body}');
+        onUpdateMovies(frame.body.toString());
       },
     );
   }

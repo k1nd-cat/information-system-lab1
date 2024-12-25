@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:frontend2/dto/movies_page_request.dart';
+import 'package:frontend2/model/page_movies.dart';
 import 'package:http/http.dart' as http;
 import '../constants/urls.dart';
 import '../model/movies.dart';
@@ -53,6 +55,25 @@ class MovieRepository {
     }
   }
 
+  Future<void> delete(Movie movie) async {
+    var token = await getToken();
+    final response = await http.post(
+      Uri.parse('$url/movie/delete'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: json.encode(movie.toJson()),
+    );
+
+    if (response.statusCode == 200) {
+
+    } else {
+
+    }
+  }
+
+  @Deprecated('Лучше пользоваться методом [getMoviesPage]')
   Future<List<Movie>> getMovies(int page, int size) async {
     final token = await getToken();
     final response = await http.get(
@@ -64,10 +85,33 @@ class MovieRepository {
     );
 
     if (response.statusCode == 200) {
-      var data = json.encode(response.body) as List;
-      return data.map((item) => Movie.fromJson(item)).toList();
+      var data = json.decode(response.body) as List;
+        return data.map((item) => Movie.fromJson(item)).toList();
     } else {
       throw Exception('Не удалось загрузить фильмы');
+    }
+  }
+
+  Future<MoviesPage> getMoviesPage(MoviesPageRequest request) async {
+    // print('begin!');
+    var token = await getToken();
+    var response = await http.post(
+      Uri.parse('$url/movie/movies-page'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: json.encode(request.toJson()),
+    );
+
+    if (response.statusCode == 200) {
+      var data = json.decode(response.body);
+      // print('good!');
+      return MoviesPage.fromJson(data);
+    } else {
+      var errorMessage = json.decode(response.body);
+      // print(errorMessage['error']);
+      throw Exception(errorMessage['error']);
     }
   }
 }

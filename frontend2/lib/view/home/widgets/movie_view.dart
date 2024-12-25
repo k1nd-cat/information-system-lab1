@@ -11,7 +11,7 @@ class MovieView extends StatefulWidget {
 class _MovieViewState extends State<MovieView> {
   final movie = model.Movie(
     name: 'Help me',
-    coordinates: model.Coordinates(12, 13.4),
+    coordinates: model.Coordinates(12, 13),
     oscarCount: 7,
     budget: 30000,
     totalBoxOffice: 16,

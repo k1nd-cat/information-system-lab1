@@ -1,26 +1,34 @@
 import 'package:flutter/cupertino.dart';
 import 'package:frontend2/repository/user_repository.dart';
+import 'package:frontend2/repository/admin_repository.dart';
 
 class HomeViewModel with ChangeNotifier {
-  final UserRepository repository;
+  final UserRepository userRepository;
+  final UserRepository adminRepository;
+  String? errorMessage;
+  String? message;
 
-  HomeViewModel(this.repository);
+  HomeViewModel({
+    required this.userRepository,
+    required this.adminRepository,
+  });
 
-  Future<List<String>> getWaitingAdminUsernames(String token) async {
+  Future<List<String>> getWaitingAdminUsernames() async {
     try {
-      List<String> usernames = await repository.getWaitingAdminUsernames(token);
+      List<String> usernames =
+          await adminRepository.getWaitingAdminUsernames();
       return usernames;
     } catch (e) {
-      throw Exception('No data available');
+      errorMessage = e.toString();
+      return [];
     }
   }
 
-  Future<void> approveAdminByUsername(String token, String username) async {
-    repository.approveAdminByUsername(token, username);
+  Future<void> approveAdminByUsername(String username) async {
+    adminRepository.approveAdminByUsername(username);
   }
 
-  Future<void> rejectAdminByUsername(String token, String username) async {
-    repository.rejectAdminByUsername(token, username);
+  Future<void> rejectAdminByUsername(String username) async {
+    adminRepository.rejectAdminByUsername(username);
   }
-
 }

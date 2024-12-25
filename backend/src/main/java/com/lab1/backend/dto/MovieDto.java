@@ -1,6 +1,7 @@
 package com.lab1.backend.dto;
 
 import com.lab1.backend.entities.Movie;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -14,49 +15,52 @@ import lombok.Data;
 public class MovieDto {
     private Long id;
 
-    @NotNull
-    @NotBlank
+    @NotNull(message = "Значение не может отсутствовать")
+    @NotBlank(message = "Значение не может состоять только из пробелов")
     private String name;
 
-    @NotNull
+    @NotNull(message = "Значение не может отсутствовать")
     private Coordinates coordinates;
 
     private java.util.Date creationDate;
 
-    @NotNull
-    @Positive
+    @NotNull(message = "Значение не может отсутствовать")
+    @Positive(message = "Значение может быть только положительным")
     private Integer oscarCount;
 
-    @Positive
-    @NotNull
+    @NotNull(message = "Значение не может отсутствовать")
+    @Positive(message = "Значение может быть только положительным")
     private Float budget;
 
-    @Positive
-    @NotNull
+    @NotNull(message = "Значение не может отсутствовать")
+    @Positive(message = "Значение может быть только положительным")
     private Double totalBoxOffice;
 
     private Movie.MpaaRating mpaaRating;
 
-    @NotNull
+    @Valid
+    @NotNull(message = "Значение не может отсутствовать")
     private PersonDto director;
 
+    @Valid
     private PersonDto screenwriter;
 
-    @NotNull
+    @Valid
+    @NotNull(message = "Значение не может отсутствовать")
     private PersonDto operator;
 
-    @NotNull
-    @Positive
+    @NotNull(message = "Значение не может отсутствовать")
+    @Positive(message = "Значение может быть только положительным")
     private Long length;
 
-    @NotNull
-    @Positive
+    @NotNull(message = "Значение не может отсутствовать")
+    @Positive(message = "Значение может быть только положительным")
     private Integer goldenPalmCount;
 
-    @Positive
+    @Positive(message = "Значение может быть только положительным")
     private Long usaBoxOffice;
 
-    @NotNull
+    @NotNull(message = "Значение не может отсутствовать")
     private Movie.MovieGenre genre;
 
     private Boolean isEditable;
@@ -68,10 +72,10 @@ public class MovieDto {
     @AllArgsConstructor
     public static class Coordinates {
 
-        @NotNull
+        @NotNull(message = "Значение не может отсутствовать")
         Double x;
 
-        @NotNull
+        @NotNull(message = "Значение не может отсутствовать")
         private Long y;
     }
 }

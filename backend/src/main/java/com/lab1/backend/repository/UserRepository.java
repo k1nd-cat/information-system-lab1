@@ -19,4 +19,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<List<User>> findAllByIsWaitingAdmin(Boolean isWaitingAdmin);
 
     Optional<List<User>> findByIsWaitingAdminTrue();
+
+
 }

@@ -3,6 +3,8 @@ import 'package:frontend2/viewmodel/authentication_viewmodel.dart';
 import 'package:frontend2/viewmodel/home_viewmodel.dart';
 import 'package:provider/provider.dart';
 
+import '../../widgets/styled_loading.dart';
+
 class ShowWaitingAdmin extends StatefulWidget {
   const ShowWaitingAdmin({super.key});
 
@@ -14,8 +16,6 @@ class _ShowWaitingAdminState extends State<ShowWaitingAdmin> {
   final ValueNotifier<List<String>> _usernamesNotifier = ValueNotifier<List<String>>([]);
 
   Future<void> _dialogBuilder(BuildContext context) async {
-    final token =
-        Provider.of<AuthenticationViewModel>(context, listen: false).user!.token;
     final homeViewModel = Provider.of<HomeViewModel>(context, listen: false);
 
     return showDialog(
@@ -31,16 +31,13 @@ class _ShowWaitingAdminState extends State<ShowWaitingAdmin> {
             height: 300,
             width: 300,
             child: FutureBuilder<List<String>>(
-              future: homeViewModel.getWaitingAdminUsernames(token),
+              future: homeViewModel.getWaitingAdminUsernames(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFF2C4CE)),
-                    strokeWidth: 3.0,
-                  );
+                  return const Center(child: StyledLoading());
                 } else if (snapshot.hasError) {
                   return Text('Error: ${snapshot.error}');
-                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                } else if (!snapshot.hasData  || snapshot.data!.isEmpty) {
                   return const Text('No data available');
                 } else {
                   _usernamesNotifier.value = snapshot.data!;
@@ -72,7 +69,7 @@ class _ShowWaitingAdminState extends State<ShowWaitingAdmin> {
                                       icon: const Icon(Icons.add_circle_outline),
                                       color: const Color.fromRGBO(0, 110, 100, 1.0),
                                       onPressed: () {
-                                        homeViewModel.approveAdminByUsername(token, usernames[index]);
+                                        homeViewModel.approveAdminByUsername(usernames[index]);
                                         _usernamesNotifier.value = List.from(_usernamesNotifier.value)
                                           ..removeAt(index);
                                       },
@@ -81,7 +78,7 @@ class _ShowWaitingAdminState extends State<ShowWaitingAdmin> {
                                       icon: const Icon(Icons.cancel_outlined),
                                       color: const Color.fromRGBO(180, 49, 39, 1.0),
                                       onPressed: () {
-                                        homeViewModel.rejectAdminByUsername(token, usernames[index]);
+                                        homeViewModel.rejectAdminByUsername(usernames[index]);
                                         _usernamesNotifier.value = List.from(_usernamesNotifier.value)
                                           ..removeAt(index);
                                       },

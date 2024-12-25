@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend2/view/widgets/styled_loading.dart';
 import 'package:frontend2/viewmodel/authentication_viewmodel.dart';
 import 'package:provider/provider.dart';
 import '../../../model/movies.dart' as model;
@@ -148,7 +149,7 @@ class _PersonDropdownState extends State<PersonDropdown> {
       future: _loadPersons(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
+          return const StyledLoading();
         } else if (snapshot.hasError) {
           return Text('Ошибка загрузки данных');
         } else if (snapshot.hasData) {

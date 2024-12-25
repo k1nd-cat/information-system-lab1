@@ -13,37 +13,37 @@ import lombok.Data;
 @AllArgsConstructor
 public class PersonDto {
 
-    @NotNull
-    @NotBlank
+    @NotNull(message = "Значение не может отсутствовать")
+    @NotBlank(message = "Значение не может состоять только из пробелов")
     private String passportID;
 
-    @NotNull
-    @NotBlank
-    @Size(max = 34)
+    @NotNull(message = "Значение не может отсутствовать")
+    @NotBlank(message = "Значение не может состоять только из пробелов")
+    @Size(max = 34, message = "Максимальное количество символов: 34")
     private String name;
 
-    @NotNull
+    @NotNull(message = "Значение не может отсутствовать")
     private Person.Color eyeColor;
 
-    @NotNull
+    @NotNull(message = "Значение не может отсутствовать")
     private Person.Color hairColor;
 
     private Location location;
 
-    @NotNull
+    @NotNull(message = "Значение не может отсутствовать")
     private Person.Country nationality;
 
     @Data
     @Builder
     @AllArgsConstructor
     public static class Location {
-        @NotNull
+        @NotNull(message = "Значение не может отсутствовать")
         private Long x;
 
-        @NotNull
+        @NotNull(message = "Значение не может отсутствовать")
         private Long y;
 
-        @NotNull
+        @NotNull(message = "Значение не может отсутствовать")
         private Float z;
     }
 }

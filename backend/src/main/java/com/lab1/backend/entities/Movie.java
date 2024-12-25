@@ -3,7 +3,6 @@ package com.lab1.backend.entities;
 import com.lab1.backend.dto.MovieDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
@@ -23,30 +22,22 @@ public class Movie {
     private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
 
     @Column(nullable = false)
-    @NotNull
-    @NotBlank
     private String name; //Поле не может быть null, Строка не может быть пустой
 
-    @NotNull
     @Embedded
     private Coordinates coordinates; //Поле не может быть null
 
     @Column(nullable = false, name = "creation_date")
     @Temporal(TemporalType.TIMESTAMP)
-    @NotNull
     private java.util.Date creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
 
     @Column(nullable = false, name = "oscar_count")
-    @Min(1)
     private int oscarCount; //Значение поля должно быть больше 0
 
     @Column(nullable = false)
-    @Positive
     private float budget; //Значение поля должно быть больше 0
 
     @Column(nullable = false, name = "total_box_office")
-    @Positive
-    @NotNull
     private Double totalBoxOffice; //Поле не может быть null, Значение поля должно быть больше 0
 
     @Column(name = "mpaa_rating")
@@ -54,16 +45,16 @@ public class Movie {
     @NotNull
     private MpaaRating mpaaRating; //Поле может быть null
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "director_id", nullable = false)
     @NotNull
     private Person director; //Поле не может быть null
 
-    @ManyToOne(optional = true, cascade = CascadeType.ALL)
+    @ManyToOne(optional = true)
     @JoinColumn(name = "screenwriter_id", nullable = true)
     private Person screenwriter;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "operator_id", nullable = false)
     @NotNull
     private Person operator; //Поле не может быть null
@@ -173,14 +164,14 @@ public class Movie {
                 .genre(genre)
                 .mpaaRating(mpaaRating)
                 .director(director.toDto())
-                .screenwriter(screenwriter.toDto())
+                .screenwriter(screenwriter != null ? screenwriter.toDto() : null)
                 .operator(operator.toDto())
                 .oscarCount(oscarCount)
                 .budget(budget)
                 .totalBoxOffice(totalBoxOffice)
                 .length(length)
                 .goldenPalmCount(goldenPalmCount)
-                .usaBoxOffice(usaBoxOffice)
+                .usaBoxOffice(usaBoxOffice != null ? usaBoxOffice : null)
                 .creatorName(user.getUsername())
                 .isEditable(modifiable)
                 .build();
