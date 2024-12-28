@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:frontend2/viewmodel/authentication_viewmodel.dart';
-import 'package:frontend2/viewmodel/home_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 import '../../../model/user.dart';
@@ -13,7 +12,6 @@ class ShowProfile extends StatelessWidget {
         context: context,
         builder: (BuildContext context) {
           var authViewModel = Provider.of<AuthenticationViewModel>(context);
-          var homeViewModel = Provider.of<HomeViewModel>(context);
           return AlertDialog(
             backgroundColor: const Color.fromRGBO(44, 43, 48, 1),
             title: Text(

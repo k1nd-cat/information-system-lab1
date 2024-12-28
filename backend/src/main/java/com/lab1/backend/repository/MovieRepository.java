@@ -1,10 +1,11 @@
 package com.lab1.backend.repository;
 
 import com.lab1.backend.entities.Movie;
-import org.springframework.data.domain.Page;
+import com.lab1.backend.entities.Person;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface MovieRepository extends JpaRepository<Movie, Long> {
-    Optional<Movie> findMovieById(long id);
+    Optional<Movie> findMovieById(Long id);
 
 //    Page<Movie> findAll(Pageable pageable);
 
@@ -42,4 +43,16 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
             "JOIN m.operator o " +
             "WHERE d.passportID = :personId OR s.passportID = :personId OR o.passportID = :personId")
     Long countMoviesWithPerson(@Param("personId") String personId);
+
+    @Query(
+            value = "SELECT * FROM find_operators_with_zero_oscars()",
+            nativeQuery = true
+    )
+    List<Person> getWithZeroOscarCount();
+
+    @Modifying
+    @Transactional
+    @Query(value = "SELECT * FROM update_oscar_count(:p_username, :p_increment)", nativeQuery = true)
+    List<Movie> updateOscarCount(@Param("p_username") String username, @Param("p_increment") int increment);
 }
+

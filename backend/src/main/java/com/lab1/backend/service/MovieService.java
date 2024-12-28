@@ -1,26 +1,29 @@
 package com.lab1.backend.service;
 
+import com.lab1.backend.dto.MessageResponse;
 import com.lab1.backend.dto.MovieDto;
 import com.lab1.backend.dto.MoviesPageRequest;
 import com.lab1.backend.dto.MoviesPageResponse;
+import com.lab1.backend.entities.Person;
+import com.lab1.backend.entities.Updates;
 import com.lab1.backend.entities.User;
 import com.lab1.backend.entities.Movie;
 import com.lab1.backend.repository.MovieRepository;
+import com.lab1.backend.repository.UpdatesRepository;
 import lombok.Data;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 @Data
 @Service
 public class MovieService {
 
     private final MovieRepository repository;
+
+    private final UpdatesRepository updatesRepository;
 
     private final UserService userService;
 
@@ -33,22 +36,26 @@ public class MovieService {
         final var movie = Movie.fromDto(request, user);
         safetyUpdatePerson(movie);
         repository.save(movie);
-        // TODO: Добавить websocket
+
         webSocketService.sendChangedMoviesNotification("Фильм обновлён");
     }
 
     public void updateMovie(MovieDto request) {
         final var user = userService.getCurrentUser();
-        if (!(Objects.equals(user.getUsername(), request.getCreatorName()) || user.getRole() == User.Role.ROLE_ADMIN && request.getIsEditable())) {
-            throw new RuntimeException("Текущий пользователь не может изменять этот фильм");
-        }
-
         final var movieFromDb = repository.findMovieById(request.getId())
                 .orElseThrow(() -> new RuntimeException("Такого фильма не существует"));
+        if (!(Objects.equals(movieFromDb.getUser().getUsername(), user.getUsername()) || (user.getRole() == User.Role.ROLE_ADMIN && movieFromDb.isModifiable()))) {
+            throw new RuntimeException("Текущий пользователь не может изменять этот фильм");
+        }
         final var movie = Movie.fromDto(request, movieFromDb);
         safetyUpdatePerson(movie);
         repository.save(movie);
-        // TODO: Добавить websocket
+        var updates = Updates.builder()
+                    .user(user)
+                    .movie(movie)
+                    .updateDate(new Date())
+        .build();
+        updatesRepository.save(updates);
 
         webSocketService.sendChangedMoviesNotification("Фильм изменён");
     }
@@ -67,6 +74,7 @@ public class MovieService {
         if (!(user.getRole() == User.Role.ROLE_ADMIN || Objects.equals(user.getUsername(), creator.getUsername()))) {
             throw new RuntimeException("Текущий пользователь не может удалять этот фильм");
         }
+        updatesRepository.deleteAllByMovie(movie);
 
         repository.delete(movie);
 
@@ -79,7 +87,7 @@ public class MovieService {
         if (canDeleteOperator) {
             personService.deletePerson(movie.getOperator().getPassportID());
         }
-        // TODO: Добавить websocket
+
         webSocketService.sendChangedMoviesNotification("Фильм удалён");
     }
 
@@ -144,5 +152,32 @@ public class MovieService {
         final var response = new HashMap<String, Long>();
         response.put("count", count);
         return response;
+    }
+
+    public List<Person> getWithZeroOscarCount() {
+        return repository.getWithZeroOscarCount();
+    }
+
+    public MovieDto getById(Long id) {
+        var movie = repository.findMovieById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Невозможно найти Фильм по заданному id"));
+        return movie.toDto();
+    }
+
+    public MessageResponse addOscars(Integer addOscarsCount) {
+        final var user = userService.getCurrentUser();
+        List<Movie> movies = repository.updateOscarCount(user.getUsername(), addOscarsCount);
+        Date updateDate = new Date();
+        for (var movie : movies) {
+            var updates = Updates.builder()
+                    .user(user)
+                    .movie(movie)
+                    .updateDate(updateDate)
+                    .build();
+            updatesRepository.save(updates);
+        }
+
+        webSocketService.sendChangedMoviesNotification("Добавлены оскары");
+        return new MessageResponse("Фильмам добавлено " + addOscarsCount + " оскаров");
     }
 }

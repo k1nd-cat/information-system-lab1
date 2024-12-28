@@ -16,6 +16,7 @@ class StyledTextField extends StatefulWidget {
   final InputType inputType;
   final bool allowNegative;
   final bool readOnly;
+  final FormFieldValidator<String>? validator;
 
   const StyledTextField({
     required this.controller,
@@ -26,6 +27,7 @@ class StyledTextField extends StatefulWidget {
     this.inputType = InputType.typeString,
     this.allowNegative = false,
     this.readOnly = false,
+    this.validator,
     super.key,
   });
 
@@ -59,10 +61,11 @@ class _StyledTextFieldState extends State<StyledTextField> {
     final isEmpty = widget.controller.text.isEmpty;
     final isFocused = _focusNode.hasFocus;
 
-    return TextField(
+    return TextFormField(
       controller: widget.controller,
       focusNode: _focusNode,
       readOnly: widget.readOnly,
+      validator: widget.validator,
       style: TextStyle(
         color: widget.readOnly ? widget.textColor.withOpacity(0.5) : widget.textColor,
       ),
@@ -105,11 +108,11 @@ class _StyledTextFieldState extends State<StyledTextField> {
     switch (inputType) {
       case InputType.typeInt:
         return [
-          FilteringTextInputFormatter.allow(RegExp(r'^-?\d*')),
+          FilteringTextInputFormatter.allow(RegExp(allowNegative ? r'^-?\d*' : r'^\d*')),
         ];
       case InputType.typeDouble:
         return [
-          FilteringTextInputFormatter.allow(RegExp(r'^-?\d*\.?\d*')),
+          FilteringTextInputFormatter.allow(RegExp(allowNegative ? r'^-?\d*\.?\d*' : r'^\d*\.?\d*')),
         ];
       case InputType.typeString:
       default:

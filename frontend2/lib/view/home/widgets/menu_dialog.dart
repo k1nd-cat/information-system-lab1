@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:frontend2/view/home/widgets/add_oscar_dialog.dart';
+import 'package:frontend2/view/home/widgets/person_list_dialog.dart';
+
+import 'movie_by_id.dart';
 
 class MovieMenuDialog extends StatelessWidget {
   // final VoidCallback onGetOperatorsWithoutOscars;
@@ -29,7 +33,12 @@ class MovieMenuDialog extends StatelessWidget {
         children: [
           OutlinedButton(
             // onPressed: onGetOperatorsWithoutOscars,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) => const PersonAlertDialog());
+            },
             style: OutlinedButton.styleFrom(
               foregroundColor: const Color.fromRGBO(214, 214, 214, 1),
               minimumSize: const Size(450, 80),
@@ -48,7 +57,12 @@ class MovieMenuDialog extends StatelessWidget {
           const SizedBox(height: 16),
           OutlinedButton(
             // onPressed: onAddOscarsToMovies,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) => const AddOscarDialog());
+            },
             style: OutlinedButton.styleFrom(
               foregroundColor: const Color.fromRGBO(214, 214, 214, 1),
               minimumSize: const Size(450, 80),
@@ -67,7 +81,12 @@ class MovieMenuDialog extends StatelessWidget {
           const SizedBox(height: 16),
           OutlinedButton(
             // onPressed: onGetMovieById,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) => const IdEnter());
+            },
             style: OutlinedButton.styleFrom(
               foregroundColor: const Color.fromRGBO(214, 214, 214, 1),
               minimumSize: const Size(450, 80),

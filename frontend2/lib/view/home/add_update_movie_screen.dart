@@ -4,7 +4,6 @@ import 'package:frontend2/view/home/widgets/enum_dropdown.dart';
 import 'package:frontend2/view/home/widgets/movie_text_field.dart';
 import 'package:frontend2/view/home/widgets/person_dropdown.dart';
 import 'package:frontend2/viewmodel/authentication_viewmodel.dart';
-import 'package:frontend2/viewmodel/localstorage_manager.dart';
 import 'package:frontend2/viewmodel/movie_viewmodel.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -37,6 +36,9 @@ class _AddUpdateMovieScreenState extends State<AddUpdateMovieScreen> {
   dynamic _selectedScreenwriter = 'new';
   dynamic _selectedOperator = 'new';
   bool isEditable = false;
+  String? errorMessage;
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   model.Movie createMovie(model.Movie? movie) {
     return model.Movie(
@@ -53,12 +55,12 @@ class _AddUpdateMovieScreenState extends State<AddUpdateMovieScreen> {
       mpaaRating: _selectedMpaaRating,
       director: _directorController.generatePerson(),
       screenwriter:
-          _isScreenwriter ? _screenwriterController.generatePerson() : null,
+      _isScreenwriter ? _screenwriterController.generatePerson() : null,
       operator: _operatorController.generatePerson(),
       length: int.parse(_lengthController.text),
       goldenPalmCount: int.parse(_goldenPalmCountController.text),
       usaBoxOffice:
-          _isUsaBoxOffice ? int.parse(_usaBoxOfficeController.text) : null,
+      _isUsaBoxOffice ? int.parse(_usaBoxOfficeController.text) : null,
       genre: _selectedMovieGenre,
       creatorName: movie?.creatorName,
       isEditable: movie?.isEditable ?? isEditable,
@@ -149,355 +151,444 @@ class _AddUpdateMovieScreenState extends State<AddUpdateMovieScreen> {
         constraints: const BoxConstraints(maxHeight: 670),
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              StyledTextField(
-                controller: _movieNameController,
-                labelText: 'Название фильма',
-              ),
-              const SizedBox(height: 20),
-              EnumDropdown<model.MovieGenre>(
-                value: _selectedMovieGenre,
-                onChanged: (model.MovieGenre newValue) {
-                  setState(() {
-                    _selectedMovieGenre = newValue;
-                  });
-                },
-                values: model.MovieGenre.values,
-                labelText: 'Жанр',
-              ),
-              const SizedBox(height: 20),
-              EnumDropdown<model.MpaaRating>(
-                value: _selectedMpaaRating,
-                onChanged: (model.MpaaRating newValue) {
-                  setState(() {
-                    _selectedMpaaRating = newValue;
-                  });
-                },
-                values: model.MpaaRating.values,
-                labelText: 'Рейтинг',
-              ),
-              const SizedBox(height: 10),
-              const Divider(
-                color: Color.fromRGBO(242, 196, 206, 0.2),
-                thickness: 1,
-                indent: 10,
-                endIndent: 10,
-              ),
-              const SizedBox(height: 10),
-              const Row(
-                children: [
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Координаты',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Color.fromRGBO(214, 214, 214, 1),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SizedBox(
-                    width: 100,
-                    child: StyledTextField(
-                      controller: _xCoordController,
-                      labelText: 'X',
-                      inputType: InputType.typeInt,
-                      allowNegative: true,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 100,
-                    child: StyledTextField(
-                      controller: _yCoordController,
-                      labelText: 'Y',
-                      inputType: InputType.typeDouble,
-                      allowNegative: true,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              const Divider(
-                color: Color.fromRGBO(242, 196, 206, 0.2),
-                thickness: 1,
-                indent: 10,
-                endIndent: 10,
-              ),
-              const SizedBox(height: 10),
-              StyledTextField(
-                controller: _oscarCountController,
-                labelText: 'Число оскаров',
-                inputType: InputType.typeInt,
-              ),
-              const SizedBox(height: 20),
-              StyledTextField(
-                controller: _budgetController,
-                labelText: 'Бюджет, \$',
-                inputType: InputType.typeInt,
-              ),
-              const SizedBox(height: 20),
-              StyledTextField(
-                controller: _totalBoxOfficeController,
-                labelText: 'Кассовые сборы, \$',
-                inputType: InputType.typeDouble,
-              ),
-              const SizedBox(height: 20),
-              StyledTextField(
-                controller: _lengthController,
-                labelText: 'Продолжительность, минуты',
-              ),
-              const SizedBox(height: 20),
-              StyledTextField(
-                controller: _goldenPalmCountController,
-                labelText: 'Количество золотых пальм',
-              ),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(width: 10),
-                      Text(
-                        'Кассовые сборы в США',
-                        style: TextStyle(
-                          fontSize: 17,
-                          color: Color.fromRGBO(214, 214, 214, 1),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Switch(
-                        // This bool value toggles the switch.
-                        value: _isUsaBoxOffice,
-                        activeColor: const Color.fromRGBO(242, 196, 206, 1),
-                        inactiveThumbColor: const Color.fromRGBO(79, 79, 81, 1),
-                        inactiveTrackColor: const Color.fromRGBO(44, 43, 48, 1),
-                        onChanged: (value) {
-                          // This is called when the user toggles the switch.
-                          setState(() {
-                            _isUsaBoxOffice = value;
-                          });
-                        },
-                      ),
-                      const SizedBox(width: 10),
-                    ],
-                  ),
-                ],
-              ),
-              if (_isUsaBoxOffice) const SizedBox(height: 10),
-              if (_isUsaBoxOffice)
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
                 StyledTextField(
-                  controller: _usaBoxOfficeController,
-                  labelText: 'Кассовые сборы в США, \$',
-                ),
-              const SizedBox(height: 10),
-              const Divider(
-                color: Color.fromRGBO(242, 196, 206, 0.2),
-                thickness: 1,
-                indent: 10,
-                endIndent: 10,
-              ),
-              const SizedBox(height: 10),
-              const Row(
-                children: [
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Режиссёр',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Color.fromRGBO(214, 214, 214, 1),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              PersonDropdown(
-                onChanged: (dynamic newValue) {
-                  setState(() {
-                    _selectedDirector = newValue;
-                    if (_selectedDirector == 'new') {
-                      _directorController.withoutPerson();
-                    } else {
-                      _directorController.fromPerson(_selectedDirector);
+                  controller: _movieNameController,
+                  labelText: 'Название фильма',
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Поле не может быть пустым';
                     }
-                  });
-                },
-                labelText: 'Выбрать из списка',
-              ),
-              const SizedBox(height: 20),
-              AddUpdatePerson(
-                  controller: _directorController,
-                  selectedPerson: _selectedDirector),
-              const SizedBox(height: 10),
-              const Divider(
-                color: Color.fromRGBO(242, 196, 206, 0.2),
-                thickness: 1,
-                indent: 10,
-                endIndent: 10,
-              ),
-              const SizedBox(height: 10),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(width: 10),
-                      Text(
-                        'Автор сценария',
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 20),
+                EnumDropdown<model.MovieGenre>(
+                  value: _selectedMovieGenre,
+                  onChanged: (model.MovieGenre newValue) {
+                    setState(() {
+                      _selectedMovieGenre = newValue;
+                    });
+                  },
+                  values: model.MovieGenre.values,
+                  labelText: 'Жанр',
+                ),
+                const SizedBox(height: 20),
+                EnumDropdown<model.MpaaRating>(
+                  value: _selectedMpaaRating,
+                  onChanged: (model.MpaaRating newValue) {
+                    setState(() {
+                      _selectedMpaaRating = newValue;
+                    });
+                  },
+                  values: model.MpaaRating.values,
+                  labelText: 'Рейтинг',
+                ),
+                const SizedBox(height: 10),
+                const Divider(
+                  color: Color.fromRGBO(242, 196, 206, 0.2),
+                  thickness: 1,
+                  indent: 10,
+                  endIndent: 10,
+                ),
+                const SizedBox(height: 10),
+                const Row(
+                  children: [
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Координаты',
                         style: TextStyle(
                           fontSize: 20,
                           color: Color.fromRGBO(214, 214, 214, 1),
                         ),
                       ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Switch(
-                        // This bool value toggles the switch.
-                        value: _isScreenwriter,
-                        activeColor: const Color.fromRGBO(242, 196, 206, 1),
-                        inactiveThumbColor: const Color.fromRGBO(79, 79, 81, 1),
-                        inactiveTrackColor: const Color.fromRGBO(44, 43, 48, 1),
-                        onChanged: (value) {
-                          // This is called when the user toggles the switch.
-                          setState(() {
-                            _isScreenwriter = value;
-                          });
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SizedBox(
+                      width: 100,
+                      child: StyledTextField(
+                        controller: _xCoordController,
+                        labelText: 'X',
+                        inputType: InputType.typeInt,
+                        allowNegative: true,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Поле не может быть пустым';
+                          }
+                          final x = double.tryParse(value);
+                          if (x == null || x <= -946) {
+                            return 'Значение поля должно быть больше -946';
+                          }
+                          return null;
                         },
                       ),
-                      const SizedBox(width: 10),
-                    ],
+                    ),
+                    SizedBox(
+                      width: 100,
+                      child: StyledTextField(
+                        controller: _yCoordController,
+                        labelText: 'Y',
+                        inputType: InputType.typeDouble,
+                        allowNegative: true,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Поле не может быть пустым';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                const Divider(
+                  color: Color.fromRGBO(242, 196, 206, 0.2),
+                  thickness: 1,
+                  indent: 10,
+                  endIndent: 10,
+                ),
+                const SizedBox(height: 10),
+                StyledTextField(
+                  controller: _oscarCountController,
+                  labelText: 'Число оскаров',
+                  inputType: InputType.typeInt,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Поле не может быть пустым';
+                    }
+                    final oscarCount = int.tryParse(value);
+                    if (oscarCount == null || oscarCount <= 0) {
+                      return 'Значение поля должно быть больше 0';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 20),
+                StyledTextField(
+                  controller: _budgetController,
+                  labelText: 'Бюджет, \$',
+                  inputType: InputType.typeInt,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Поле не может быть пустым';
+                    }
+                    final budget = double.tryParse(value);
+                    if (budget == null || budget <= 0) {
+                      return 'Значение поля должно быть больше 0';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 20),
+                StyledTextField(
+                  controller: _totalBoxOfficeController,
+                  labelText: 'Кассовые сборы, \$',
+                  inputType: InputType.typeDouble,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Поле не может быть пустым';
+                    }
+                    final totalBoxOffice = double.tryParse(value);
+                    if (totalBoxOffice == null || totalBoxOffice <= 0) {
+                      return 'Значение поля должно быть больше 0';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 20),
+                StyledTextField(
+                  controller: _lengthController,
+                  labelText: 'Продолжительность, минуты',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Поле не может быть пустым';
+                    }
+                    final length = int.tryParse(value);
+                    if (length == null || length <= 0) {
+                      return 'Значение поля должно быть больше 0';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 20),
+                StyledTextField(
+                  controller: _goldenPalmCountController,
+                  labelText: 'Количество золотых пальм',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Поле не может быть пустым';
+                    }
+                    final goldenPalmCount = int.tryParse(value);
+                    if (goldenPalmCount == null || goldenPalmCount <= 0) {
+                      return 'Значение поля должно быть больше 0';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(width: 10),
+                        Text(
+                          'Кассовые сборы в США',
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: Color.fromRGBO(214, 214, 214, 1),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Switch(
+                          // This bool value toggles the switch.
+                          value: _isUsaBoxOffice,
+                          activeColor: const Color.fromRGBO(242, 196, 206, 1),
+                          inactiveThumbColor: const Color.fromRGBO(79, 79, 81, 1),
+                          inactiveTrackColor: const Color.fromRGBO(44, 43, 48, 1),
+                          onChanged: (value) {
+                            // This is called when the user toggles the switch.
+                            setState(() {
+                              _isUsaBoxOffice = value;
+                            });
+                          },
+                        ),
+                        const SizedBox(width: 10),
+                      ],
+                    ),
+                  ],
+                ),
+                if (_isUsaBoxOffice) const SizedBox(height: 10),
+                if (_isUsaBoxOffice)
+                  StyledTextField(
+                    controller: _usaBoxOfficeController,
+                    labelText: 'Кассовые сборы в США, \$',
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Поле не может быть пустым';
+                      }
+                      final usaBoxOffice = int.tryParse(value);
+                      if (usaBoxOffice == null || usaBoxOffice <= 0) {
+                        return 'Значение поля должно быть больше 0';
+                      }
+                      return null;
+                    },
                   ),
-                ],
-              ),
-              if (_isScreenwriter) const SizedBox(height: 20),
-              if (_isScreenwriter)
+                const SizedBox(height: 10),
+                const Divider(
+                  color: Color.fromRGBO(242, 196, 206, 0.2),
+                  thickness: 1,
+                  indent: 10,
+                  endIndent: 10,
+                ),
+                const SizedBox(height: 10),
+                const Row(
+                  children: [
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Режиссёр',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Color.fromRGBO(214, 214, 214, 1),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
                 PersonDropdown(
                   onChanged: (dynamic newValue) {
                     setState(() {
-                      _selectedScreenwriter = newValue;
-                      if (_selectedScreenwriter == 'new') {
-                        _screenwriterController.withoutPerson();
+                      _selectedDirector = newValue;
+                      if (_selectedDirector == 'new') {
+                        _directorController.withoutPerson();
                       } else {
-                        _screenwriterController
-                            .fromPerson(_selectedScreenwriter);
+                        _directorController.fromPerson(_selectedDirector);
                       }
                     });
                   },
                   labelText: 'Выбрать из списка',
                 ),
-              if (_isScreenwriter) const SizedBox(height: 20),
-              if (_isScreenwriter)
+                const SizedBox(height: 20),
                 AddUpdatePerson(
-                  controller: _screenwriterController,
-                  selectedPerson: _selectedScreenwriter,
+                    controller: _directorController,
+                    selectedPerson: _selectedDirector),
+                const SizedBox(height: 10),
+                const Divider(
+                  color: Color.fromRGBO(242, 196, 206, 0.2),
+                  thickness: 1,
+                  indent: 10,
+                  endIndent: 10,
                 ),
-              const SizedBox(height: 10),
-              const Divider(
-                color: Color.fromRGBO(242, 196, 206, 0.2),
-                thickness: 1,
-                indent: 10,
-                endIndent: 10,
-              ),
-              const SizedBox(height: 10),
-              const Row(
-                children: [
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Оператор',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Color.fromRGBO(214, 214, 214, 1),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-              PersonDropdown(
-                onChanged: (dynamic newValue) {
-                  setState(() {
-                    _selectedOperator = newValue;
-                    if (_selectedOperator == 'new') {
-                      _operatorController.withoutPerson();
-                    } else {
-                      _operatorController.fromPerson(_selectedOperator);
-                    }
-                  });
-                },
-                labelText: 'Выбрать из списка',
-              ),
-              const SizedBox(height: 20),
-              AddUpdatePerson(
-                  controller: _operatorController,
-                  selectedPerson: _selectedOperator),
-              const SizedBox(height: 10),
-              const Divider(
-                color: Color.fromRGBO(242, 196, 206, 0.2),
-                thickness: 1,
-                indent: 10,
-                endIndent: 10,
-              ),
-              const SizedBox(height: 10),
-              if (context.watch<MovieViewModel>().editableMovie != null)
-                Text(
-                    'Дата добавления: ${DateFormat('dd MMMM yyyy').format(context.watch<MovieViewModel>().editableMovie!.creationDate!)}'),
-              if (context.watch<MovieViewModel>().editableMovie == null)
+                const SizedBox(height: 10),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Checkbox(
-                      value: isEditable,
-                      activeColor: const Color.fromRGBO(242, 196, 206, 1),
-                      checkColor: const Color.fromRGBO(44, 43, 48, 1),
-                      onChanged: (value) {
-                        setState(() {
-                          isEditable = value!;
-                        });
-                      },
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(width: 10),
+                        Text(
+                          'Автор сценария',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Color.fromRGBO(214, 214, 214, 1),
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(width: 5),
-                    const Text('Разрешить редактировать администраторам'),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Switch(
+                          // This bool value toggles the switch.
+                          value: _isScreenwriter,
+                          activeColor: const Color.fromRGBO(242, 196, 206, 1),
+                          inactiveThumbColor: const Color.fromRGBO(79, 79, 81, 1),
+                          inactiveTrackColor: const Color.fromRGBO(44, 43, 48, 1),
+                          onChanged: (value) {
+                            // This is called when the user toggles the switch.
+                            setState(() {
+                              _isScreenwriter = value;
+                            });
+                          },
+                        ),
+                        const SizedBox(width: 10),
+                      ],
+                    ),
                   ],
                 ),
-            ],
+                if (_isScreenwriter) const SizedBox(height: 20),
+                if (_isScreenwriter)
+                  PersonDropdown(
+                    onChanged: (dynamic newValue) {
+                      setState(() {
+                        _selectedScreenwriter = newValue;
+                        if (_selectedScreenwriter == 'new') {
+                          _screenwriterController.withoutPerson();
+                        } else {
+                          _screenwriterController
+                              .fromPerson(_selectedScreenwriter);
+                        }
+                      });
+                    },
+                    labelText: 'Выбрать из списка',
+                  ),
+                if (_isScreenwriter) const SizedBox(height: 20),
+                if (_isScreenwriter)
+                  AddUpdatePerson(
+                    controller: _screenwriterController,
+                    selectedPerson: _selectedScreenwriter,
+                  ),
+                const SizedBox(height: 10),
+                const Divider(
+                  color: Color.fromRGBO(242, 196, 206, 0.2),
+                  thickness: 1,
+                  indent: 10,
+                  endIndent: 10,
+                ),
+                const SizedBox(height: 10),
+                const Row(
+                  children: [
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Оператор',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Color.fromRGBO(214, 214, 214, 1),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                PersonDropdown(
+                  onChanged: (dynamic newValue) {
+                    setState(() {
+                      _selectedOperator = newValue;
+                      if (_selectedOperator == 'new') {
+                        _operatorController.withoutPerson();
+                      } else {
+                        _operatorController.fromPerson(_selectedOperator);
+                      }
+                    });
+                  },
+                  labelText: 'Выбрать из списка',
+                ),
+                const SizedBox(height: 20),
+                AddUpdatePerson(
+                    controller: _operatorController,
+                    selectedPerson: _selectedOperator),
+                const SizedBox(height: 10),
+                const Divider(
+                  color: Color.fromRGBO(242, 196, 206, 0.2),
+                  thickness: 1,
+                  indent: 10,
+                  endIndent: 10,
+                ),
+                const SizedBox(height: 10),
+                if (context.watch<MovieViewModel>().editableMovie != null)
+                  Text(
+                      'Дата добавления: ${DateFormat('dd MMMM yyyy').format(context.watch<MovieViewModel>().editableMovie!.creationDate!)}'),
+                if (context.watch<MovieViewModel>().editableMovie == null)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Checkbox(
+                        value: isEditable,
+                        activeColor: const Color.fromRGBO(242, 196, 206, 1),
+                        checkColor: const Color.fromRGBO(44, 43, 48, 1),
+                        onChanged: (value) {
+                          setState(() {
+                            isEditable = value!;
+                          });
+                        },
+                      ),
+                      const SizedBox(width: 5),
+                      const Text('Разрешить редактировать администраторам'),
+                    ],
+                  ),
+              ],
+            ),
           ),
         ),
       ),
       actions: [
         TextButton(
-          onPressed: () => Navigator.pop(context),
+          onPressed: () {
+            final movieViewModel = Provider.of<MovieViewModel>(context, listen: false);
+            movieViewModel.editableMovie = null;
+            Navigator.pop(context);
+          },
           child: const Text(
             'Отмена',
             style: TextStyle(color: Color.fromRGBO(242, 196, 206, 1)),
@@ -505,19 +596,24 @@ class _AddUpdateMovieScreenState extends State<AddUpdateMovieScreen> {
         ),
         TextButton(
           onPressed: () async {
-            try {
-              final movieViewModel = Provider.of<MovieViewModel>(context, listen: false);
-              final editableMovie = movieViewModel.editableMovie;
-              final movie = createMovie(editableMovie);
-              final token = Provider.of<AuthenticationViewModel>(context, listen: false).user!.token;
-              if (editableMovie == null) {
-                await movieViewModel.createMovie(token, movie);
-              } else {
-                await movieViewModel.updateMovie(token, movie);
+            if (_formKey.currentState!.validate()) {
+              try {
+                final movieViewModel = Provider.of<MovieViewModel>(context, listen: false);
+                final editableMovie = movieViewModel.editableMovie;
+                final movie = createMovie(editableMovie);
+                final token = Provider.of<AuthenticationViewModel>(context, listen: false).user!.token;
+                if (editableMovie == null) {
+                  await movieViewModel.createMovie(token, movie);
+                } else {
+                  await movieViewModel.updateMovie(token, movie);
+                }
+                movieViewModel.editableMovie = null;
+                if (mounted) {
+                  Navigator.pop(context);
+                }
+              } catch (e) {
+                print(e.toString());
               }
-              Navigator.pop(context);
-            } catch (e) {
-              print(e.toString());
             }
           },
           child: const Text(
@@ -556,12 +652,27 @@ class _AddUpdatePersonState extends State<AddUpdatePerson> {
           controller: widget.controller.passportIDController,
           labelText: 'ID паспорта',
           readOnly: widget.selectedPerson != 'new',
+          validator: (value) {
+            if (value == null || value.trim().isEmpty) {
+              return 'Значение поля не может быть пустым';
+            }
+            if (value.length >= 34) {
+              return 'Длина поля должна быть не больше 34';
+            }
+            return null;
+          },
         ),
         const SizedBox(height: 20),
         StyledTextField(
           controller: widget.controller.nameController,
           labelText: 'Имя',
           readOnly: widget.selectedPerson != 'new',
+          validator: (value) {
+            if (value == null || value.trim().isEmpty) {
+              return 'Поле не может быть пустым';
+            }
+            return null;
+          },
         ),
         const SizedBox(height: 20),
         EnumDropdown<model.Color>(
@@ -617,10 +728,10 @@ class _AddUpdatePersonState extends State<AddUpdatePerson> {
                   onChanged: widget.selectedPerson != 'new'
                       ? null
                       : (value) {
-                          setState(() {
-                            widget.controller.isLocation = value;
-                          });
-                        },
+                    setState(() {
+                      widget.controller.isLocation = value;
+                    });
+                  },
                 ),
                 const SizedBox(width: 10),
               ],
@@ -640,6 +751,12 @@ class _AddUpdatePersonState extends State<AddUpdatePerson> {
                   inputType: InputType.typeInt,
                   allowNegative: true,
                   readOnly: widget.selectedPerson != 'new',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Поле не может быть пустым';
+                    }
+                    return null;
+                  },
                 ),
               ),
               SizedBox(
@@ -650,6 +767,12 @@ class _AddUpdatePersonState extends State<AddUpdatePerson> {
                   inputType: InputType.typeInt,
                   allowNegative: true,
                   readOnly: widget.selectedPerson != 'new',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Поле не может быть пустым';
+                    }
+                    return null;
+                  },
                 ),
               ),
               SizedBox(
@@ -660,6 +783,12 @@ class _AddUpdatePersonState extends State<AddUpdatePerson> {
                   inputType: InputType.typeDouble,
                   allowNegative: true,
                   readOnly: widget.selectedPerson != 'new',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Поле не может быть пустым';
+                    }
+                    return null;
+                  },
                 ),
               ),
             ],
@@ -746,10 +875,10 @@ class PersonController {
       hairColor: hairColor,
       location: isLocation
           ? model.Location(
-              int.parse(xController.text),
-              int.parse(yController.text),
-              double.parse(zController.text),
-            )
+        int.parse(xController.text),
+        int.parse(yController.text),
+        double.parse(zController.text),
+      )
           : null,
       nationality: nationality,
       passportID: passportIDController.text,
@@ -759,8 +888,8 @@ class PersonController {
   void dispose() {
     passportIDController.dispose();
     nameController.dispose();
-    xController.dispose();
-    yController.dispose();
-    zController.dispose();
+    xController.text = '';
+    yController.text = '';
+    zController.text = '';
   }
 }

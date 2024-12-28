@@ -26,4 +26,10 @@ public class PersonController {
     public List<Person> getAllPersons() {
         return service.getAll();
     }
+
+    @GetMapping("/with-zero-oscar-count")
+    @Operation(summary = "Получить список операторов, ильмы которых не получили ни одного оскара")
+    public List<Person> getWithZeroOscarCount() {
+        return service.getWithZeroOscarCount();
+    }
 }

@@ -36,7 +36,6 @@ class NotificationsRepository {
     _stompClient.subscribe(
       destination: '/topic/broadcast',
       callback: (frame) {
-        print('Public message: ${frame.body}');
         onUpdateMovies(frame.body.toString());
       },
     );

@@ -98,4 +98,8 @@ class MovieViewModel with ChangeNotifier {
   void onUpdateMovies(String message) {
     getMoviesPage(false);
   }
+
+  Future<List<Person>> showOperatorWithZeroOscar() async {
+    return await repository.showOperatorWithZeroOscar();
+  }
 }

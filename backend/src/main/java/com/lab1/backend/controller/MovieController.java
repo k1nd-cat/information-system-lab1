@@ -1,9 +1,8 @@
 package com.lab1.backend.controller;
 
-import com.lab1.backend.dto.MovieDto;
-import com.lab1.backend.dto.MoviesPageRequest;
-import com.lab1.backend.dto.MoviesPageResponse;
+import com.lab1.backend.dto.*;
 import com.lab1.backend.service.MovieService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.Data;
@@ -24,27 +23,32 @@ public class MovieController {
     private final MovieService service;
 
     @PostMapping("/create")
+    @Operation(summary = "Создать фильм")
     public void create(@RequestBody @Valid MovieDto request) {
         service.createMovie(request);
     }
 
     @PostMapping("/update")
+    @Operation(summary = "Обновить фильм")
     public void update(@RequestBody @Valid MovieDto request) {
         service.updateMovie(request);
     }
 
     @PostMapping("/delete")
+    @Operation(summary = "Удалить фильм")
     public void delete(@RequestBody @Valid MovieDto request) {
         service.deleteMovie(request);
     }
 
     @PostMapping("/movies-page")
+    @Operation(summary = "Получить страницу с фильмами")
     public MoviesPageResponse getMoviesPage(@RequestBody MoviesPageRequest request) {
         return service.getMoviesPage(request);
     }
 
     @Deprecated
     @GetMapping("/get")
+    @Operation(summary = "Получить фильм")
     public List<MovieDto> get(@RequestParam(defaultValue = "0") int page,
                               @RequestParam(defaultValue = "10") int size) {
         return service.getMovies(page, size);
@@ -52,8 +56,21 @@ public class MovieController {
 
     @Deprecated
     @GetMapping("/count")
+    @Operation(summary = "Получить количество фильмов")
     public Map<String, Long> getMoviesCount() {
         return service.getMoviesCount();
+    }
+
+    @PostMapping("/get-by-id")
+    @Operation(summary = "Получить фильм по id")
+    public MovieDto getById(@RequestBody FindByIdRequest request) {
+        return service.getById(request.getId());
+    }
+
+    @PostMapping("/add-oscar")
+    @Operation(summary = "Добавить фильмам заданное число оскаров")
+    public MessageResponse addOscars(@RequestBody AddOscarsRequest request) {
+        return service.addOscars(request.getValue());
     }
 
     // Обработка ошибок валидации
@@ -66,5 +83,4 @@ public class MovieController {
         );
         return errors;
     }
-
 }

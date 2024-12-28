@@ -151,10 +151,9 @@ class _PersonDropdownState extends State<PersonDropdown> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const StyledLoading();
         } else if (snapshot.hasError) {
-          return Text('Ошибка загрузки данных');
+          return const Text('Ошибка загрузки данных');
         } else if (snapshot.hasData) {
           var dropdownItems = snapshot.data!;
-          // Проверка и установка безопасного значения
           if (!dropdownItems.any((item) => item.value == _selectedValue)) {
             _selectedValue = 'new';
           }

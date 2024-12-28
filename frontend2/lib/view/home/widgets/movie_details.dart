@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:frontend2/viewmodel/authentication_viewmodel.dart';
 import 'package:frontend2/viewmodel/movie_viewmodel.dart';
 import 'package:provider/provider.dart';
 
@@ -9,7 +8,7 @@ import '../add_update_movie_screen.dart';
 
 class MovieDetailsDialog extends StatelessWidget {
   final model.Movie movie;
-  final User user; // Предполагаем, что есть модель User
+  final User user;
 
   const MovieDetailsDialog({
     super.key,
@@ -52,10 +51,13 @@ class MovieDetailsDialog extends StatelessWidget {
             _buildInfoRow('Жанр:', movie.genre.toString().split('.').last),
             const SizedBox(height: 8),
             _buildCoordinates('Координаты:', movie.coordinates),
-            const SizedBox(height: 8),
+            const SizedBox(height: 14),
             _buildPersonSection('Режиссер', movie.director),
             if (movie.screenwriter != null)
+              const SizedBox(height: 14),
+            if (movie.screenwriter != null)
               _buildPersonSection('Сценарист', movie.screenwriter!),
+            const SizedBox(height: 14),
             _buildPersonSection('Оператор', movie.operator),
           ],
         ),
@@ -156,7 +158,7 @@ class MovieDetailsDialog extends StatelessWidget {
         Text(
           '$role: ${person.name}',
           style: const TextStyle(
-            color: Color.fromRGBO(242, 196, 206, 1),
+            color: Color.fromRGBO(214, 214, 214, 1),
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),

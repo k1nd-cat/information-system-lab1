@@ -206,7 +206,7 @@ class Person {
           .firstWhere((e) => e.toString() == 'Color.${json['eyeColor']}'),
       hairColor: Color.values
           .firstWhere((e) => e.toString() == 'Color.${json['hairColor']}'),
-      location: Location.fromJson(json['location']),
+      location: json['location'] != null ? Location.fromJson(json['location']) : null,
       nationality: Country.values
           .firstWhere((e) => e.toString() == 'Country.${json['nationality']}'),
       passportID: json['passportID'],

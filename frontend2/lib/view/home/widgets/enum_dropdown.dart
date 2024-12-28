@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class EnumDropdown<T> extends StatefulWidget {
-  final T value; // Используем value вместо initialValue
+  final T value;
   final ValueChanged<T> onChanged;
   final List<T> values;
   final String labelText;
@@ -12,7 +12,7 @@ class EnumDropdown<T> extends StatefulWidget {
   final bool readOnly;
 
   const EnumDropdown({
-    required this.value, // Передаем текущее значение
+    required this.value,
     required this.onChanged,
     required this.values,
     required this.labelText,
@@ -60,7 +60,7 @@ class _EnumDropdownState<T> extends State<EnumDropdown<T>> {
             ? widget.fillColor.withOpacity(0.5)
             : widget.fillColor,
       ),
-      value: widget.value, // Используем текущее значение из пропса
+      value: widget.value,
       onChanged: widget.readOnly
           ? null
           : (T? newValue) {

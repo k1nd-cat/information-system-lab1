@@ -93,7 +93,6 @@ class MovieRepository {
   }
 
   Future<MoviesPage> getMoviesPage(MoviesPageRequest request) async {
-    // print('begin!');
     var token = await getToken();
     var response = await http.post(
       Uri.parse('$url/movie/movies-page'),
@@ -106,12 +105,70 @@ class MovieRepository {
 
     if (response.statusCode == 200) {
       var data = json.decode(response.body);
-      // print('good!');
       return MoviesPage.fromJson(data);
     } else {
       var errorMessage = json.decode(response.body);
-      // print(errorMessage['error']);
       throw Exception(errorMessage['error']);
+    }
+  }
+
+  Future<List<Person>> showOperatorWithZeroOscar() async {
+    final token = await getToken();
+    final response = await http.get(
+      Uri.parse('$url/person/with-zero-oscar-count'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body) as List;
+      return data.map((item) => Person.fromJson(item)).toList();
+    } else {
+      throw Exception('Не удаётся загрузить пользователей');
+    }
+  }
+
+  Future<Movie> getById(int id) async {
+    final token = await getToken();
+    final response = await http.post(
+      Uri.parse('$url/movie/get-by-id'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: json.encode(
+        {'id': id}
+      ),
+    );
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      return Movie.fromJson(data);
+    } else {
+      throw Exception('Не удалось найти фильм');
+    }
+  }
+
+  Future<String> updateOscars(int count) async {
+    final token = await getToken();
+    final response = await http.post(
+      Uri.parse('$url/movie/add-oscar'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: json.encode(
+          {'value': count}
+      ),
+    );
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      return data['message'];
+    } else {
+      throw Exception('Не получилось добавить оскары');
     }
   }
 }

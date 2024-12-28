@@ -21,7 +21,6 @@ class AuthenticationRepository {
       if (response.statusCode == 400) {
         final errorData = jsonDecode(response.body);
         if (errorData['fieldErrors'] != null) {
-          // Предполагаем, что сервер возвращает поле `fieldErrors` с ошибками по полям
           throw FieldValidationException({
             'username': errorData['fieldErrors']['username'],
             'password': errorData['fieldErrors']['password'],
@@ -82,7 +81,6 @@ class AuthenticationRepository {
       if (response.statusCode == 400) {
         final errorData = jsonDecode(response.body);
         if (errorData['username'] != null || errorData['password'] != null) {
-          // Предполагаем, что сервер возвращает поле `fieldErrors` с ошибками по полям
           throw FieldValidationException({
             'username': errorData['username'],
             'password': errorData['password'],

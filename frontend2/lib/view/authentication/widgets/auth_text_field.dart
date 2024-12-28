@@ -20,11 +20,9 @@ class _AuthTextFieldState extends State<AuthTextField> {
   final _focusNode = FocusNode();
   late bool _isObscureText;
   // late String? _errorMessage;
-  late TextStyle? _labelStyle;
 
   @override
   void initState() {
-    // _labelStyle = _currentLabelStyle();
     if (widget.type == AuthTextFieldType.username) {
       _isObscureText = false;
     } else {
@@ -50,7 +48,6 @@ class _AuthTextFieldState extends State<AuthTextField> {
         decoration: InputDecoration(
           labelText: _labelText(widget.type),
           // TODO: Изменить цвет labelText
-          // labelStyle: _labelStyle,
           errorText: widget.errorMessage,
           errorStyle: const TextStyle(color: Color.fromRGBO(89, 49, 49, 1.0)),
           enabledBorder: OutlineInputBorder(

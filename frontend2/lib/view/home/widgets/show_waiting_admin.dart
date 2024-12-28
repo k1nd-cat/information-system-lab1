@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:frontend2/viewmodel/authentication_viewmodel.dart';
 import 'package:frontend2/viewmodel/home_viewmodel.dart';
 import 'package:provider/provider.dart';
 

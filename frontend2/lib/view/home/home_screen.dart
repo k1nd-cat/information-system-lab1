@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:frontend2/model/user.dart';
@@ -12,7 +10,6 @@ import 'package:frontend2/view/home/widgets/show_profile.dart';
 import 'package:frontend2/view/home/widgets/show_waiting_admin.dart';
 import 'package:frontend2/view/widgets/styled_loading.dart';
 import 'package:frontend2/viewmodel/authentication_viewmodel.dart';
-import 'package:frontend2/viewmodel/home_viewmodel.dart';
 import 'package:frontend2/viewmodel/movie_viewmodel.dart';
 import 'package:provider/provider.dart';
 
@@ -43,13 +40,6 @@ class _HomeScreenState extends State<HomeScreen> {
       }
     });
 
-    @override
-    dispose() {
-      movieNamePrefix.dispose();
-      minGoldenPalm.dispose();
-      super.dispose();
-    }
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final viewModel = widget.movieViewModel;
 
@@ -70,7 +60,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final authViewModel = Provider.of<AuthenticationViewModel>(context);
-    final homeViewModel = Provider.of<HomeViewModel>(context);
     user = authViewModel.user;
 
     return Scaffold(
@@ -111,6 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             controller: minGoldenPalm,
                             labelText: 'Мин. Золотых пальм',
                             inputType: InputType.typeInt,
+                            allowNegative: false,
                           ),
                         ),
                         const SizedBox(height: 15),
@@ -174,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         child: movieViewModel.movies.isEmpty
-                            ? Text('Пока нет фильмов')
+                            ? const Text('Пока нет фильмов')
                             : ConstrainedBox(
                                 constraints:
                                     const BoxConstraints(maxWidth: 1200),
@@ -271,13 +261,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(height: 30),
                 OutlinedButton(
                   onPressed: () async {
-                    await showDialog(context: context, builder: (BuildContext context) => const MovieMenuDialog());
+                    await showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            const MovieMenuDialog());
                   },
                   style: OutlinedButton.styleFrom(
                     foregroundColor: const Color.fromRGBO(242, 196, 206, 1),
                     minimumSize: const Size(507, 54),
                     side: const BorderSide(
-                        color: Color.fromRGBO(242, 196, 206, 1), width: 1),
+                        color: Color.fromRGBO(242, 196, 206, 1), width: 2),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -291,89 +284,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         );
       }),
-/*
-      Center(
-        child: Row(
-          children: [
-            Column(
-              children: [
-                // LayoutBuilder(builder: (context, constrains) {
-                //   const double headerHeight = 56.0;
-                //   const double rowHeight = 56.0;
-                //
-                //   if (constrains.hasBoundedHeight) {
-                //     final double availableHeight = constrains.maxHeight - headerHeight;
-                //     final int newSize =
-                //         availableHeight ~/ (rowHeight != 0 ? rowHeight : 1) - 1;
-                //
-                //     if (movieViewModel.size != newSize) {
-                //       movieViewModel.size = newSize;
-                //
-                //       // Обновляем страницу фильмов после построения кадра
-                //       WidgetsBinding.instance.addPostFrameCallback((_) {
-                //         if (context.mounted) {
-                //           movieViewModel.getMoviesPage();
-                //         }
-                //       });
-                //     }
-                //   }
-
-                  // return
-                    ConstrainedBox(
-                    constraints: const BoxConstraints(
-                      maxWidth: 1000,
-                    ),
-                    child: Center(),
-                  // );
-                // }),
-                    ),
-              ],
-            ),
-            Column(
-              children: [
-                Container(
-                  height: 300,
-                  width: 500,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                        color: const Color.fromRGBO(242, 196, 206, 1),
-                        width: 2),
-                  ),
-                  child: !movieViewModel.isLoading
-                      ? MoviesMap(
-                          movies: movieViewModel.movies,
-                        )
-                      : const StyledLoading(),
-                ),
-              ],
-            ),
-          ],
-        ),
-
-        // FutureBuilder(
-        //     future: movieViewModel.getMovies(0, 10),
-        //     builder: (context, snapshot) {
-        //       if (snapshot.connectionState == ConnectionState.waiting) {
-        //         return const StyledLoading();
-        //       } else if (snapshot.hasError) {
-        //         return Text(
-        //             'Не удалось получить данные, ${snapshot.error.toString()}');
-        //       } else if (snapshot.hasData) {
-        //         return Row(
-        //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        //           crossAxisAlignment: CrossAxisAlignment.center,
-        //           children: [
-        //             MovieTable(movies: snapshot.data!),
-        //             MoviesMap(movies: snapshot.data!),
-        //           ],
-        //         );
-        //       } else {
-        //         return const Text('Данные отсутствуют');
-        //       }
-        //     }),
-      ),
-*/
     );
   }
 }
