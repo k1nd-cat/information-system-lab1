@@ -8,7 +8,8 @@ import '../model/movies.dart';
 import '../viewmodel/localstorage_manager.dart';
 
 class MovieRepository {
-  Future<List<Person>> getAllPersons(String token) async {
+  Future<List<Person>> getAllPersons() async {
+    final token = await getToken();
     final response = await http.get(
       Uri.parse('$url/person/get-all'),
       headers: {
@@ -169,6 +170,46 @@ class MovieRepository {
       return data['message'];
     } else {
       throw Exception('Не получилось добавить оскары');
+    }
+  }
+
+  Future<String> deletePerson(Person person) async {
+    final token = await getToken();
+    final response = await http.post(
+      Uri.parse('$url/person/delete'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: json.encode(person.toJson()),
+    );
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      return data['message'];
+    } else {
+      final errorData = json.decode(response.body);
+      throw Exception(errorData['error']);
+    }
+  }
+
+  Future<String> updatePerson(Person person) async {
+    final token = await getToken();
+    final response = await http.post(
+      Uri.parse('$url/person/update'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: json.encode(person.toJson()),
+    );
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      return data['message'];
+    } else {
+      final errorData = json.decode(response.body);
+      throw Exception(errorData['error']);
     }
   }
 }

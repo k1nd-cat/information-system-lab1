@@ -36,6 +36,13 @@ public class Person {
     @Column(nullable = false)
     private Country nationality; //Поле не может быть null
 
+    @Column(nullable = false)
+    private boolean modifiable;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
     @Data
     @Builder
     @AllArgsConstructor
@@ -70,6 +77,14 @@ public class Person {
         WHITE;
     }
 
+    public static Person fromDto(PersonDto dto, User user) {
+        var person = Person.fromDto(dto);
+        person.setModifiable(dto.getIsEditable());
+        person.setUser(user);
+
+        return person;
+    }
+
     public static Person fromDto(PersonDto dto) {
         return Person.builder()
                 .passportID(dto.getPassportID())
@@ -94,6 +109,8 @@ public class Person {
                         ? new PersonDto.Location(location.x, location.y, location.z)
                         : null)
                 .nationality(nationality)
+                .creatorName(user.getUsername())
+                .isEditable(modifiable)
                 .build();
     }
 }

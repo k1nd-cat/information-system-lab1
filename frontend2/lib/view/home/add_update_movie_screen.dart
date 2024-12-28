@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:frontend2/model/movies.dart' as model;
+import 'package:frontend2/model/user.dart';
 import 'package:frontend2/view/home/widgets/enum_dropdown.dart';
 import 'package:frontend2/view/home/widgets/movie_text_field.dart';
 import 'package:frontend2/view/home/widgets/person_dropdown.dart';
 import 'package:frontend2/viewmodel/authentication_viewmodel.dart';
 import 'package:frontend2/viewmodel/movie_viewmodel.dart';
+import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -55,12 +57,12 @@ class _AddUpdateMovieScreenState extends State<AddUpdateMovieScreen> {
       mpaaRating: _selectedMpaaRating,
       director: _directorController.generatePerson(),
       screenwriter:
-      _isScreenwriter ? _screenwriterController.generatePerson() : null,
+          _isScreenwriter ? _screenwriterController.generatePerson() : null,
       operator: _operatorController.generatePerson(),
       length: int.parse(_lengthController.text),
       goldenPalmCount: int.parse(_goldenPalmCountController.text),
       usaBoxOffice:
-      _isUsaBoxOffice ? int.parse(_usaBoxOfficeController.text) : null,
+          _isUsaBoxOffice ? int.parse(_usaBoxOfficeController.text) : null,
       genre: _selectedMovieGenre,
       creatorName: movie?.creatorName,
       isEditable: movie?.isEditable ?? isEditable,
@@ -222,7 +224,7 @@ class _AddUpdateMovieScreenState extends State<AddUpdateMovieScreen> {
                       child: StyledTextField(
                         controller: _xCoordController,
                         labelText: 'X',
-                        inputType: InputType.typeInt,
+                        inputType: InputType.typeDouble,
                         allowNegative: true,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -241,7 +243,7 @@ class _AddUpdateMovieScreenState extends State<AddUpdateMovieScreen> {
                       child: StyledTextField(
                         controller: _yCoordController,
                         labelText: 'Y',
-                        inputType: InputType.typeDouble,
+                        inputType: InputType.typeInt,
                         allowNegative: true,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -363,8 +365,10 @@ class _AddUpdateMovieScreenState extends State<AddUpdateMovieScreen> {
                           // This bool value toggles the switch.
                           value: _isUsaBoxOffice,
                           activeColor: const Color.fromRGBO(242, 196, 206, 1),
-                          inactiveThumbColor: const Color.fromRGBO(79, 79, 81, 1),
-                          inactiveTrackColor: const Color.fromRGBO(44, 43, 48, 1),
+                          inactiveThumbColor:
+                              const Color.fromRGBO(79, 79, 81, 1),
+                          inactiveTrackColor:
+                              const Color.fromRGBO(44, 43, 48, 1),
                           onChanged: (value) {
                             // This is called when the user toggles the switch.
                             setState(() {
@@ -434,8 +438,15 @@ class _AddUpdateMovieScreenState extends State<AddUpdateMovieScreen> {
                 ),
                 const SizedBox(height: 20),
                 AddUpdatePerson(
-                    controller: _directorController,
-                    selectedPerson: _selectedDirector),
+                  controller: _directorController,
+                  selectedPerson: _selectedDirector,
+                  person: Provider.of<MovieViewModel>(context, listen: false)
+                      .editableMovie
+                      ?.director,
+                  user: Provider.of<AuthenticationViewModel>(context,
+                          listen: false)
+                      .user!,
+                ),
                 const SizedBox(height: 10),
                 const Divider(
                   color: Color.fromRGBO(242, 196, 206, 0.2),
@@ -468,12 +479,15 @@ class _AddUpdateMovieScreenState extends State<AddUpdateMovieScreen> {
                           // This bool value toggles the switch.
                           value: _isScreenwriter,
                           activeColor: const Color.fromRGBO(242, 196, 206, 1),
-                          inactiveThumbColor: const Color.fromRGBO(79, 79, 81, 1),
-                          inactiveTrackColor: const Color.fromRGBO(44, 43, 48, 1),
+                          inactiveThumbColor:
+                              const Color.fromRGBO(79, 79, 81, 1),
+                          inactiveTrackColor:
+                              const Color.fromRGBO(44, 43, 48, 1),
                           onChanged: (value) {
                             // This is called when the user toggles the switch.
                             setState(() {
                               _isScreenwriter = value;
+                              _screenwriterController = PersonController();
                             });
                           },
                         ),
@@ -503,6 +517,12 @@ class _AddUpdateMovieScreenState extends State<AddUpdateMovieScreen> {
                   AddUpdatePerson(
                     controller: _screenwriterController,
                     selectedPerson: _selectedScreenwriter,
+                    person: Provider.of<MovieViewModel>(context, listen: false)
+                        .editableMovie
+                        ?.screenwriter,
+                    user: Provider.of<AuthenticationViewModel>(context,
+                            listen: false)
+                        .user!,
                   ),
                 const SizedBox(height: 10),
                 const Divider(
@@ -545,8 +565,15 @@ class _AddUpdateMovieScreenState extends State<AddUpdateMovieScreen> {
                 ),
                 const SizedBox(height: 20),
                 AddUpdatePerson(
-                    controller: _operatorController,
-                    selectedPerson: _selectedOperator),
+                  controller: _operatorController,
+                  selectedPerson: _selectedOperator,
+                  person: Provider.of<MovieViewModel>(context, listen: false)
+                      .editableMovie
+                      ?.operator,
+                  user: Provider.of<AuthenticationViewModel>(context,
+                          listen: false)
+                      .user!,
+                ),
                 const SizedBox(height: 10),
                 const Divider(
                   color: Color.fromRGBO(242, 196, 206, 0.2),
@@ -585,7 +612,8 @@ class _AddUpdateMovieScreenState extends State<AddUpdateMovieScreen> {
       actions: [
         TextButton(
           onPressed: () {
-            final movieViewModel = Provider.of<MovieViewModel>(context, listen: false);
+            final movieViewModel =
+                Provider.of<MovieViewModel>(context, listen: false);
             movieViewModel.editableMovie = null;
             Navigator.pop(context);
           },
@@ -598,10 +626,14 @@ class _AddUpdateMovieScreenState extends State<AddUpdateMovieScreen> {
           onPressed: () async {
             if (_formKey.currentState!.validate()) {
               try {
-                final movieViewModel = Provider.of<MovieViewModel>(context, listen: false);
+                final movieViewModel =
+                    Provider.of<MovieViewModel>(context, listen: false);
                 final editableMovie = movieViewModel.editableMovie;
                 final movie = createMovie(editableMovie);
-                final token = Provider.of<AuthenticationViewModel>(context, listen: false).user!.token;
+                final token =
+                    Provider.of<AuthenticationViewModel>(context, listen: false)
+                        .user!
+                        .token;
                 if (editableMovie == null) {
                   await movieViewModel.createMovie(token, movie);
                 } else {
@@ -629,11 +661,15 @@ class _AddUpdateMovieScreenState extends State<AddUpdateMovieScreen> {
 class AddUpdatePerson extends StatefulWidget {
   final PersonController controller;
   final dynamic selectedPerson;
+  final model.Person? person;
+  final User user;
 
   const AddUpdatePerson({
     super.key,
     required this.controller,
     required this.selectedPerson,
+    this.person,
+    required this.user,
   });
 
   @override
@@ -641,6 +677,25 @@ class AddUpdatePerson extends StatefulWidget {
 }
 
 class _AddUpdatePersonState extends State<AddUpdatePerson> {
+  late bool readOnly;
+
+  @override
+  void initState() {
+/*
+    if((widget.person != null &&
+        (widget.person!.creatorName == widget.user.username ||
+            (widget.person!.isEditable! &&
+                widget.user.role == Role.ROLE_ADMIN))) || (widget.selectedPerson == 'new' && widget.person == null)) {
+      readOnly = false;
+    } else {
+      readOnly = true;
+    }
+*/
+
+    readOnly = widget.selectedPerson != 'new';
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -651,7 +706,7 @@ class _AddUpdatePersonState extends State<AddUpdatePerson> {
         StyledTextField(
           controller: widget.controller.passportIDController,
           labelText: 'ID паспорта',
-          readOnly: widget.selectedPerson != 'new',
+          readOnly: widget.selectedPerson == 'new' && widget.person != null,
           validator: (value) {
             if (value == null || value.trim().isEmpty) {
               return 'Значение поля не может быть пустым';
@@ -666,7 +721,7 @@ class _AddUpdatePersonState extends State<AddUpdatePerson> {
         StyledTextField(
           controller: widget.controller.nameController,
           labelText: 'Имя',
-          readOnly: widget.selectedPerson != 'new',
+          readOnly: readOnly,
           validator: (value) {
             if (value == null || value.trim().isEmpty) {
               return 'Поле не может быть пустым';
@@ -677,7 +732,7 @@ class _AddUpdatePersonState extends State<AddUpdatePerson> {
         const SizedBox(height: 20),
         EnumDropdown<model.Color>(
           value: widget.controller.eyeColor,
-          readOnly: widget.selectedPerson != 'new',
+          readOnly: readOnly,
           onChanged: (value) {
             setState(() {
               widget.controller.eyeColor = value;
@@ -689,7 +744,7 @@ class _AddUpdatePersonState extends State<AddUpdatePerson> {
         const SizedBox(height: 20),
         EnumDropdown<model.Color>(
           value: widget.controller.hairColor,
-          readOnly: widget.selectedPerson != 'new',
+          readOnly: readOnly,
           onChanged: (value) {
             setState(() {
               widget.controller.hairColor = value;
@@ -725,13 +780,13 @@ class _AddUpdatePersonState extends State<AddUpdatePerson> {
                   activeColor: const Color.fromRGBO(242, 196, 206, 1),
                   inactiveThumbColor: const Color.fromRGBO(79, 79, 81, 1),
                   inactiveTrackColor: const Color.fromRGBO(44, 43, 48, 1),
-                  onChanged: widget.selectedPerson != 'new'
+                  onChanged: readOnly
                       ? null
                       : (value) {
-                    setState(() {
-                      widget.controller.isLocation = value;
-                    });
-                  },
+                          setState(() {
+                            widget.controller.isLocation = value;
+                          });
+                        },
                 ),
                 const SizedBox(width: 10),
               ],
@@ -750,7 +805,7 @@ class _AddUpdatePersonState extends State<AddUpdatePerson> {
                   labelText: 'X',
                   inputType: InputType.typeInt,
                   allowNegative: true,
-                  readOnly: widget.selectedPerson != 'new',
+                  readOnly: readOnly,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Поле не может быть пустым';
@@ -766,7 +821,7 @@ class _AddUpdatePersonState extends State<AddUpdatePerson> {
                   labelText: 'Y',
                   inputType: InputType.typeInt,
                   allowNegative: true,
-                  readOnly: widget.selectedPerson != 'new',
+                  readOnly: readOnly,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Поле не может быть пустым';
@@ -782,7 +837,7 @@ class _AddUpdatePersonState extends State<AddUpdatePerson> {
                   labelText: 'Z',
                   inputType: InputType.typeDouble,
                   allowNegative: true,
-                  readOnly: widget.selectedPerson != 'new',
+                  readOnly: readOnly,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Поле не может быть пустым';
@@ -797,7 +852,7 @@ class _AddUpdatePersonState extends State<AddUpdatePerson> {
         const SizedBox(height: 20),
         EnumDropdown<model.Country>(
           value: widget.controller.nationality,
-          readOnly: widget.selectedPerson != 'new',
+          readOnly: readOnly,
           onChanged: (value) {
             setState(() {
               widget.controller.nationality = value;
@@ -806,6 +861,31 @@ class _AddUpdatePersonState extends State<AddUpdatePerson> {
           values: model.Country.values,
           labelText: 'Национальность',
         ),
+        if (widget.selectedPerson == 'new' ||
+            (widget.person != null &&
+                widget.user.username == widget.person!.creatorName))
+          const SizedBox(height: 10),
+        if (widget.selectedPerson == 'new' ||
+            (widget.person != null &&
+                widget.user.username == widget.person!.creatorName))
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Checkbox(
+                value: widget.controller.isEditable,
+                activeColor: const Color.fromRGBO(242, 196, 206, 1),
+                checkColor: const Color.fromRGBO(44, 43, 48, 1),
+                onChanged: (value) {
+                  setState(() {
+                    widget.controller.isEditable = value!;
+                  });
+                },
+              ),
+              const SizedBox(width: 5),
+              const Text('Разрешить редактировать администраторам'),
+            ],
+          ),
       ],
     );
   }
@@ -821,6 +901,7 @@ class PersonController {
   model.Color hairColor = model.Color.BLACK;
   model.Country nationality = model.Country.RUSSIA;
   bool isLocation = false;
+  bool isEditable = false;
 
   PersonController();
 
@@ -830,6 +911,7 @@ class PersonController {
     eyeColor = person.eyeColor;
     hairColor = person.hairColor;
     nationality = person.nationality;
+    isEditable = person.isEditable ?? false;
     if (person.location != null) {
       isLocation = true;
       xController.text = person.location!.x.toString();
@@ -846,6 +928,7 @@ class PersonController {
     eyeColor = person.eyeColor;
     hairColor = person.hairColor;
     nationality = person.nationality;
+    isEditable = person.isEditable ?? false;
     if (person.location != null) {
       isLocation = true;
       xController.text = person.location!.x.toString();
@@ -863,6 +946,7 @@ class PersonController {
     hairColor = model.Color.BLACK;
     nationality = model.Country.RUSSIA;
     isLocation = false;
+    isEditable = false;
     xController.text = '';
     yController.text = '';
     zController.text = '';
@@ -875,13 +959,14 @@ class PersonController {
       hairColor: hairColor,
       location: isLocation
           ? model.Location(
-        int.parse(xController.text),
-        int.parse(yController.text),
-        double.parse(zController.text),
-      )
+              int.parse(xController.text),
+              int.parse(yController.text),
+              double.parse(zController.text),
+            )
           : null,
       nationality: nationality,
       passportID: passportIDController.text,
+      isEditable: isEditable,
     );
   }
 

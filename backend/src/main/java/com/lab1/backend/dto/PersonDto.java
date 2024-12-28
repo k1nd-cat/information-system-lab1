@@ -33,6 +33,10 @@ public class PersonDto {
     @NotNull(message = "Значение не может отсутствовать")
     private Person.Country nationality;
 
+    private String creatorName;
+
+    private Boolean isEditable;
+
     @Data
     @Builder
     @AllArgsConstructor

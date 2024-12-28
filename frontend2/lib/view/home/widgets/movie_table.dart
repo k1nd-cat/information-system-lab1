@@ -11,10 +11,12 @@ import '../add_update_movie_screen.dart';
 class MovieTable extends StatefulWidget {
   final AuthenticationViewModel authViewModel;
   final List<model.Movie> movies;
+  final void Function() changeSorting;
 
   const MovieTable({
     required this.movies,
     required this.authViewModel,
+    required this.changeSorting,
     super.key,
   });
 
@@ -103,21 +105,21 @@ class _MovieTableState extends State<MovieTable> {
         scrollDirection: Axis.horizontal,
         child: DataTable(
           // header: const Text('Фильмы'),
-          columns: const [
-            DataColumn(label: Text('')),
-            DataColumn(label: Text('Название')),
-            DataColumn(label: Text('id')),
-            DataColumn(label: Text('Оскаров')),
-            DataColumn(label: Text('Бюджет, \$')),
-            DataColumn(label: Text('Сборы, \$')),
-            DataColumn(label: Text('Mpaa рейтинг')),
-            DataColumn(label: Text('Длина, мин')),
-            DataColumn(label: Text('Золотые пальмы')),
-            DataColumn(label: Text('Сборы в США, \$')),
-            DataColumn(label: Text('Жанр')),
-            DataColumn(label: Text('Режиссёр')),
-            DataColumn(label: Text('Автор сценария')),
-            DataColumn(label: Text('Оператор')),
+          columns: [
+            const DataColumn(label: Text('')),
+            DataColumn(label: TextButton(onPressed: () => widget.changeSorting(), child: Text('Название'))),
+            const DataColumn(label: Text('id')),
+            const DataColumn(label: Text('Оскаров')),
+            const DataColumn(label: Text('Бюджет, \$')),
+            const DataColumn(label: Text('Сборы, \$')),
+            const DataColumn(label: Text('Mpaa рейтинг')),
+            const DataColumn(label: Text('Длина, мин')),
+            const DataColumn(label: Text('Золотые пальмы')),
+            const DataColumn(label: Text('Сборы в США, \$')),
+            const DataColumn(label: Text('Жанр')),
+            const DataColumn(label: Text('Режиссёр')),
+            const DataColumn(label: Text('Автор сценария')),
+            const DataColumn(label: Text('Оператор')),
           ],
           rows: _dataRowFromMovies(context),
 

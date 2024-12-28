@@ -18,7 +18,7 @@ class PersonAlertDialog extends StatelessWidget {
           style: TextStyle(color: Color.fromRGBO(214, 214, 214, 1))),
       content: ConstrainedBox(
         constraints: const BoxConstraints(maxHeight: 700, minHeight: 200),
-        child: IntrinsicHeight(
+        child: SingleChildScrollView(
           child: FutureBuilder(
             future: movieViewModel.showOperatorWithZeroOscar(),
             builder: (context, snapshot) {
@@ -27,26 +27,24 @@ class PersonAlertDialog extends StatelessWidget {
               } else if (snapshot.hasData) {
                 final persons = snapshot.data!;
                 return persons.isNotEmpty
-                    ? SingleChildScrollView(
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: persons.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  PersonDetails(person: persons[index]),
-                                  if (index != persons.length - 1)
-                                    const SizedBox(
-                                      height: 14,
-                                    ),
-                                ]);
-                          },
-                        ),
-                      )
+                    ? Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: List.generate(persons.length, (index) {
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        PersonDetails(person: persons[index]),
+                        if (index != persons.length - 1)
+                          const SizedBox(
+                            height: 14,
+                          ),
+                      ],
+                    );
+                  }),
+                )
                     : const Center(
-                        child:
-                            Text('Операторов с фильмами без оскаров пока нет'));
+                    child:
+                    Text('Операторов с фильмами без оскаров пока нет'));
               } else {
                 return const Center(child: Text('Не удалось загрузить данные'));
               }

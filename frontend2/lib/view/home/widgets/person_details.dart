@@ -1,6 +1,11 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:frontend2/view/home/widgets/person_edit_dialog.dart';
+import 'package:frontend2/viewmodel/authentication_viewmodel.dart';
+import 'package:frontend2/viewmodel/movie_viewmodel.dart';
+import 'package:provider/provider.dart';
 
 import '../../../model/movies.dart' as model;
+import '../../../model/user.dart';
 
 class PersonDetails extends StatelessWidget {
   final model.Person person;
@@ -12,6 +17,9 @@ class PersonDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var movieViewModel = Provider.of<MovieViewModel>(context);
+    var user =
+        Provider.of<AuthenticationViewModel>(context, listen: false).user!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -45,6 +53,37 @@ class PersonDetails extends StatelessWidget {
               ),
             ],
           ),
+        Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+          IconButton(
+            onPressed: user.username == person.creatorName ||
+                    (user.role == Role.ROLE_ADMIN && person.isEditable == true)
+                ? () {
+                    Navigator.pop(context);
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) => PersonEditDialog(
+                        person: person,
+                        onSave: movieViewModel.updatePerson,
+                      ),
+                    );
+                  }
+                : null,
+            icon: const Icon(Icons.edit),
+            color: Colors.green.withOpacity(0.2),
+            disabledColor: Colors.black.withOpacity(0.0),
+          ),
+          IconButton(
+            onPressed: user.username == person.creatorName ||
+                    user.role == Role.ROLE_ADMIN
+                ? () {
+                    movieViewModel.deletePerson(person);
+                  }
+                : null,
+            icon: const Icon(Icons.delete_outline),
+            color: const Color.fromRGBO(154, 39, 39, 1.0),
+            disabledColor: Colors.black.withOpacity(0.0),
+          ),
+        ])
       ],
     );
   }
@@ -72,5 +111,4 @@ class PersonDetails extends StatelessWidget {
       ),
     );
   }
-
 }

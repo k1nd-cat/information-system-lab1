@@ -14,4 +14,11 @@ public class MoviesPageRequest {
     String namePrefix;
     Integer minGoldenPalmCount;
     Boolean isUsaBoxOfficeUnique;
+    Sorting sorting;
+
+    public enum Sorting {
+        without,
+        alphabetically,
+        other
+    }
 }

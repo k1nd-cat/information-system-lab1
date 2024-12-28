@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Movie {
   int? id;
   late String _name;
@@ -111,7 +113,7 @@ class Movie {
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
       id: json['id'],
-      name: json['name'],
+      name: utf8.decode(latin1.encode(json['name'])),
       coordinates: Coordinates.fromJson(json['coordinates']),
       creationDate: json['creationDate'] != null
           ? DateTime.parse(json['creationDate'])
@@ -165,6 +167,8 @@ class Person {
   Location? location;
   late String _passportID;
   Country nationality;
+  String? creatorName;
+  bool? isEditable;
 
   Person({
     required String name,
@@ -172,7 +176,9 @@ class Person {
     required this.hairColor,
     required this.location,
     required this.nationality,
-    required String passportID
+    required String passportID,
+    this.creatorName,
+    this.isEditable,
   }) {
     this.name = name;
     this.passportID = passportID;
@@ -201,7 +207,7 @@ class Person {
 
   factory Person.fromJson(Map<String, dynamic> json) {
     return Person(
-      name: json['name'],
+      name: utf8.decode(latin1.encode(json['name'])),
       eyeColor: Color.values
           .firstWhere((e) => e.toString() == 'Color.${json['eyeColor']}'),
       hairColor: Color.values
@@ -210,6 +216,8 @@ class Person {
       nationality: Country.values
           .firstWhere((e) => e.toString() == 'Country.${json['nationality']}'),
       passportID: json['passportID'],
+      creatorName: json['creatorName'],
+      isEditable: json['isEditable'],
     );
   }
 
@@ -221,6 +229,7 @@ class Person {
       'location': location?.toJson(),
       'passportID': passportID,
       'nationality': nationality.toString().split('.').last,
+      'isEditable': isEditable,
     };
   }
 }

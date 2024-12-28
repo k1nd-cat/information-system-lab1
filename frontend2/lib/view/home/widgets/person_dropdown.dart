@@ -47,7 +47,7 @@ class _PersonDropdownState extends State<PersonDropdown> {
       var token = Provider.of<AuthenticationViewModel>(context, listen: false)
           .user!
           .token;
-      persons = await movieViewModel.getPersons(token);
+      persons = movieViewModel.persons;
 
       // Преобразование в DropdownMenuItem
       var personItems = persons!

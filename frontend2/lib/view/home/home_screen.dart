@@ -54,6 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
       viewModel.size = (tableHeight ~/ rowHeight);
 
       viewModel.getMoviesPage();
+      viewModel.getPersons();
     });
   }
 
@@ -171,6 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: MovieTable(
                                   movies: movieViewModel.movies,
                                   authViewModel: authViewModel,
+                                  changeSorting: () => movieViewModel.changeSorting(),
                                 ),
                               ),
                       ),

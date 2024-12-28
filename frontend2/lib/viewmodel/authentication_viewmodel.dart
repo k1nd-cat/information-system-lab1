@@ -50,9 +50,7 @@ class AuthenticationViewModel with ChangeNotifier {
       if (token != null) {
         final response = await repository.checkToken(token);
         _user = User.fromResponse(response);
-        if (_user!.isWaitingAdmin) {
-          notifications.updateStatus(_user!.token);
-        }
+        notifications.updateStatus(_user!.token);
         _isAuthenticated = true;
       } else {
         _isAuthenticated = false;
@@ -82,9 +80,7 @@ class AuthenticationViewModel with ChangeNotifier {
       // Если всё успешно, обновляем состояние
       _user = User.fromResponse(response);
       saveToken(response.token);
-      if (_user!.isWaitingAdmin) {
-        notifications.updateStatus(_user!.token);
-      }
+      notifications.updateStatus(_user!.token);
       usernameController.text = '';
       passwordController.text = '';
       repeatPasswordController.text = '';
@@ -115,9 +111,7 @@ class AuthenticationViewModel with ChangeNotifier {
       final response = await repository.signIn(userRequest);
       _user = User.fromResponse(response);
       saveToken(_user!.token);
-      if (_user!.isWaitingAdmin) {
-        notifications.updateStatus(_user!.token);
-      }
+      notifications.updateStatus(_user!.token);
       usernameController.text = '';
       passwordController.text = '';
       repeatPasswordController.text = '';

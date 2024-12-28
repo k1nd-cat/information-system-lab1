@@ -11,10 +11,13 @@ class MovieViewModel with ChangeNotifier {
   late int _size = 10;
   int pageCount = 0;
   List<Movie> movies = [];
+  List<Person> persons = [];
   String namePrefix = '';
   int minGoldenPalmCount = -1;
   bool isUsaBoxOfficeUnique = false;
   bool isLoading = true;
+  Sorting sorting = Sorting.without;
+
 
   MovieViewModel(this.repository);
 
@@ -34,8 +37,10 @@ class MovieViewModel with ChangeNotifier {
     // notifyListeners();
   }
 
-  Future<List<Person>> getPersons(String token) async {
-    return await repository.getAllPersons(token);
+  Future<List<Person>> getPersons() async {
+    persons = await repository.getAllPersons();
+    notifyListeners();
+    return persons;
   }
 
   createMovie(String token, Movie movie) {
@@ -72,6 +77,7 @@ class MovieViewModel with ChangeNotifier {
       namePrefix: namePrefix,
       minGoldenPalmCount: minGoldenPalmCount,
       isUsaBoxOfficeUnique: isUsaBoxOfficeUnique,
+      sorting: sorting,
     );
 
     var moviesPage = await repository.getMoviesPage(moviesPageRequest);
@@ -97,9 +103,36 @@ class MovieViewModel with ChangeNotifier {
 
   void onUpdateMovies(String message) {
     getMoviesPage(false);
+    getPersons();
   }
 
   Future<List<Person>> showOperatorWithZeroOscar() async {
     return await repository.showOperatorWithZeroOscar();
   }
+
+  void changeSorting() {
+    if (sorting == Sorting.without) {
+      sorting = Sorting.alphabetically;
+    } else if (sorting == Sorting.alphabetically) {
+      sorting = Sorting.other;
+    } else if (sorting == Sorting.other) {
+      sorting = Sorting.without;
+    }
+
+    getMoviesPage(true);
+  }
+
+  Future<void> deletePerson(Person person) async {
+    await repository.deletePerson(person);
+  }
+
+  Future<void> updatePerson(Person person) async {
+    await repository.updatePerson(person);
+  }
+}
+
+enum Sorting {
+  without,
+  alphabetically,
+  other,
 }

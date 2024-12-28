@@ -1,18 +1,17 @@
 package com.lab1.backend.service;
 
-import com.lab1.backend.dto.MessageResponse;
-import com.lab1.backend.dto.MovieDto;
-import com.lab1.backend.dto.MoviesPageRequest;
-import com.lab1.backend.dto.MoviesPageResponse;
+import com.lab1.backend.dto.*;
 import com.lab1.backend.entities.Person;
 import com.lab1.backend.entities.Updates;
 import com.lab1.backend.entities.User;
 import com.lab1.backend.entities.Movie;
 import com.lab1.backend.repository.MovieRepository;
+import com.lab1.backend.repository.PersonRepository;
 import com.lab1.backend.repository.UpdatesRepository;
 import lombok.Data;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -30,11 +29,12 @@ public class MovieService {
     private final PersonService personService;
 
     private final WebSocketService webSocketService;
+    private final PersonRepository personRepository;
 
     public void createMovie(MovieDto request) {
         final var user = userService.getCurrentUser();
         final var movie = Movie.fromDto(request, user);
-        safetyUpdatePerson(movie);
+        safetyUpdatePersons(request, movie);
         repository.save(movie);
 
         webSocketService.sendChangedMoviesNotification("Фильм обновлён");
@@ -48,7 +48,7 @@ public class MovieService {
             throw new RuntimeException("Текущий пользователь не может изменять этот фильм");
         }
         final var movie = Movie.fromDto(request, movieFromDb);
-        safetyUpdatePerson(movie);
+        safetyUpdatePersons(request, movie);
         repository.save(movie);
         var updates = Updates.builder()
                     .user(user)
@@ -91,16 +91,31 @@ public class MovieService {
         webSocketService.sendChangedMoviesNotification("Фильм удалён");
     }
 
-    private void safetyUpdatePerson(Movie movie) {
-        final var director = personService.save(movie.getDirector());
-        final var screenwriter = movie.getScreenwriter() != null
-                ? personService.save(movie.getScreenwriter())
+    private void safetyUpdatePersons(MovieDto movieDto, Movie movie) {
+        final var director = safetyUpdatePerson(movieDto.getDirector());
+        final var screenwriter = movieDto.getScreenwriter() != null
+                ? safetyUpdatePerson(movieDto.getScreenwriter())
                 : null;
-        final var operator = personService.save(movie.getOperator());
-
+        final var operator = safetyUpdatePerson(movieDto.getOperator());
         movie.setDirector(director);
         movie.setScreenwriter(screenwriter);
         movie.setOperator(operator);
+    }
+
+    private Person safetyUpdatePerson(PersonDto personDto) {
+        var personFromDb = personRepository.findByPassportID(personDto.getPassportID());
+        Person person;
+        if (personFromDb == null) {
+            person = personService.createPerson(personDto);
+        } else {
+            try {
+                person = personService.updatePerson(personDto);
+            } catch (Exception e) {
+                person = personFromDb;
+            }
+        }
+
+        return person;
     }
 
     public MoviesPageResponse getMoviesPage(MoviesPageRequest request) {
@@ -125,6 +140,11 @@ public class MovieService {
         int toIndex = Math.min(fromIndex + request.getSize(), movies.size());
         var pageCount = (int) Math.ceil((double) movies.size() / request.getSize());
         movies = movies.subList(fromIndex, toIndex);
+        if (request.getSorting() == MoviesPageRequest.Sorting.alphabetically) {
+            movies.sort(Comparator.comparing(Movie::getName));
+        } else if (request.getSorting() == MoviesPageRequest.Sorting.other) {
+            movies.sort(Comparator.comparing(Movie::getName).reversed());
+        }
         var movieDtos = movies.stream().map(Movie::toDto).toList();
 
         if (fromIndex > toIndex) {
@@ -155,7 +175,7 @@ public class MovieService {
     }
 
     public List<Person> getWithZeroOscarCount() {
-        return repository.getWithZeroOscarCount();
+        return personRepository.getWithZeroOscarCount();
     }
 
     public MovieDto getById(Long id) {
@@ -179,5 +199,48 @@ public class MovieService {
 
         webSocketService.sendChangedMoviesNotification("Добавлены оскары");
         return new MessageResponse("Фильмам добавлено " + addOscarsCount + " оскаров");
+    }
+
+    public MessageResponse deletePerson(PersonDto dto) {
+//        final var passportId = dto.getPassportID();
+        final var person = personRepository.findById(dto.getPassportID()).orElseThrow(
+                () -> new IllegalArgumentException("Персонаж с заданным passport id не найден"));
+        final var user = userService.getCurrentUser();
+        final var creator = person.getUser();
+        if (!(user.getRole() == User.Role.ROLE_ADMIN || Objects.equals(user.getUsername(), creator.getUsername()))) {
+            throw new AccessDeniedException("Пользователь с заданными правами не может удалить данного персонажа");
+        }
+
+        final var movies = repository.findAll();
+        for (var movie : movies) {
+            if (
+                    Objects.equals(movie.getOperator().getPassportID(), person.getPassportID())
+                    || (movie.getScreenwriter() != null && Objects.equals(movie.getScreenwriter().getPassportID(), person.getPassportID()))
+                    || Objects.equals(movie.getDirector().getPassportID(), person.getPassportID())
+            ) {
+                updatesRepository.deleteAllByMovie(movie);
+                repository.delete(movie);
+                if (repository.countMoviesWithPerson(movie.getDirector().getPassportID()) == 0) {
+                    try {
+                        personService.deletePerson(movie.getDirector().getPassportID());
+                    } catch (Exception ignore) {}
+                }
+                if (movie.getScreenwriter() != null && repository.countMoviesWithPerson(movie.getScreenwriter().getPassportID()) == 0) {
+                    try {
+                    personService.deletePerson(movie.getScreenwriter().getPassportID());
+                    } catch (Exception ignore) {}
+                }
+                if (repository.countMoviesWithPerson(movie.getOperator().getPassportID()) == 0) {
+                    try {
+                    personService.deletePerson(movie.getOperator().getPassportID());
+                    } catch (Exception ignore) {}
+                }
+//                deleteMovie(movie.toDto());
+            }
+        }
+//        personRepository.delete(person);
+        webSocketService.sendChangedMoviesNotification("Фильм изменён");
+
+        return new MessageResponse("Персонаж успешно удалён");
     }
 }

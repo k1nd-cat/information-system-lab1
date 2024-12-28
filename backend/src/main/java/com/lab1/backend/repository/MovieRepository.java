@@ -37,18 +37,12 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     )
     List<Movie> findByUniqueUsaBoxOffice();
 
-    @Query("SELECT COUNT(DISTINCT m) FROM Movie m " +
+    @Query("SELECT COUNT(m) FROM Movie m " +
             "JOIN m.director d " +
             "JOIN m.screenwriter s " +
             "JOIN m.operator o " +
             "WHERE d.passportID = :personId OR s.passportID = :personId OR o.passportID = :personId")
     Long countMoviesWithPerson(@Param("personId") String personId);
-
-    @Query(
-            value = "SELECT * FROM find_operators_with_zero_oscars()",
-            nativeQuery = true
-    )
-    List<Person> getWithZeroOscarCount();
 
     @Modifying
     @Transactional

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:frontend2/view/home/widgets/add_oscar_dialog.dart';
+import 'package:frontend2/view/home/widgets/person_details.dart';
+import 'package:frontend2/view/home/widgets/person_list.dart';
 import 'package:frontend2/view/home/widgets/person_list_dialog.dart';
+import 'package:frontend2/viewmodel/movie_viewmodel.dart';
+import 'package:provider/provider.dart';
 
 import 'movie_by_id.dart';
 
@@ -18,6 +22,7 @@ class MovieMenuDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var movieViewModel = Provider.of<MovieViewModel>(context);
     return AlertDialog(
       backgroundColor: const Color.fromRGBO(44, 43, 48, 1),
       title: const Text(
@@ -49,7 +54,7 @@ class MovieMenuDialog extends StatelessWidget {
               ),
             ),
             child: const Text(
-              'Получить список операторов,\nфильмы которых не получили ни одного Оскара',
+              'Получить список операторов,\nфильмы которых получили только один Оскар',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16),
             ),
@@ -98,6 +103,31 @@ class MovieMenuDialog extends StatelessWidget {
             ),
             child: const Text(
               'Получить фильм по ID',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 16),
+            ),
+          ),
+          const SizedBox(height: 16),
+          OutlinedButton(
+            onPressed: () async {
+              Navigator.pop(context);
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return const PersonList();
+                  });
+            },
+            style: OutlinedButton.styleFrom(
+              foregroundColor: const Color.fromRGBO(214, 214, 214, 1),
+              minimumSize: const Size(450, 80),
+              side: const BorderSide(
+                  color: Color.fromRGBO(242, 196, 206, 1), width: 1),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            child: const Text(
+              'Получить список персонажей',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16),
             ),
