@@ -48,5 +48,7 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     @Transactional
     @Query(value = "SELECT * FROM update_oscar_count(:p_username, :p_increment)", nativeQuery = true)
     List<Movie> updateOscarCount(@Param("p_username") String username, @Param("p_increment") int increment);
+
+    List<Movie> findAllByName(String name);
 }
 

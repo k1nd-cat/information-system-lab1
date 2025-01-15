@@ -13,6 +13,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -31,6 +33,7 @@ public class MovieService {
     private final WebSocketService webSocketService;
     private final PersonRepository personRepository;
 
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public void createMovie(MovieDto request) {
         final var user = userService.getCurrentUser();
         final var movie = Movie.fromDto(request, user);
@@ -41,6 +44,7 @@ public class MovieService {
         webSocketService.sendChangedMoviesNotification("Фильм обновлён");
     }
 
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public void updateMovie(MovieDto request) {
         final var user = userService.getCurrentUser();
         final var movieFromDb = repository.findMovieById(request.getId())
@@ -62,6 +66,7 @@ public class MovieService {
         webSocketService.sendChangedMoviesNotification("Фильм изменён");
     }
 
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     public void deleteMovie(MovieDto request) {
         if (request.getId() == null) throw new RuntimeException("Невозможно идентифицировать фильм для удаления");
         final var movie = repository.findMovieById(request.getId())
@@ -244,5 +249,10 @@ public class MovieService {
         webSocketService.sendChangedMoviesNotification("Фильм изменён");
 
         return new MessageResponse("Персонаж успешно удалён");
+    }
+
+    private Boolean isUniqueName(String name) {
+        final var movies = repository.findAllByName(name);
+        return movies.isEmpty();
     }
 }
