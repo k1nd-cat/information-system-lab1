@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend2/view/home/widgets/add_oscar_dialog.dart';
-import 'package:frontend2/view/home/widgets/person_details.dart';
+import 'package:frontend2/view/home/widgets/file_history_dialog.dart';
 import 'package:frontend2/view/home/widgets/person_list.dart';
 import 'package:frontend2/view/home/widgets/person_list_dialog.dart';
 import 'package:frontend2/viewmodel/movie_viewmodel.dart';
@@ -9,16 +9,7 @@ import 'package:provider/provider.dart';
 import 'movie_by_id.dart';
 
 class MovieMenuDialog extends StatelessWidget {
-  // final VoidCallback onGetOperatorsWithoutOscars;
-  // final VoidCallback onAddOscarsToMovies;
-  // final VoidCallback onGetMovieById;
-
-  const MovieMenuDialog({
-    // required this.onGetOperatorsWithoutOscars,
-    // required this.onAddOscarsToMovies,
-    // required this.onGetMovieById,
-    super.key,
-  });
+  const MovieMenuDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -128,6 +119,31 @@ class MovieMenuDialog extends StatelessWidget {
             ),
             child: const Text(
               'Получить список персонажей',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 16),
+            ),
+          ),
+          const SizedBox(height: 16),
+          OutlinedButton(
+            onPressed: () async {
+              Navigator.pop(context);
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return const FileHistoryDialog();
+                  });
+            },
+            style: OutlinedButton.styleFrom(
+              foregroundColor: const Color.fromRGBO(214, 214, 214, 1),
+              minimumSize: const Size(450, 80),
+              side: const BorderSide(
+                  color: Color.fromRGBO(242, 196, 206, 1), width: 1),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            child: const Text(
+              'История загруженных файлов',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16),
             ),

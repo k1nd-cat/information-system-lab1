@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:frontend2/dto/movies_page_request.dart';
+import 'package:frontend2/model/file_history.dart';
 import 'package:frontend2/repository/movie_repository.dart';
 
 import '../model/movies.dart';
@@ -128,6 +130,18 @@ class MovieViewModel with ChangeNotifier {
 
   Future<void> updatePerson(Person person) async {
     await repository.updatePerson(person);
+  }
+
+  Future<void> sendFile(Uint8List file, String fileName) async {
+    await repository.sendFile(file, fileName);
+  }
+
+  Future<List<FileHistory>> getFileHistory() async {
+    return await repository.getFileHistory();
+  }
+
+  Future<void> downloadFile(String fileName) async {
+    await repository.downloadFile(fileName);
   }
 }
 

@@ -6,6 +6,7 @@ import 'package:frontend2/view/home/widgets/menu_dialog.dart';
 import 'package:frontend2/view/home/widgets/movie_table.dart';
 import 'package:frontend2/view/home/widgets/movie_text_field.dart';
 import 'package:frontend2/view/home/widgets/movies_map.dart';
+import 'package:frontend2/view/home/widgets/pick_file_dialog.dart';
 import 'package:frontend2/view/home/widgets/show_profile.dart';
 import 'package:frontend2/view/home/widgets/show_waiting_admin.dart';
 import 'package:frontend2/view/widgets/styled_loading.dart';
@@ -172,7 +173,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: MovieTable(
                                   movies: movieViewModel.movies,
                                   authViewModel: authViewModel,
-                                  changeSorting: () => movieViewModel.changeSorting(),
+                                  changeSorting: () =>
+                                      movieViewModel.changeSorting(),
                                 ),
                               ),
                       ),
@@ -281,6 +283,25 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 const SizedBox(height: 30),
                 const AddMovie(),
+                const SizedBox(height: 30),
+                ElevatedButton(
+                  onPressed: () => showDialog(
+                    context: context,
+                    builder: (BuildContext context) => PickFileDialog(
+                      sendFile: movieViewModel.sendFile,
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: const Color.fromRGBO(44, 43, 48, 1),
+                    minimumSize: const Size(507, 54),
+                    backgroundColor: const Color.fromRGBO(242, 196, 206, 1),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: const Text('Загрузить файл с фильмами'),
+                ),
+                // const PickFile(),
               ],
             ),
           ],

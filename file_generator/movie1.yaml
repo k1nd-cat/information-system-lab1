@@ -1,0 +1,1983 @@
+  - id: null
+    name: 'Movie 90'
+    coordinates:
+      x: -647.3935011718511
+      y: 144
+    creationDate: null
+    oscarCount: 9
+    budget: 97140.1422394756
+    totalBoxOffice: 90095.29491597996
+    mpaaRating: 'G'
+    director:
+      name: 'Person 40'
+      eyeColor: 'WHITE'
+      hairColor: 'RED'
+      location: null
+      passportID: 'P636879'
+      nationality: 'RUSSIA'
+      isEditable: false
+    screenwriter: null
+    operator:
+      name: 'Person 96'
+      eyeColor: 'WHITE'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P830957'
+      nationality: 'RUSSIA'
+      isEditable: true
+    length: 186
+    goldenPalmCount: 1
+    usaBoxOffice: null
+    genre: 'FANTASY'
+    isEditable: false
+  - id: null
+    name: 'Movie 32'
+    coordinates:
+      x: -6.891175605086232
+      y: 575
+    creationDate: null
+    oscarCount: 1
+    budget: 16056.096251407016
+    totalBoxOffice: 439197.0294748175
+    mpaaRating: 'PG_13'
+    director:
+      name: 'Person 94'
+      eyeColor: 'WHITE'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P224171'
+      nationality: 'JAPAN'
+      isEditable: false
+    screenwriter:
+      name: 'Person 20'
+      eyeColor: 'BLACK'
+      hairColor: 'BLACK'
+      location:
+        x: 401
+        y: 968
+        z: 5.282425335517615
+      passportID: 'P399103'
+      nationality: 'JAPAN'
+      isEditable: false
+    operator:
+      name: 'Person 35'
+      eyeColor: 'BLACK'
+      hairColor: 'RED'
+      location:
+        x: 53
+        y: 149
+        z: 21.022711742769495
+      passportID: 'P945530'
+      nationality: 'JAPAN'
+      isEditable: true
+    length: 101
+    goldenPalmCount: 4
+    usaBoxOffice: null
+    genre: 'ACTION'
+    isEditable: true
+  - id: null
+    name: 'Movie 57'
+    coordinates:
+      x: -178.93673324485405
+      y: 859
+    creationDate: null
+    oscarCount: 4
+    budget: 26730.279743095267
+    totalBoxOffice: 277410.4803003033
+    mpaaRating: 'PG_13'
+    director:
+      name: 'Person 59'
+      eyeColor: 'WHITE'
+      hairColor: 'RED'
+      location: null
+      passportID: 'P374490'
+      nationality: 'JAPAN'
+      isEditable: false
+    screenwriter: null
+    operator:
+      name: 'Person 65'
+      eyeColor: 'RED'
+      hairColor: 'WHITE'
+      location:
+        x: 122
+        y: 370
+        z: 26.666018255202328
+      passportID: 'P080682'
+      nationality: 'JAPAN'
+      isEditable: false
+    length: 84
+    goldenPalmCount: 5
+    usaBoxOffice: 153482
+    genre: 'WESTERN'
+    isEditable: true
+  - id: null
+    name: 'Movie 25'
+    coordinates:
+      x: -681.0600670351373
+      y: 691
+    creationDate: null
+    oscarCount: 1
+    budget: 102500.74219595673
+    totalBoxOffice: 312855.4569063435
+    mpaaRating: 'NC_17'
+    director:
+      name: 'Person 27'
+      eyeColor: 'WHITE'
+      hairColor: 'WHITE'
+      location:
+        x: 716
+        y: 998
+        z: 58.8112029183099
+      passportID: 'P585369'
+      nationality: 'INDIA'
+      isEditable: false
+    screenwriter:
+      name: 'Person 26'
+      eyeColor: 'RED'
+      hairColor: 'RED'
+      location:
+        x: 395
+        y: 665
+        z: 84.71573915975331
+      passportID: 'P084442'
+      nationality: 'RUSSIA'
+      isEditable: false
+    operator:
+      name: 'Person 91'
+      eyeColor: 'WHITE'
+      hairColor: 'RED'
+      location: null
+      passportID: 'P112311'
+      nationality: 'INDIA'
+      isEditable: false
+    length: 171
+    goldenPalmCount: 3
+    usaBoxOffice: 188983
+    genre: 'FANTASY'
+    isEditable: true
+  - id: null
+    name: 'Movie 83'
+    coordinates:
+      x: -305.6657329454889
+      y: 272
+    creationDate: null
+    oscarCount: 4
+    budget: 29497.79571366552
+    totalBoxOffice: 260913.97774223713
+    mpaaRating: 'NC_17'
+    director:
+      name: 'Person 10'
+      eyeColor: 'BLACK'
+      hairColor: 'BLACK'
+      location:
+        x: 491
+        y: 479
+        z: 90.2534880008032
+      passportID: 'P513438'
+      nationality: 'JAPAN'
+      isEditable: false
+    screenwriter: null
+    operator:
+      name: 'Person 89'
+      eyeColor: 'WHITE'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P886897'
+      nationality: 'INDIA'
+      isEditable: false
+    length: 160
+    goldenPalmCount: 4
+    usaBoxOffice: 42215
+    genre: 'FANTASY'
+    isEditable: true
+  - id: null
+    name: 'Movie 68'
+    coordinates:
+      x: -653.9900332958612
+      y: 263
+    creationDate: null
+    oscarCount: 4
+    budget: 62260.316319377394
+    totalBoxOffice: 52812.16592162631
+    mpaaRating: 'G'
+    director:
+      name: 'Person 50'
+      eyeColor: 'RED'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P672192'
+      nationality: 'INDIA'
+      isEditable: true
+    screenwriter:
+      name: 'Person 59'
+      eyeColor: 'RED'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P742549'
+      nationality: 'INDIA'
+      isEditable: true
+    operator:
+      name: 'Person 17'
+      eyeColor: 'BLACK'
+      hairColor: 'BLACK'
+      location:
+        x: 653
+        y: 38
+        z: 46.717949330631235
+      passportID: 'P469220'
+      nationality: 'INDIA'
+      isEditable: false
+    length: 169
+    goldenPalmCount: 2
+    usaBoxOffice: null
+    genre: 'ACTION'
+    isEditable: true
+  - id: null
+    name: 'Movie 60'
+    coordinates:
+      x: -435.73975204028
+      y: 488
+    creationDate: null
+    oscarCount: 9
+    budget: 105661.54667852719
+    totalBoxOffice: 366248.1261427878
+    mpaaRating: 'PG_13'
+    director:
+      name: 'Person 81'
+      eyeColor: 'WHITE'
+      hairColor: 'BLACK'
+      location:
+        x: 495
+        y: 737
+        z: 47.67040716917192
+      passportID: 'P873007'
+      nationality: 'INDIA'
+      isEditable: false
+    screenwriter: null
+    operator:
+      name: 'Person 3'
+      eyeColor: 'BLACK'
+      hairColor: 'RED'
+      location:
+        x: 49
+        y: 717
+        z: 9.671342004549032
+      passportID: 'P733374'
+      nationality: 'INDIA'
+      isEditable: false
+    length: 134
+    goldenPalmCount: 4
+    usaBoxOffice: 80395
+    genre: 'ACTION'
+    isEditable: true
+  - id: null
+    name: 'Movie 23'
+    coordinates:
+      x: -783.1336147711363
+      y: 736
+    creationDate: null
+    oscarCount: 7
+    budget: 93179.19077137663
+    totalBoxOffice: 411509.47074121947
+    mpaaRating: 'PG_13'
+    director:
+      name: 'Person 98'
+      eyeColor: 'WHITE'
+      hairColor: 'BLACK'
+      location:
+        x: 507
+        y: 34
+        z: 67.89731602604314
+      passportID: 'P432906'
+      nationality: 'JAPAN'
+      isEditable: false
+    screenwriter: null
+    operator:
+      name: 'Person 15'
+      eyeColor: 'BLACK'
+      hairColor: 'RED'
+      location:
+        x: 155
+        y: 930
+        z: 74.48420602639334
+      passportID: 'P049712'
+      nationality: 'RUSSIA'
+      isEditable: false
+    length: 66
+    goldenPalmCount: 3
+    usaBoxOffice: 185927
+    genre: 'FANTASY'
+    isEditable: true
+  - id: null
+    name: 'Movie 14'
+    coordinates:
+      x: -718.0644851154553
+      y: 428
+    creationDate: null
+    oscarCount: 1
+    budget: 98930.44394152096
+    totalBoxOffice: 545133.456207788
+    mpaaRating: 'PG_13'
+    director:
+      name: 'Person 35'
+      eyeColor: 'BLACK'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P643596'
+      nationality: 'JAPAN'
+      isEditable: true
+    screenwriter: null
+    operator:
+      name: 'Person 17'
+      eyeColor: 'WHITE'
+      hairColor: 'WHITE'
+      location:
+        x: 249
+        y: 589
+        z: 76.02759117102825
+      passportID: 'P282546'
+      nationality: 'INDIA'
+      isEditable: true
+    length: 215
+    goldenPalmCount: 2
+    usaBoxOffice: 63926
+    genre: 'WESTERN'
+    isEditable: true
+  - id: null
+    name: 'Movie 27'
+    coordinates:
+      x: -63.019682594532924
+      y: 296
+    creationDate: null
+    oscarCount: 3
+    budget: 14553.471644287587
+    totalBoxOffice: 470610.5038021778
+    mpaaRating: 'PG_13'
+    director:
+      name: 'Person 47'
+      eyeColor: 'RED'
+      hairColor: 'WHITE'
+      location:
+        x: 957
+        y: 91
+        z: 54.02071215805515
+      passportID: 'P714184'
+      nationality: 'JAPAN'
+      isEditable: true
+    screenwriter: null
+    operator:
+      name: 'Person 20'
+      eyeColor: 'BLACK'
+      hairColor: 'RED'
+      location: null
+      passportID: 'P460827'
+      nationality: 'INDIA'
+      isEditable: true
+    length: 81
+    goldenPalmCount: 5
+    usaBoxOffice: null
+    genre: 'FANTASY'
+    isEditable: true
+  - id: null
+    name: 'Movie 4'
+    coordinates:
+      x: -107.2452348956873
+      y: 758
+    creationDate: null
+    oscarCount: 1
+    budget: 28728.570852193883
+    totalBoxOffice: 243648.1566499868
+    mpaaRating: 'G'
+    director:
+      name: 'Person 0'
+      eyeColor: 'WHITE'
+      hairColor: 'RED'
+      location:
+        x: 421
+        y: 125
+        z: 14.030741725437313
+      passportID: 'P975897'
+      nationality: 'JAPAN'
+      isEditable: false
+    screenwriter:
+      name: 'Person 71'
+      eyeColor: 'WHITE'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P837799'
+      nationality: 'RUSSIA'
+      isEditable: false
+    operator:
+      name: 'Person 7'
+      eyeColor: 'WHITE'
+      hairColor: 'RED'
+      location: null
+      passportID: 'P550971'
+      nationality: 'INDIA'
+      isEditable: true
+    length: 158
+    goldenPalmCount: 3
+    usaBoxOffice: 158292
+    genre: 'WESTERN'
+    isEditable: false
+  - id: null
+    name: 'Movie 47'
+    coordinates:
+      x: 21.29295144520711
+      y: 488
+    creationDate: null
+    oscarCount: 10
+    budget: 109224.50692002794
+    totalBoxOffice: 164990.98260331026
+    mpaaRating: 'G'
+    director:
+      name: 'Person 4'
+      eyeColor: 'RED'
+      hairColor: 'RED'
+      location: null
+      passportID: 'P270005'
+      nationality: 'JAPAN'
+      isEditable: false
+    screenwriter: null
+    operator:
+      name: 'Person 80'
+      eyeColor: 'BLACK'
+      hairColor: 'WHITE'
+      location:
+        x: 588
+        y: 344
+        z: 7.068543824695839
+      passportID: 'P701569'
+      nationality: 'RUSSIA'
+      isEditable: false
+    length: 127
+    goldenPalmCount: 4
+    usaBoxOffice: null
+    genre: 'ACTION'
+    isEditable: true
+  - id: null
+    name: 'Movie 44'
+    coordinates:
+      x: -516.3896099132154
+      y: 319
+    creationDate: null
+    oscarCount: 9
+    budget: 75323.70379242038
+    totalBoxOffice: 149180.84239316138
+    mpaaRating: 'G'
+    director:
+      name: 'Person 91'
+      eyeColor: 'RED'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P879653'
+      nationality: 'INDIA'
+      isEditable: false
+    screenwriter:
+      name: 'Person 79'
+      eyeColor: 'RED'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P366600'
+      nationality: 'RUSSIA'
+      isEditable: false
+    operator:
+      name: 'Person 88'
+      eyeColor: 'RED'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P710278'
+      nationality: 'JAPAN'
+      isEditable: false
+    length: 136
+    goldenPalmCount: 5
+    usaBoxOffice: null
+    genre: 'WESTERN'
+    isEditable: false
+  - id: null
+    name: 'Movie 1'
+    coordinates:
+      x: -295.87470022703997
+      y: 487
+    creationDate: null
+    oscarCount: 8
+    budget: 28071.24431689864
+    totalBoxOffice: 58292.03360690722
+    mpaaRating: 'G'
+    director:
+      name: 'Person 0'
+      eyeColor: 'BLACK'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P106634'
+      nationality: 'JAPAN'
+      isEditable: false
+    screenwriter: null
+    operator:
+      name: 'Person 28'
+      eyeColor: 'BLACK'
+      hairColor: 'WHITE'
+      location:
+        x: 982
+        y: 554
+        z: 38.80516263615967
+      passportID: 'P757572'
+      nationality: 'INDIA'
+      isEditable: true
+    length: 92
+    goldenPalmCount: 5
+    usaBoxOffice: null
+    genre: 'WESTERN'
+    isEditable: true
+  - id: null
+    name: 'Movie 84'
+    coordinates:
+      x: -219.94194256346395
+      y: 423
+    creationDate: null
+    oscarCount: 9
+    budget: 93320.10345260875
+    totalBoxOffice: 298898.4448443584
+    mpaaRating: 'NC_17'
+    director:
+      name: 'Person 37'
+      eyeColor: 'BLACK'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P157758'
+      nationality: 'JAPAN'
+      isEditable: true
+    screenwriter: null
+    operator:
+      name: 'Person 92'
+      eyeColor: 'RED'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P023299'
+      nationality: 'INDIA'
+      isEditable: false
+    length: 129
+    goldenPalmCount: 4
+    usaBoxOffice: 11957
+    genre: 'FANTASY'
+    isEditable: true
+  - id: null
+    name: 'Movie 85'
+    coordinates:
+      x: -1.5088850189831646
+      y: 458
+    creationDate: null
+    oscarCount: 8
+    budget: 92420.96347272526
+    totalBoxOffice: 397296.014253475
+    mpaaRating: 'G'
+    director:
+      name: 'Person 27'
+      eyeColor: 'RED'
+      hairColor: 'WHITE'
+      location:
+        x: 518
+        y: 592
+        z: 12.397227347388572
+      passportID: 'P115079'
+      nationality: 'INDIA'
+      isEditable: false
+    screenwriter: null
+    operator:
+      name: 'Person 12'
+      eyeColor: 'WHITE'
+      hairColor: 'WHITE'
+      location:
+        x: 994
+        y: 650
+        z: 94.9147897600839
+      passportID: 'P201010'
+      nationality: 'JAPAN'
+      isEditable: false
+    length: 169
+    goldenPalmCount: 3
+    usaBoxOffice: 179026
+    genre: 'ACTION'
+    isEditable: true
+  - id: null
+    name: 'Movie 74'
+    coordinates:
+      x: -557.5602729109748
+      y: 229
+    creationDate: null
+    oscarCount: 5
+    budget: 18504.177680822944
+    totalBoxOffice: 272586.96555442625
+    mpaaRating: 'NC_17'
+    director:
+      name: 'Person 80'
+      eyeColor: 'WHITE'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P611558'
+      nationality: 'JAPAN'
+      isEditable: true
+    screenwriter:
+      name: 'Person 8'
+      eyeColor: 'WHITE'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P419841'
+      nationality: 'JAPAN'
+      isEditable: true
+    operator:
+      name: 'Person 41'
+      eyeColor: 'BLACK'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P748104'
+      nationality: 'RUSSIA'
+      isEditable: false
+    length: 204
+    goldenPalmCount: 2
+    usaBoxOffice: null
+    genre: 'WESTERN'
+    isEditable: false
+  - id: null
+    name: 'Movie 37'
+    coordinates:
+      x: -934.6762350347019
+      y: 291
+    creationDate: null
+    oscarCount: 9
+    budget: 42930.12042137533
+    totalBoxOffice: 404308.2318161944
+    mpaaRating: 'PG_13'
+    director:
+      name: 'Person 46'
+      eyeColor: 'WHITE'
+      hairColor: 'BLACK'
+      location:
+        x: 703
+        y: 251
+        z: 97.75505151335156
+      passportID: 'P645955'
+      nationality: 'JAPAN'
+      isEditable: false
+    screenwriter:
+      name: 'Person 88'
+      eyeColor: 'RED'
+      hairColor: 'RED'
+      location:
+        x: 255
+        y: 432
+        z: 71.32695730697543
+      passportID: 'P422800'
+      nationality: 'RUSSIA'
+      isEditable: true
+    operator:
+      name: 'Person 82'
+      eyeColor: 'BLACK'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P342114'
+      nationality: 'INDIA'
+      isEditable: false
+    length: 221
+    goldenPalmCount: 1
+    usaBoxOffice: null
+    genre: 'ACTION'
+    isEditable: true
+  - id: null
+    name: 'Movie 45'
+    coordinates:
+      x: -787.4547714792456
+      y: 214
+    creationDate: null
+    oscarCount: 2
+    budget: 37782.62289396802
+    totalBoxOffice: 128674.1405942431
+    mpaaRating: 'G'
+    director:
+      name: 'Person 17'
+      eyeColor: 'BLACK'
+      hairColor: 'RED'
+      location:
+        x: 3
+        y: 548
+        z: 62.330818469160064
+      passportID: 'P513916'
+      nationality: 'JAPAN'
+      isEditable: true
+    screenwriter: null
+    operator:
+      name: 'Person 63'
+      eyeColor: 'WHITE'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P643380'
+      nationality: 'JAPAN'
+      isEditable: true
+    length: 151
+    goldenPalmCount: 2
+    usaBoxOffice: 71243
+    genre: 'WESTERN'
+    isEditable: true
+  - id: null
+    name: 'Movie 78'
+    coordinates:
+      x: -391.5009828563418
+      y: 56
+    creationDate: null
+    oscarCount: 4
+    budget: 79618.67710484793
+    totalBoxOffice: 295717.05114787817
+    mpaaRating: 'G'
+    director:
+      name: 'Person 77'
+      eyeColor: 'RED'
+      hairColor: 'WHITE'
+      location:
+        x: 245
+        y: 798
+        z: 52.83205690982238
+      passportID: 'P366966'
+      nationality: 'INDIA'
+      isEditable: false
+    screenwriter:
+      name: 'Person 72'
+      eyeColor: 'RED'
+      hairColor: 'RED'
+      location: null
+      passportID: 'P138256'
+      nationality: 'JAPAN'
+      isEditable: true
+    operator:
+      name: 'Person 53'
+      eyeColor: 'BLACK'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P801945'
+      nationality: 'RUSSIA'
+      isEditable: false
+    length: 225
+    goldenPalmCount: 4
+    usaBoxOffice: 203308
+    genre: 'WESTERN'
+    isEditable: false
+  - id: null
+    name: 'Movie 82'
+    coordinates:
+      x: -0.22467714058097954
+      y: 728
+    creationDate: null
+    oscarCount: 5
+    budget: 95689.98546120603
+    totalBoxOffice: 137117.01095732994
+    mpaaRating: 'G'
+    director:
+      name: 'Person 32'
+      eyeColor: 'WHITE'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P461560'
+      nationality: 'RUSSIA'
+      isEditable: false
+    screenwriter:
+      name: 'Person 15'
+      eyeColor: 'BLACK'
+      hairColor: 'RED'
+      location:
+        x: 581
+        y: 90
+        z: 80.94032377432451
+      passportID: 'P097411'
+      nationality: 'RUSSIA'
+      isEditable: true
+    operator:
+      name: 'Person 15'
+      eyeColor: 'WHITE'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P971968'
+      nationality: 'INDIA'
+      isEditable: false
+    length: 225
+    goldenPalmCount: 1
+    usaBoxOffice: 31544
+    genre: 'WESTERN'
+    isEditable: true
+  - id: null
+    name: 'Movie 72'
+    coordinates:
+      x: -797.715191224484
+      y: 577
+    creationDate: null
+    oscarCount: 9
+    budget: 40184.62095159252
+    totalBoxOffice: 408531.16370509856
+    mpaaRating: 'NC_17'
+    director:
+      name: 'Person 84'
+      eyeColor: 'WHITE'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P177156'
+      nationality: 'JAPAN'
+      isEditable: false
+    screenwriter: null
+    operator:
+      name: 'Person 25'
+      eyeColor: 'WHITE'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P785355'
+      nationality: 'JAPAN'
+      isEditable: true
+    length: 205
+    goldenPalmCount: 5
+    usaBoxOffice: 25267
+    genre: 'ACTION'
+    isEditable: false
+  - id: null
+    name: 'Movie 51'
+    coordinates:
+      x: -256.08557527293783
+      y: 556
+    creationDate: null
+    oscarCount: 9
+    budget: 37920.2063165655
+    totalBoxOffice: 506768.8081049754
+    mpaaRating: 'G'
+    director:
+      name: 'Person 87'
+      eyeColor: 'RED'
+      hairColor: 'WHITE'
+      location:
+        x: 719
+        y: 821
+        z: 0.9884373572200733
+      passportID: 'P484474'
+      nationality: 'RUSSIA'
+      isEditable: false
+    screenwriter: null
+    operator:
+      name: 'Person 39'
+      eyeColor: 'RED'
+      hairColor: 'WHITE'
+      location:
+        x: 797
+        y: 63
+        z: 97.5498231592647
+      passportID: 'P882802'
+      nationality: 'JAPAN'
+      isEditable: true
+    length: 210
+    goldenPalmCount: 4
+    usaBoxOffice: 205869
+    genre: 'WESTERN'
+    isEditable: false
+  - id: null
+    name: 'Movie 14'
+    coordinates:
+      x: -596.916674550424
+      y: 714
+    creationDate: null
+    oscarCount: 7
+    budget: 25696.496447342568
+    totalBoxOffice: 391709.61713992874
+    mpaaRating: 'PG_13'
+    director:
+      name: 'Person 21'
+      eyeColor: 'RED'
+      hairColor: 'RED'
+      location:
+        x: 602
+        y: 386
+        z: 10.990463622410896
+      passportID: 'P857387'
+      nationality: 'INDIA'
+      isEditable: true
+    screenwriter: null
+    operator:
+      name: 'Person 26'
+      eyeColor: 'BLACK'
+      hairColor: 'BLACK'
+      location:
+        x: 326
+        y: 465
+        z: 23.46974795164233
+      passportID: 'P292548'
+      nationality: 'JAPAN'
+      isEditable: false
+    length: 80
+    goldenPalmCount: 3
+    usaBoxOffice: 17936
+    genre: 'WESTERN'
+    isEditable: false
+  - id: null
+    name: 'Movie 26'
+    coordinates:
+      x: -525.8440467203136
+      y: 376
+    creationDate: null
+    oscarCount: 2
+    budget: 38675.1410418906
+    totalBoxOffice: 520113.55489465577
+    mpaaRating: 'NC_17'
+    director:
+      name: 'Person 42'
+      eyeColor: 'BLACK'
+      hairColor: 'BLACK'
+      location:
+        x: 102
+        y: 543
+        z: 87.9096573270601
+      passportID: 'P442949'
+      nationality: 'RUSSIA'
+      isEditable: true
+    screenwriter:
+      name: 'Person 31'
+      eyeColor: 'WHITE'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P201996'
+      nationality: 'JAPAN'
+      isEditable: false
+    operator:
+      name: 'Person 13'
+      eyeColor: 'BLACK'
+      hairColor: 'WHITE'
+      location:
+        x: 710
+        y: 265
+        z: 88.0772284945926
+      passportID: 'P899037'
+      nationality: 'INDIA'
+      isEditable: true
+    length: 97
+    goldenPalmCount: 3
+    usaBoxOffice: 38733
+    genre: 'ACTION'
+    isEditable: true
+  - id: null
+    name: 'Movie 33'
+    coordinates:
+      x: -804.4876437969579
+      y: 795
+    creationDate: null
+    oscarCount: 9
+    budget: 55266.15969137869
+    totalBoxOffice: 394273.2345297844
+    mpaaRating: 'PG_13'
+    director:
+      name: 'Person 19'
+      eyeColor: 'BLACK'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P998688'
+      nationality: 'JAPAN'
+      isEditable: true
+    screenwriter:
+      name: 'Person 42'
+      eyeColor: 'BLACK'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P996805'
+      nationality: 'RUSSIA'
+      isEditable: true
+    operator:
+      name: 'Person 20'
+      eyeColor: 'BLACK'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P156554'
+      nationality: 'INDIA'
+      isEditable: false
+    length: 230
+    goldenPalmCount: 2
+    usaBoxOffice: 164050
+    genre: 'FANTASY'
+    isEditable: false
+  - id: null
+    name: 'Movie 17'
+    coordinates:
+      x: -231.71723312546055
+      y: 378
+    creationDate: null
+    oscarCount: 1
+    budget: 46636.10847215199
+    totalBoxOffice: 337649.3100745805
+    mpaaRating: 'G'
+    director:
+      name: 'Person 5'
+      eyeColor: 'WHITE'
+      hairColor: 'RED'
+      location: null
+      passportID: 'P647837'
+      nationality: 'RUSSIA'
+      isEditable: true
+    screenwriter:
+      name: 'Person 42'
+      eyeColor: 'BLACK'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P472597'
+      nationality: 'INDIA'
+      isEditable: true
+    operator:
+      name: 'Person 50'
+      eyeColor: 'RED'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P182261'
+      nationality: 'RUSSIA'
+      isEditable: false
+    length: 86
+    goldenPalmCount: 2
+    usaBoxOffice: 42417
+    genre: 'ACTION'
+    isEditable: true
+  - id: null
+    name: 'Movie 9'
+    coordinates:
+      x: -54.67325465087788
+      y: 172
+    creationDate: null
+    oscarCount: 6
+    budget: 41945.816246279035
+    totalBoxOffice: 288225.2963672854
+    mpaaRating: 'G'
+    director:
+      name: 'Person 42'
+      eyeColor: 'RED'
+      hairColor: 'WHITE'
+      location:
+        x: 777
+        y: 798
+        z: 64.6795831178721
+      passportID: 'P543118'
+      nationality: 'JAPAN'
+      isEditable: true
+    screenwriter: null
+    operator:
+      name: 'Person 85'
+      eyeColor: 'BLACK'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P516394'
+      nationality: 'RUSSIA'
+      isEditable: false
+    length: 184
+    goldenPalmCount: 5
+    usaBoxOffice: null
+    genre: 'FANTASY'
+    isEditable: true
+  - id: null
+    name: 'Movie 87'
+    coordinates:
+      x: -280.4822503365109
+      y: 0
+    creationDate: null
+    oscarCount: 10
+    budget: 20050.831642592606
+    totalBoxOffice: 219590.70123631763
+    mpaaRating: 'NC_17'
+    director:
+      name: 'Person 20'
+      eyeColor: 'RED'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P469808'
+      nationality: 'JAPAN'
+      isEditable: true
+    screenwriter:
+      name: 'Person 75'
+      eyeColor: 'RED'
+      hairColor: 'RED'
+      location: null
+      passportID: 'P461761'
+      nationality: 'RUSSIA'
+      isEditable: false
+    operator:
+      name: 'Person 64'
+      eyeColor: 'WHITE'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P602268'
+      nationality: 'JAPAN'
+      isEditable: false
+    length: 201
+    goldenPalmCount: 1
+    usaBoxOffice: 181451
+    genre: 'FANTASY'
+    isEditable: true
+  - id: null
+    name: 'Movie 54'
+    coordinates:
+      x: -390.10710212530273
+      y: 829
+    creationDate: null
+    oscarCount: 10
+    budget: 27609.69879583857
+    totalBoxOffice: 545214.320023508
+    mpaaRating: 'NC_17'
+    director:
+      name: 'Person 25'
+      eyeColor: 'RED'
+      hairColor: 'RED'
+      location: null
+      passportID: 'P956213'
+      nationality: 'INDIA'
+      isEditable: true
+    screenwriter:
+      name: 'Person 81'
+      eyeColor: 'WHITE'
+      hairColor: 'BLACK'
+      location:
+        x: 109
+        y: 981
+        z: 78.92260444450766
+      passportID: 'P256574'
+      nationality: 'JAPAN'
+      isEditable: false
+    operator:
+      name: 'Person 7'
+      eyeColor: 'BLACK'
+      hairColor: 'RED'
+      location: null
+      passportID: 'P291746'
+      nationality: 'RUSSIA'
+      isEditable: false
+    length: 128
+    goldenPalmCount: 2
+    usaBoxOffice: 117516
+    genre: 'WESTERN'
+    isEditable: false
+  - id: null
+    name: 'Movie 44'
+    coordinates:
+      x: -493.7553768162616
+      y: 518
+    creationDate: null
+    oscarCount: 7
+    budget: 101299.50231130191
+    totalBoxOffice: 327425.97422913334
+    mpaaRating: 'G'
+    director:
+      name: 'Person 17'
+      eyeColor: 'BLACK'
+      hairColor: 'RED'
+      location: null
+      passportID: 'P193687'
+      nationality: 'RUSSIA'
+      isEditable: false
+    screenwriter:
+      name: 'Person 65'
+      eyeColor: 'BLACK'
+      hairColor: 'BLACK'
+      location:
+        x: 102
+        y: 11
+        z: 85.37062528839657
+      passportID: 'P724148'
+      nationality: 'INDIA'
+      isEditable: false
+    operator:
+      name: 'Person 18'
+      eyeColor: 'BLACK'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P273212'
+      nationality: 'INDIA'
+      isEditable: true
+    length: 159
+    goldenPalmCount: 3
+    usaBoxOffice: null
+    genre: 'WESTERN'
+    isEditable: true
+  - id: null
+    name: 'Movie 61'
+    coordinates:
+      x: -684.7571494316096
+      y: 403
+    creationDate: null
+    oscarCount: 1
+    budget: 94328.47046594175
+    totalBoxOffice: 282755.2392522292
+    mpaaRating: 'PG_13'
+    director:
+      name: 'Person 82'
+      eyeColor: 'WHITE'
+      hairColor: 'RED'
+      location:
+        x: 367
+        y: 672
+        z: 58.17091784093862
+      passportID: 'P011909'
+      nationality: 'INDIA'
+      isEditable: false
+    screenwriter: null
+    operator:
+      name: 'Person 98'
+      eyeColor: 'BLACK'
+      hairColor: 'RED'
+      location: null
+      passportID: 'P435717'
+      nationality: 'JAPAN'
+      isEditable: false
+    length: 120
+    goldenPalmCount: 1
+    usaBoxOffice: 176494
+    genre: 'ACTION'
+    isEditable: false
+  - id: null
+    name: 'Movie 69'
+    coordinates:
+      x: -649.6769239755891
+      y: 970
+    creationDate: null
+    oscarCount: 1
+    budget: 54386.27001485122
+    totalBoxOffice: 507578.2205391522
+    mpaaRating: 'PG_13'
+    director:
+      name: 'Person 73'
+      eyeColor: 'RED'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P839161'
+      nationality: 'JAPAN'
+      isEditable: false
+    screenwriter:
+      name: 'Person 47'
+      eyeColor: 'WHITE'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P935484'
+      nationality: 'INDIA'
+      isEditable: true
+    operator:
+      name: 'Person 86'
+      eyeColor: 'RED'
+      hairColor: 'WHITE'
+      location:
+        x: 974
+        y: 844
+        z: 49.935723657229026
+      passportID: 'P655544'
+      nationality: 'JAPAN'
+      isEditable: false
+    length: 81
+    goldenPalmCount: 5
+    usaBoxOffice: null
+    genre: 'FANTASY'
+    isEditable: true
+  - id: null
+    name: 'Movie 33'
+    coordinates:
+      x: -222.51076374695492
+      y: 824
+    creationDate: null
+    oscarCount: 8
+    budget: 53256.356260685825
+    totalBoxOffice: 486033.44899567444
+    mpaaRating: 'PG_13'
+    director:
+      name: 'Person 78'
+      eyeColor: 'RED'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P631223'
+      nationality: 'RUSSIA'
+      isEditable: true
+    screenwriter: null
+    operator:
+      name: 'Person 48'
+      eyeColor: 'RED'
+      hairColor: 'RED'
+      location: null
+      passportID: 'P741169'
+      nationality: 'RUSSIA'
+      isEditable: false
+    length: 186
+    goldenPalmCount: 5
+    usaBoxOffice: null
+    genre: 'FANTASY'
+    isEditable: true
+  - id: null
+    name: 'Movie 20'
+    coordinates:
+      x: -762.079250728428
+      y: 921
+    creationDate: null
+    oscarCount: 9
+    budget: 34027.09734408974
+    totalBoxOffice: 185651.41425324633
+    mpaaRating: 'G'
+    director:
+      name: 'Person 96'
+      eyeColor: 'BLACK'
+      hairColor: 'WHITE'
+      location:
+        x: 897
+        y: 676
+        z: 81.83809327874076
+      passportID: 'P016358'
+      nationality: 'INDIA'
+      isEditable: true
+    screenwriter:
+      name: 'Person 28'
+      eyeColor: 'BLACK'
+      hairColor: 'WHITE'
+      location:
+        x: 654
+        y: 724
+        z: 4.467148547908306
+      passportID: 'P776624'
+      nationality: 'INDIA'
+      isEditable: false
+    operator:
+      name: 'Person 79'
+      eyeColor: 'RED'
+      hairColor: 'RED'
+      location:
+        x: 279
+        y: 723
+        z: 93.1735910823871
+      passportID: 'P837073'
+      nationality: 'JAPAN'
+      isEditable: true
+    length: 236
+    goldenPalmCount: 5
+    usaBoxOffice: null
+    genre: 'WESTERN'
+    isEditable: true
+  - id: null
+    name: 'Movie 47'
+    coordinates:
+      x: 24.89294946828238
+      y: 798
+    creationDate: null
+    oscarCount: 6
+    budget: 64642.48248152146
+    totalBoxOffice: 344563.9104375681
+    mpaaRating: 'PG_13'
+    director:
+      name: 'Person 27'
+      eyeColor: 'RED'
+      hairColor: 'RED'
+      location: null
+      passportID: 'P417096'
+      nationality: 'JAPAN'
+      isEditable: true
+    screenwriter:
+      name: 'Person 13'
+      eyeColor: 'WHITE'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P841302'
+      nationality: 'RUSSIA'
+      isEditable: true
+    operator:
+      name: 'Person 1'
+      eyeColor: 'WHITE'
+      hairColor: 'RED'
+      location:
+        x: 793
+        y: 356
+        z: 51.61516577476946
+      passportID: 'P388070'
+      nationality: 'RUSSIA'
+      isEditable: true
+    length: 84
+    goldenPalmCount: 5
+    usaBoxOffice: null
+    genre: 'ACTION'
+    isEditable: true
+  - id: null
+    name: 'Movie 73'
+    coordinates:
+      x: -869.7575464408528
+      y: 597
+    creationDate: null
+    oscarCount: 9
+    budget: 105405.38519739368
+    totalBoxOffice: 169839.76531007717
+    mpaaRating: 'NC_17'
+    director:
+      name: 'Person 43'
+      eyeColor: 'BLACK'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P395644'
+      nationality: 'JAPAN'
+      isEditable: false
+    screenwriter:
+      name: 'Person 92'
+      eyeColor: 'BLACK'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P820596'
+      nationality: 'RUSSIA'
+      isEditable: false
+    operator:
+      name: 'Person 13'
+      eyeColor: 'WHITE'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P031213'
+      nationality: 'JAPAN'
+      isEditable: true
+    length: 205
+    goldenPalmCount: 1
+    usaBoxOffice: null
+    genre: 'WESTERN'
+    isEditable: true
+  - id: null
+    name: 'Movie 87'
+    coordinates:
+      x: -714.7872028828011
+      y: 129
+    creationDate: null
+    oscarCount: 9
+    budget: 105054.19407479523
+    totalBoxOffice: 535075.6121034734
+    mpaaRating: 'PG_13'
+    director:
+      name: 'Person 3'
+      eyeColor: 'WHITE'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P736875'
+      nationality: 'RUSSIA'
+      isEditable: true
+    screenwriter: null
+    operator:
+      name: 'Person 79'
+      eyeColor: 'RED'
+      hairColor: 'WHITE'
+      location:
+        x: 607
+        y: 401
+        z: 47.53464218339518
+      passportID: 'P618685'
+      nationality: 'INDIA'
+      isEditable: true
+    length: 199
+    goldenPalmCount: 2
+    usaBoxOffice: null
+    genre: 'ACTION'
+    isEditable: true
+  - id: null
+    name: 'Movie 44'
+    coordinates:
+      x: -194.38592745370215
+      y: 487
+    creationDate: null
+    oscarCount: 9
+    budget: 66065.77037958811
+    totalBoxOffice: 333357.71766592725
+    mpaaRating: 'G'
+    director:
+      name: 'Person 33'
+      eyeColor: 'WHITE'
+      hairColor: 'WHITE'
+      location:
+        x: 819
+        y: 517
+        z: 17.596436583221443
+      passportID: 'P552654'
+      nationality: 'JAPAN'
+      isEditable: true
+    screenwriter:
+      name: 'Person 59'
+      eyeColor: 'RED'
+      hairColor: 'RED'
+      location: null
+      passportID: 'P754246'
+      nationality: 'INDIA'
+      isEditable: false
+    operator:
+      name: 'Person 84'
+      eyeColor: 'RED'
+      hairColor: 'RED'
+      location:
+        x: 866
+        y: 433
+        z: 58.63433180813682
+      passportID: 'P800903'
+      nationality: 'JAPAN'
+      isEditable: false
+    length: 223
+    goldenPalmCount: 4
+    usaBoxOffice: 103567
+    genre: 'WESTERN'
+    isEditable: true
+  - id: null
+    name: 'Movie 32'
+    coordinates:
+      x: -415.66015057873767
+      y: 258
+    creationDate: null
+    oscarCount: 1
+    budget: 87570.86215177289
+    totalBoxOffice: 417823.3912439264
+    mpaaRating: 'G'
+    director:
+      name: 'Person 42'
+      eyeColor: 'WHITE'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P323964'
+      nationality: 'RUSSIA'
+      isEditable: false
+    screenwriter:
+      name: 'Person 14'
+      eyeColor: 'RED'
+      hairColor: 'WHITE'
+      location:
+        x: 947
+        y: 465
+        z: 79.23531395719947
+      passportID: 'P950258'
+      nationality: 'RUSSIA'
+      isEditable: true
+    operator:
+      name: 'Person 36'
+      eyeColor: 'WHITE'
+      hairColor: 'WHITE'
+      location:
+        x: 559
+        y: 569
+        z: 97.72453476359776
+      passportID: 'P156151'
+      nationality: 'RUSSIA'
+      isEditable: true
+    length: 191
+    goldenPalmCount: 3
+    usaBoxOffice: null
+    genre: 'FANTASY'
+    isEditable: true
+  - id: null
+    name: 'Movie 73'
+    coordinates:
+      x: -308.17332079477694
+      y: 469
+    creationDate: null
+    oscarCount: 2
+    budget: 28315.129941745978
+    totalBoxOffice: 492578.91674700327
+    mpaaRating: 'PG_13'
+    director:
+      name: 'Person 89'
+      eyeColor: 'WHITE'
+      hairColor: 'WHITE'
+      location:
+        x: 472
+        y: 325
+        z: 17.017706350374716
+      passportID: 'P657841'
+      nationality: 'JAPAN'
+      isEditable: true
+    screenwriter:
+      name: 'Person 52'
+      eyeColor: 'BLACK'
+      hairColor: 'WHITE'
+      location:
+        x: 982
+        y: 613
+        z: 98.35696922643824
+      passportID: 'P064530'
+      nationality: 'INDIA'
+      isEditable: false
+    operator:
+      name: 'Person 79'
+      eyeColor: 'WHITE'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P991599'
+      nationality: 'JAPAN'
+      isEditable: true
+    length: 122
+    goldenPalmCount: 3
+    usaBoxOffice: null
+    genre: 'WESTERN'
+    isEditable: true
+  - id: null
+    name: 'Movie 19'
+    coordinates:
+      x: -100.41432274597366
+      y: 111
+    creationDate: null
+    oscarCount: 9
+    budget: 106425.01402506894
+    totalBoxOffice: 267449.19397590746
+    mpaaRating: 'NC_17'
+    director:
+      name: 'Person 49'
+      eyeColor: 'WHITE'
+      hairColor: 'RED'
+      location:
+        x: 357
+        y: 993
+        z: 63.17412523639315
+      passportID: 'P558235'
+      nationality: 'JAPAN'
+      isEditable: true
+    screenwriter:
+      name: 'Person 60'
+      eyeColor: 'WHITE'
+      hairColor: 'RED'
+      location:
+        x: 205
+        y: 488
+        z: 61.41084001008743
+      passportID: 'P067645'
+      nationality: 'INDIA'
+      isEditable: true
+    operator:
+      name: 'Person 68'
+      eyeColor: 'WHITE'
+      hairColor: 'WHITE'
+      location:
+        x: 572
+        y: 497
+        z: 70.10578465592152
+      passportID: 'P063370'
+      nationality: 'JAPAN'
+      isEditable: true
+    length: 97
+    goldenPalmCount: 4
+    usaBoxOffice: 144597
+    genre: 'WESTERN'
+    isEditable: true
+  - id: null
+    name: 'Movie 27'
+    coordinates:
+      x: 7.881970934324158
+      y: 755
+    creationDate: null
+    oscarCount: 4
+    budget: 109721.10606430292
+    totalBoxOffice: 468412.13197081076
+    mpaaRating: 'PG_13'
+    director:
+      name: 'Person 94'
+      eyeColor: 'BLACK'
+      hairColor: 'RED'
+      location:
+        x: 364
+        y: 348
+        z: 52.73451480068607
+      passportID: 'P879417'
+      nationality: 'RUSSIA'
+      isEditable: true
+    screenwriter:
+      name: 'Person 63'
+      eyeColor: 'BLACK'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P215764'
+      nationality: 'INDIA'
+      isEditable: false
+    operator:
+      name: 'Person 72'
+      eyeColor: 'BLACK'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P282779'
+      nationality: 'JAPAN'
+      isEditable: true
+    length: 227
+    goldenPalmCount: 5
+    usaBoxOffice: 174333
+    genre: 'ACTION'
+    isEditable: false
+  - id: null
+    name: 'Movie 2'
+    coordinates:
+      x: -753.5321840505601
+      y: 34
+    creationDate: null
+    oscarCount: 3
+    budget: 87311.03586770054
+    totalBoxOffice: 510467.2615027112
+    mpaaRating: 'NC_17'
+    director:
+      name: 'Person 75'
+      eyeColor: 'BLACK'
+      hairColor: 'RED'
+      location: null
+      passportID: 'P172623'
+      nationality: 'RUSSIA'
+      isEditable: true
+    screenwriter: null
+    operator:
+      name: 'Person 72'
+      eyeColor: 'BLACK'
+      hairColor: 'BLACK'
+      location:
+        x: 763
+        y: 169
+        z: 35.76460252295862
+      passportID: 'P037759'
+      nationality: 'JAPAN'
+      isEditable: false
+    length: 220
+    goldenPalmCount: 2
+    usaBoxOffice: 19549
+    genre: 'FANTASY'
+    isEditable: false
+  - id: null
+    name: 'Movie 71'
+    coordinates:
+      x: -649.9652900054318
+      y: 573
+    creationDate: null
+    oscarCount: 1
+    budget: 75275.8674233928
+    totalBoxOffice: 206974.36983720397
+    mpaaRating: 'G'
+    director:
+      name: 'Person 42'
+      eyeColor: 'WHITE'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P318096'
+      nationality: 'RUSSIA'
+      isEditable: true
+    screenwriter:
+      name: 'Person 84'
+      eyeColor: 'RED'
+      hairColor: 'RED'
+      location:
+        x: 840
+        y: 757
+        z: 22.32568010856093
+      passportID: 'P342015'
+      nationality: 'INDIA'
+      isEditable: true
+    operator:
+      name: 'Person 50'
+      eyeColor: 'BLACK'
+      hairColor: 'BLACK'
+      location:
+        x: 957
+        y: 753
+        z: 87.74201649267859
+      passportID: 'P230847'
+      nationality: 'RUSSIA'
+      isEditable: false
+    length: 172
+    goldenPalmCount: 1
+    usaBoxOffice: 156668
+    genre: 'FANTASY'
+    isEditable: true
+  - id: null
+    name: 'Movie 85'
+    coordinates:
+      x: -823.8210986534716
+      y: 243
+    creationDate: null
+    oscarCount: 1
+    budget: 79298.39579329078
+    totalBoxOffice: 424511.1992192138
+    mpaaRating: 'NC_17'
+    director:
+      name: 'Person 40'
+      eyeColor: 'BLACK'
+      hairColor: 'BLACK'
+      location:
+        x: 603
+        y: 538
+        z: 71.67618930407352
+      passportID: 'P543407'
+      nationality: 'RUSSIA'
+      isEditable: true
+    screenwriter:
+      name: 'Person 76'
+      eyeColor: 'BLACK'
+      hairColor: 'RED'
+      location: null
+      passportID: 'P930562'
+      nationality: 'JAPAN'
+      isEditable: true
+    operator:
+      name: 'Person 66'
+      eyeColor: 'WHITE'
+      hairColor: 'BLACK'
+      location:
+        x: 836
+        y: 338
+        z: 39.317343958048234
+      passportID: 'P409434'
+      nationality: 'INDIA'
+      isEditable: false
+    length: 227
+    goldenPalmCount: 3
+    usaBoxOffice: null
+    genre: 'ACTION'
+    isEditable: true
+  - id: null
+    name: 'Movie 44'
+    coordinates:
+      x: -381.5617505192731
+      y: 711
+    creationDate: null
+    oscarCount: 9
+    budget: 40886.55959854774
+    totalBoxOffice: 94970.13738646876
+    mpaaRating: 'PG_13'
+    director:
+      name: 'Person 12'
+      eyeColor: 'WHITE'
+      hairColor: 'RED'
+      location: null
+      passportID: 'P816806'
+      nationality: 'JAPAN'
+      isEditable: false
+    screenwriter: null
+    operator:
+      name: 'Person 51'
+      eyeColor: 'BLACK'
+      hairColor: 'BLACK'
+      location: null
+      passportID: 'P472406'
+      nationality: 'INDIA'
+      isEditable: true
+    length: 112
+    goldenPalmCount: 3
+    usaBoxOffice: 193767
+    genre: 'FANTASY'
+    isEditable: false
+  - id: null
+    name: 'Movie 59'
+    coordinates:
+      x: -307.2440687318666
+      y: 830
+    creationDate: null
+    oscarCount: 8
+    budget: 61481.50411289294
+    totalBoxOffice: 171805.37337592267
+    mpaaRating: 'PG_13'
+    director:
+      name: 'Person 0'
+      eyeColor: 'WHITE'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P361403'
+      nationality: 'INDIA'
+      isEditable: true
+    screenwriter:
+      name: 'Person 84'
+      eyeColor: 'BLACK'
+      hairColor: 'WHITE'
+      location:
+        x: 790
+        y: 743
+        z: 84.86140138800485
+      passportID: 'P048281'
+      nationality: 'INDIA'
+      isEditable: true
+    operator:
+      name: 'Person 55'
+      eyeColor: 'RED'
+      hairColor: 'WHITE'
+      location: null
+      passportID: 'P511787'
+      nationality: 'INDIA'
+      isEditable: false
+    length: 181
+    goldenPalmCount: 2
+    usaBoxOffice: 28608
+    genre: 'WESTERN'
+    isEditable: true
+  - id: null
+    name: 'Movie 16'
+    coordinates:
+      x: -766.965043933187
+      y: 228
+    creationDate: null
+    oscarCount: 4
+    budget: 19079.43400990565
+    totalBoxOffice: 321004.73996245314
+    mpaaRating: 'NC_17'
+    director:
+      name: 'Person 94'
+      eyeColor: 'BLACK'
+      hairColor: 'RED'
+      location:
+        x: 566
+        y: 901
+        z: 64.33129725253389
+      passportID: 'P457079'
+      nationality: 'JAPAN'
+      isEditable: true
+    screenwriter:
+      name: 'Person 34'
+      eyeColor: 'WHITE'
+      hairColor: 'WHITE'
+      location:
+        x: 489
+        y: 113
+        z: 52.37598111641517
+      passportID: 'P882484'
+      nationality: 'JAPAN'
+      isEditable: false
+    operator:
+      name: 'Person 67'
+      eyeColor: 'RED'
+      hairColor: 'RED'
+      location: null
+      passportID: 'P411332'
+      nationality: 'RUSSIA'
+      isEditable: false
+    length: 223
+    goldenPalmCount: 3
+    usaBoxOffice: 93790
+    genre: 'FANTASY'
+    isEditable: false
+  - id: null
+    name: 'Movie 84'
+    coordinates:
+      x: -367.9454665711527
+      y: 664
+    creationDate: null
+    oscarCount: 5
+    budget: 97137.36505556443
+    totalBoxOffice: 533991.5520373925
+    mpaaRating: 'NC_17'
+    director:
+      name: 'Person 29'
+      eyeColor: 'WHITE'
+      hairColor: 'RED'
+      location:
+        x: 355
+        y: 419
+        z: 84.07221803905095
+      passportID: 'P158650'
+      nationality: 'JAPAN'
+      isEditable: true
+    screenwriter:
+      name: 'Person 98'
+      eyeColor: 'RED'
+      hairColor: 'RED'
+      location:
+        x: 887
+        y: 642
+        z: 35.124676208287994
+      passportID: 'P727608'
+      nationality: 'INDIA'
+      isEditable: true
+    operator:
+      name: 'Person 40'
+      eyeColor: 'RED'
+      hairColor: 'RED'
+      location:
+        x: 396
+        y: 818
+        z: 43.26434860219794
+      passportID: 'P039555'
+      nationality: 'RUSSIA'
+      isEditable: false
+    length: 61
+    goldenPalmCount: 1
+    usaBoxOffice: null
+    genre: 'WESTERN'
+    isEditable: false

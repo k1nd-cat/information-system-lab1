@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan">
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <intProp name="ThreadGroup.num_threads">2</intProp>
+        <intProp name="ThreadGroup.ramp_time">0</intProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">10</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request">
+          <stringProp name="TestPlan.comments">create movie</stringProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.path">movie/create</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;id&quot;: null,&#xd;
+&quot;name&quot;: &quot;Movie 74&quot;,&#xd;
+&quot;coordinates&quot;: {&#xd;
+ &quot;x&quot;: -591.5704007035974,&#xd;
+ &quot;y&quot;: 60&#xd;
+},&#xd;
+&quot;creationDate&quot;: null,&#xd;
+&quot;oscarCount&quot;: 3,&#xd;
+&quot;budget&quot;: 107339.44770605394,&#xd;
+&quot;totalBoxOffice&quot;: 269233.71508312423,&#xd;
+&quot;mpaaRating&quot;: &quot;G&quot;,&#xd;
+&quot;director&quot;: {&#xd;
+ &quot;name&quot;: &quot;Person 3&quot;,&#xd;
+ &quot;eyeColor&quot;: &quot;RED&quot;,&#xd;
+ &quot;hairColor&quot;: &quot;RED&quot;,&#xd;
+ &quot;location&quot;: {&#xd;
+   &quot;x&quot;: 382,&#xd;
+   &quot;y&quot;: 531,&#xd;
+   &quot;z&quot;: 19.31080983490302&#xd;
+ },&#xd;
+ &quot;passportID&quot;: &quot;P516909&quot;,&#xd;
+ &quot;nationality&quot;: &quot;INDIA&quot;,&#xd;
+ &quot;isEditable&quot;: true&#xd;
+},&#xd;
+&quot;screenwriter&quot;: {&#xd;
+ &quot;name&quot;: &quot;Person 81&quot;,&#xd;
+ &quot;eyeColor&quot;: &quot;BLACK&quot;,&#xd;
+ &quot;hairColor&quot;: &quot;RED&quot;,&#xd;
+ &quot;location&quot;: {&#xd;
+   &quot;x&quot;: 904,&#xd;
+   &quot;y&quot;: 201,&#xd;
+   &quot;z&quot;: 58.9689597443534&#xd;
+ },&#xd;
+ &quot;passportID&quot;: &quot;P801826&quot;,&#xd;
+ &quot;nationality&quot;: &quot;JAPAN&quot;,&#xd;
+ &quot;isEditable&quot;: false&#xd;
+},&#xd;
+&quot;operator&quot;: {&#xd;
+ &quot;name&quot;: &quot;Person 22&quot;,&#xd;
+ &quot;eyeColor&quot;: &quot;WHITE&quot;,&#xd;
+ &quot;hairColor&quot;: &quot;BLACK&quot;,&#xd;
+ &quot;location&quot;: {&#xd;
+   &quot;x&quot;: 763,&#xd;
+   &quot;y&quot;: 172,&#xd;
+   &quot;z&quot;: 3.8546582028895604&#xd;
+ },&#xd;
+ &quot;passportID&quot;: &quot;P091108&quot;,&#xd;
+ &quot;nationality&quot;: &quot;RUSSIA&quot;,&#xd;
+ &quot;isEditable&quot;: true&#xd;
+},&#xd;
+&quot;length&quot;: 98,&#xd;
+&quot;goldenPalmCount&quot;: 3,&#xd;
+&quot;usaBoxOffice&quot;: 166513,&#xd;
+&quot;genre&quot;: &quot;FANTASY&quot;,&#xd;
+&quot;isEditable&quot;: false&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImlkIjoxMSwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MzY5NDM3MzQsImV4cCI6MTczNzA4NzczNH0.wUpWO6dGDhPW7DQAn1QcllKEgY9IXGdSr5Sgy_socto</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value"> application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request">
+          <stringProp name="TestPlan.comments">create movie</stringProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.path">movie/create</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;id&quot;: null,&#xd;
+&quot;name&quot;: &quot;Movie 74&quot;,&#xd;
+&quot;coordinates&quot;: {&#xd;
+ &quot;x&quot;: -591.5704007035974,&#xd;
+ &quot;y&quot;: 60&#xd;
+},&#xd;
+&quot;creationDate&quot;: null,&#xd;
+&quot;oscarCount&quot;: 3,&#xd;
+&quot;budget&quot;: 107339.44770605394,&#xd;
+&quot;totalBoxOffice&quot;: 269233.71508312423,&#xd;
+&quot;mpaaRating&quot;: &quot;G&quot;,&#xd;
+&quot;director&quot;: {&#xd;
+ &quot;name&quot;: &quot;Person 3&quot;,&#xd;
+ &quot;eyeColor&quot;: &quot;RED&quot;,&#xd;
+ &quot;hairColor&quot;: &quot;RED&quot;,&#xd;
+ &quot;location&quot;: {&#xd;
+   &quot;x&quot;: 382,&#xd;
+   &quot;y&quot;: 531,&#xd;
+   &quot;z&quot;: 19.31080983490302&#xd;
+ },&#xd;
+ &quot;passportID&quot;: &quot;P516909&quot;,&#xd;
+ &quot;nationality&quot;: &quot;INDIA&quot;,&#xd;
+ &quot;isEditable&quot;: true&#xd;
+},&#xd;
+&quot;screenwriter&quot;: {&#xd;
+ &quot;name&quot;: &quot;Person 81&quot;,&#xd;
+ &quot;eyeColor&quot;: &quot;BLACK&quot;,&#xd;
+ &quot;hairColor&quot;: &quot;RED&quot;,&#xd;
+ &quot;location&quot;: {&#xd;
+   &quot;x&quot;: 904,&#xd;
+   &quot;y&quot;: 201,&#xd;
+   &quot;z&quot;: 58.9689597443534&#xd;
+ },&#xd;
+ &quot;passportID&quot;: &quot;P801826&quot;,&#xd;
+ &quot;nationality&quot;: &quot;JAPAN&quot;,&#xd;
+ &quot;isEditable&quot;: false&#xd;
+},&#xd;
+&quot;operator&quot;: {&#xd;
+ &quot;name&quot;: &quot;Person 22&quot;,&#xd;
+ &quot;eyeColor&quot;: &quot;WHITE&quot;,&#xd;
+ &quot;hairColor&quot;: &quot;BLACK&quot;,&#xd;
+ &quot;location&quot;: {&#xd;
+   &quot;x&quot;: 763,&#xd;
+   &quot;y&quot;: 172,&#xd;
+   &quot;z&quot;: 3.8546582028895604&#xd;
+ },&#xd;
+ &quot;passportID&quot;: &quot;P091108&quot;,&#xd;
+ &quot;nationality&quot;: &quot;RUSSIA&quot;,&#xd;
+ &quot;isEditable&quot;: true&#xd;
+},&#xd;
+&quot;length&quot;: 98,&#xd;
+&quot;goldenPalmCount&quot;: 3,&#xd;
+&quot;usaBoxOffice&quot;: 166513,&#xd;
+&quot;genre&quot;: &quot;FANTASY&quot;,&#xd;
+&quot;isEditable&quot;: false&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImlkIjoxMSwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MzY5NDM3MzQsImV4cCI6MTczNzA4NzczNH0.wUpWO6dGDhPW7DQAn1QcllKEgY9IXGdSr5Sgy_socto</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value"> application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="TestPlan.comments">import files and update humans</stringProp>
+        <intProp name="ThreadGroup.num_threads">2</intProp>
+        <intProp name="ThreadGroup.ramp_time">0</intProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">10</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request">
+          <stringProp name="TestPlan.comments">update movie</stringProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.path">movie/update</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;id&quot;: 4,&#xd;
+&quot;name&quot;: &quot;Movie updated 1&quot;,&#xd;
+&quot;coordinates&quot;: {&#xd;
+ &quot;x&quot;: -591.5704007035974,&#xd;
+ &quot;y&quot;: 60&#xd;
+},&#xd;
+&quot;creationDate&quot;: null,&#xd;
+&quot;oscarCount&quot;: 3,&#xd;
+&quot;budget&quot;: 107339.44770605394,&#xd;
+&quot;totalBoxOffice&quot;: 269233.71508312423,&#xd;
+&quot;mpaaRating&quot;: &quot;G&quot;,&#xd;
+&quot;director&quot;: {&#xd;
+ &quot;name&quot;: &quot;Person 3&quot;,&#xd;
+ &quot;eyeColor&quot;: &quot;RED&quot;,&#xd;
+ &quot;hairColor&quot;: &quot;RED&quot;,&#xd;
+ &quot;location&quot;: {&#xd;
+   &quot;x&quot;: 382,&#xd;
+   &quot;y&quot;: 531,&#xd;
+   &quot;z&quot;: 19.31080983490302&#xd;
+ },&#xd;
+ &quot;passportID&quot;: &quot;P516909&quot;,&#xd;
+ &quot;nationality&quot;: &quot;INDIA&quot;,&#xd;
+ &quot;isEditable&quot;: true&#xd;
+},&#xd;
+&quot;screenwriter&quot;: {&#xd;
+ &quot;name&quot;: &quot;Person 81&quot;,&#xd;
+ &quot;eyeColor&quot;: &quot;BLACK&quot;,&#xd;
+ &quot;hairColor&quot;: &quot;RED&quot;,&#xd;
+ &quot;location&quot;: {&#xd;
+   &quot;x&quot;: 904,&#xd;
+   &quot;y&quot;: 201,&#xd;
+   &quot;z&quot;: 58.9689597443534&#xd;
+ },&#xd;
+ &quot;passportID&quot;: &quot;P801826&quot;,&#xd;
+ &quot;nationality&quot;: &quot;JAPAN&quot;,&#xd;
+ &quot;isEditable&quot;: false&#xd;
+},&#xd;
+&quot;operator&quot;: {&#xd;
+ &quot;name&quot;: &quot;Person 22&quot;,&#xd;
+ &quot;eyeColor&quot;: &quot;WHITE&quot;,&#xd;
+ &quot;hairColor&quot;: &quot;BLACK&quot;,&#xd;
+ &quot;location&quot;: {&#xd;
+   &quot;x&quot;: 763,&#xd;
+   &quot;y&quot;: 172,&#xd;
+   &quot;z&quot;: 3.8546582028895604&#xd;
+ },&#xd;
+ &quot;passportID&quot;: &quot;P091108&quot;,&#xd;
+ &quot;nationality&quot;: &quot;RUSSIA&quot;,&#xd;
+ &quot;isEditable&quot;: true&#xd;
+},&#xd;
+&quot;length&quot;: 98,&#xd;
+&quot;goldenPalmCount&quot;: 3,&#xd;
+&quot;usaBoxOffice&quot;: 166513,&#xd;
+&quot;genre&quot;: &quot;FANTASY&quot;,&#xd;
+&quot;isEditable&quot;: false&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImlkIjoxMSwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MzY5NDM3MzQsImV4cCI6MTczNzA4NzczNH0.wUpWO6dGDhPW7DQAn1QcllKEgY9IXGdSr5Sgy_socto</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value"> application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request">
+          <stringProp name="TestPlan.comments">create human</stringProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.path">backend-1.0-SNAPSHOT/human/update</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;id&quot;: 2,&#xd;
+&quot;name&quot;: &quot;Movie updated 2&quot;,&#xd;
+&quot;coordinates&quot;: {&#xd;
+ &quot;x&quot;: -591.5704007035974,&#xd;
+ &quot;y&quot;: 60&#xd;
+},&#xd;
+&quot;creationDate&quot;: null,&#xd;
+&quot;oscarCount&quot;: 3,&#xd;
+&quot;budget&quot;: 107339.44770605394,&#xd;
+&quot;totalBoxOffice&quot;: 269233.71508312423,&#xd;
+&quot;mpaaRating&quot;: &quot;G&quot;,&#xd;
+&quot;director&quot;: {&#xd;
+ &quot;name&quot;: &quot;Person 3&quot;,&#xd;
+ &quot;eyeColor&quot;: &quot;RED&quot;,&#xd;
+ &quot;hairColor&quot;: &quot;RED&quot;,&#xd;
+ &quot;location&quot;: {&#xd;
+   &quot;x&quot;: 382,&#xd;
+   &quot;y&quot;: 531,&#xd;
+   &quot;z&quot;: 19.31080983490302&#xd;
+ },&#xd;
+ &quot;passportID&quot;: &quot;P516909&quot;,&#xd;
+ &quot;nationality&quot;: &quot;INDIA&quot;,&#xd;
+ &quot;isEditable&quot;: true&#xd;
+},&#xd;
+&quot;screenwriter&quot;: {&#xd;
+ &quot;name&quot;: &quot;Person 81&quot;,&#xd;
+ &quot;eyeColor&quot;: &quot;BLACK&quot;,&#xd;
+ &quot;hairColor&quot;: &quot;RED&quot;,&#xd;
+ &quot;location&quot;: {&#xd;
+   &quot;x&quot;: 904,&#xd;
+   &quot;y&quot;: 201,&#xd;
+   &quot;z&quot;: 58.9689597443534&#xd;
+ },&#xd;
+ &quot;passportID&quot;: &quot;P801826&quot;,&#xd;
+ &quot;nationality&quot;: &quot;JAPAN&quot;,&#xd;
+ &quot;isEditable&quot;: false&#xd;
+},&#xd;
+&quot;operator&quot;: {&#xd;
+ &quot;name&quot;: &quot;Person 22&quot;,&#xd;
+ &quot;eyeColor&quot;: &quot;WHITE&quot;,&#xd;
+ &quot;hairColor&quot;: &quot;BLACK&quot;,&#xd;
+ &quot;location&quot;: {&#xd;
+   &quot;x&quot;: 763,&#xd;
+   &quot;y&quot;: 172,&#xd;
+   &quot;z&quot;: 3.8546582028895604&#xd;
+ },&#xd;
+ &quot;passportID&quot;: &quot;P091108&quot;,&#xd;
+ &quot;nationality&quot;: &quot;RUSSIA&quot;,&#xd;
+ &quot;isEditable&quot;: true&#xd;
+},&#xd;
+&quot;length&quot;: 98,&#xd;
+&quot;goldenPalmCount&quot;: 3,&#xd;
+&quot;usaBoxOffice&quot;: 166513,&#xd;
+&quot;genre&quot;: &quot;FANTASY&quot;,&#xd;
+&quot;isEditable&quot;: false&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImlkIjoxMSwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MzY5NDM3MzQsImV4cCI6MTczNzA4NzczNH0.wUpWO6dGDhPW7DQAn1QcllKEgY9IXGdSr5Sgy_socto</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value"> application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
+        <intProp name="ThreadGroup.num_threads">2</intProp>
+        <intProp name="ThreadGroup.ramp_time">0</intProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">10</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request">
+          <stringProp name="TestPlan.comments">upload file</stringProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.path">file/upload</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="C:\itmo\information-system-lab1\file_generator\movie2.json" elementType="HTTPFileArg">
+                <stringProp name="File.mimetype">application/json</stringProp>
+                <stringProp name="File.path">C:\itmo\information-system-lab1\file_generator\movie2.json</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="Authorization" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImlkIjoxMSwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MzY5NDM3MzQsImV4cCI6MTczNzA4NzczNH0.wUpWO6dGDhPW7DQAn1QcllKEgY9IXGdSr5Sgy_socto</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">Authorization</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImlkIjoxMSwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MzY5NDM3MzQsImV4cCI6MTczNzA4NzczNH0.wUpWO6dGDhPW7DQAn1QcllKEgY9IXGdSr5Sgy_socto</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">multipart/form-data</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request">
+          <stringProp name="TestPlan.comments">upload file</stringProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.path">file/upload</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="C:\itmo\information-system-lab1\file_generator\movies1.json" elementType="HTTPFileArg">
+                <stringProp name="File.mimetype">application/json</stringProp>
+                <stringProp name="File.path">C:\itmo\information-system-lab1\file_generator\movies1.json</stringProp>
+                <stringProp name="File.paramname">file</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="Authorization" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImlkIjoxMSwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MzY5NDM3MzQsImV4cCI6MTczNzA4NzczNH0.wUpWO6dGDhPW7DQAn1QcllKEgY9IXGdSr5Sgy_socto</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">Authorization</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImlkIjoxMSwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MzY5NDM3MzQsImV4cCI6MTczNzA4NzczNH0.wUpWO6dGDhPW7DQAn1QcllKEgY9IXGdSr5Sgy_socto</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">multipart/form-data</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <intProp name="ThreadGroup.num_threads">2</intProp>
+        <intProp name="ThreadGroup.ramp_time">0</intProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">10</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request">
+          <stringProp name="TestPlan.comments">delete movie</stringProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.path">movie/delete</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;id&quot;: 2,&#xd;
+  &quot;name&quot;: &quot;Inception&quot;,&#xd;
+  &quot;coordinates&quot;: {&#xd;
+    &quot;x&quot;: 34.67,&#xd;
+    &quot;y&quot;: 20&#xd;
+  },&#xd;
+  &quot;creationDate&quot;: null,&#xd;
+  &quot;oscarCount&quot;: 4,&#xd;
+  &quot;budget&quot;: 160000000.0,&#xd;
+  &quot;totalBoxOffice&quot;: 829895144.0,&#xd;
+  &quot;mpaaRating&quot;: &quot;PG_13&quot;,&#xd;
+  &quot;director&quot;: {&#xd;
+    &quot;passportID&quot;: &quot;123456789&quot;,&#xd;
+    &quot;name&quot;: &quot;Christopher Nolan&quot;,&#xd;
+    &quot;eyeColor&quot;: &quot;BLACK&quot;,&#xd;
+    &quot;hairColor&quot;: &quot;WHITE&quot;,&#xd;
+    &quot;location&quot;: {&#xd;
+      &quot;x&quot;: 10,&#xd;
+      &quot;y&quot;: 15,&#xd;
+      &quot;z&quot;: 5.5&#xd;
+    },&#xd;
+    &quot;nationality&quot;: &quot;RUSSIA&quot;&#xd;
+  },&#xd;
+  &quot;screenwriter&quot;: {&#xd;
+    &quot;passportID&quot;: null,&#xd;
+    &quot;name&quot;: &quot;Jonathan Nolan&quot;,&#xd;
+    &quot;eyeColor&quot;: &quot;WHITE&quot;,&#xd;
+    &quot;hairColor&quot;: &quot;BLACK&quot;,&#xd;
+    &quot;location&quot;: {&#xd;
+      &quot;x&quot;: 20,&#xd;
+      &quot;y&quot;: 25,&#xd;
+      &quot;z&quot;: 10.5&#xd;
+    },&#xd;
+    &quot;nationality&quot;: &quot;RUSSIA&quot;&#xd;
+  },&#xd;
+  &quot;operator&quot;: {&#xd;
+    &quot;passportID&quot;: &quot;456123789&quot;,&#xd;
+    &quot;name&quot;: null,&#xd;
+    &quot;eyeColor&quot;: &quot;RED&quot;,&#xd;
+    &quot;hairColor&quot;: &quot;BLACK&quot;,&#xd;
+    &quot;location&quot;: {&#xd;
+      &quot;x&quot;: 30,&#xd;
+      &quot;y&quot;: 35,&#xd;
+      &quot;z&quot;: 15.5&#xd;
+    },&#xd;
+    &quot;nationality&quot;: &quot;INDIA&quot;&#xd;
+  },&#xd;
+  &quot;length&quot;: 148,&#xd;
+  &quot;goldenPalmCount&quot;: 2,&#xd;
+  &quot;usaBoxOffice&quot;: 292576195,&#xd;
+  &quot;genre&quot;: &quot;ACTION&quot;,&#xd;
+  &quot;isEditable&quot;: true,&#xd;
+  &quot;creatorName&quot;: &quot;admin&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImlkIjoxMSwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MzY5NDM3MzQsImV4cCI6MTczNzA4NzczNH0.wUpWO6dGDhPW7DQAn1QcllKEgY9IXGdSr5Sgy_socto</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value"> application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request">
+          <stringProp name="TestPlan.comments">delete movie</stringProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.path">movie/delete</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;id&quot;: 2,&#xd;
+  &quot;name&quot;: &quot;Inception&quot;,&#xd;
+  &quot;coordinates&quot;: {&#xd;
+    &quot;x&quot;: 34.67,&#xd;
+    &quot;y&quot;: 20&#xd;
+  },&#xd;
+  &quot;creationDate&quot;: null,&#xd;
+  &quot;oscarCount&quot;: 4,&#xd;
+  &quot;budget&quot;: 160000000.0,&#xd;
+  &quot;totalBoxOffice&quot;: 829895144.0,&#xd;
+  &quot;mpaaRating&quot;: &quot;PG_13&quot;,&#xd;
+  &quot;director&quot;: {&#xd;
+    &quot;passportID&quot;: &quot;123456789&quot;,&#xd;
+    &quot;name&quot;: &quot;Christopher Nolan&quot;,&#xd;
+    &quot;eyeColor&quot;: &quot;BLACK&quot;,&#xd;
+    &quot;hairColor&quot;: &quot;WHITE&quot;,&#xd;
+    &quot;location&quot;: {&#xd;
+      &quot;x&quot;: 10,&#xd;
+      &quot;y&quot;: 15,&#xd;
+      &quot;z&quot;: 5.5&#xd;
+    },&#xd;
+    &quot;nationality&quot;: &quot;RUSSIA&quot;&#xd;
+  },&#xd;
+  &quot;screenwriter&quot;: {&#xd;
+    &quot;passportID&quot;: null,&#xd;
+    &quot;name&quot;: &quot;Jonathan Nolan&quot;,&#xd;
+    &quot;eyeColor&quot;: &quot;WHITE&quot;,&#xd;
+    &quot;hairColor&quot;: &quot;BLACK&quot;,&#xd;
+    &quot;location&quot;: {&#xd;
+      &quot;x&quot;: 20,&#xd;
+      &quot;y&quot;: 25,&#xd;
+      &quot;z&quot;: 10.5&#xd;
+    },&#xd;
+    &quot;nationality&quot;: &quot;RUSSIA&quot;&#xd;
+  },&#xd;
+  &quot;operator&quot;: {&#xd;
+    &quot;passportID&quot;: &quot;456123789&quot;,&#xd;
+    &quot;name&quot;: null,&#xd;
+    &quot;eyeColor&quot;: &quot;RED&quot;,&#xd;
+    &quot;hairColor&quot;: &quot;BLACK&quot;,&#xd;
+    &quot;location&quot;: {&#xd;
+      &quot;x&quot;: 30,&#xd;
+      &quot;y&quot;: 35,&#xd;
+      &quot;z&quot;: 15.5&#xd;
+    },&#xd;
+    &quot;nationality&quot;: &quot;INDIA&quot;&#xd;
+  },&#xd;
+  &quot;length&quot;: 148,&#xd;
+  &quot;goldenPalmCount&quot;: 2,&#xd;
+  &quot;usaBoxOffice&quot;: 292576195,&#xd;
+  &quot;genre&quot;: &quot;ACTION&quot;,&#xd;
+  &quot;isEditable&quot;: true,&#xd;
+  &quot;creatorName&quot;: &quot;admin&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9BRE1JTiIsImlkIjoxMSwic3ViIjoiYWRtaW4iLCJpYXQiOjE3MzY5NDM3MzQsImV4cCI6MTczNzA4NzczNH0.wUpWO6dGDhPW7DQAn1QcllKEgY9IXGdSr5Sgy_socto</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

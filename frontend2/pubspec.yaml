@@ -21,6 +21,7 @@ dependencies:
   stomp_dart_client: ^2.1.0
   intl: ^0.20.1
   file_picker: ^8.1.7
+  universal_html: ^2.2.4
 
 dev_dependencies:
   flutter_test:

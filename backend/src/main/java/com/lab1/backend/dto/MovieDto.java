@@ -8,9 +8,11 @@ import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor
 public class MovieDto {
     private Long id;
@@ -70,6 +72,7 @@ public class MovieDto {
     @Data
     @Builder
     @AllArgsConstructor
+    @NoArgsConstructor
     public static class Coordinates {
 
         @NotNull(message = "Значение не может отсутствовать")

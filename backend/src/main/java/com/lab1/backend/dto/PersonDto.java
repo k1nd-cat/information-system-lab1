@@ -7,9 +7,11 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor
 public class PersonDto {
 
@@ -39,6 +41,7 @@ public class PersonDto {
 
     @Data
     @Builder
+    @NoArgsConstructor
     @AllArgsConstructor
     public static class Location {
         @NotNull(message = "Значение не может отсутствовать")

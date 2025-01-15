@@ -35,6 +35,7 @@ public class MovieService {
         final var user = userService.getCurrentUser();
         final var movie = Movie.fromDto(request, user);
         safetyUpdatePersons(request, movie);
+        if (movie.getLength() > 200) throw new RuntimeException("Длина фильма не может быть больше 200");
         repository.save(movie);
 
         webSocketService.sendChangedMoviesNotification("Фильм обновлён");
@@ -49,6 +50,7 @@ public class MovieService {
         }
         final var movie = Movie.fromDto(request, movieFromDb);
         safetyUpdatePersons(request, movie);
+        if (movie.getLength() > 200) throw new RuntimeException("Длина фильма не может быть больше 200");
         repository.save(movie);
         var updates = Updates.builder()
                     .user(user)

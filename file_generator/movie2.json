@@ -1,0 +1,2264 @@
+[
+  {
+    "id": null,
+    "name": "Movie 31",
+    "coordinates": {
+      "x": -45.990385030192215,
+      "y": 411
+    },
+    "creationDate": null,
+    "oscarCount": 10,
+    "budget": 82322.24152963221,
+    "totalBoxOffice": 130463.95526449246,
+    "mpaaRating": "PG_13",
+    "director": {
+      "name": "Person 4",
+      "eyeColor": "BLACK",
+      "hairColor": "RED",
+      "location": {
+        "x": 279,
+        "y": 233,
+        "z": 96.1931831072439
+      },
+      "passportID": "P078341",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "screenwriter": {
+      "name": "Person 86",
+      "eyeColor": "WHITE",
+      "hairColor": "RED",
+      "location": null,
+      "passportID": "P482600",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "operator": {
+      "name": "Person 42",
+      "eyeColor": "WHITE",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P932733",
+      "nationality": "JAPAN",
+      "isEditable": false
+    },
+    "length": 177,
+    "goldenPalmCount": 3,
+    "usaBoxOffice": null,
+    "genre": "WESTERN",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 15",
+    "coordinates": {
+      "x": -679.6984488097099,
+      "y": 568
+    },
+    "creationDate": null,
+    "oscarCount": 5,
+    "budget": 99613.62212915556,
+    "totalBoxOffice": 456538.3369435666,
+    "mpaaRating": "PG_13",
+    "director": {
+      "name": "Person 9",
+      "eyeColor": "RED",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 423,
+        "y": 574,
+        "z": 97.21414437508001
+      },
+      "passportID": "P095403",
+      "nationality": "RUSSIA",
+      "isEditable": true
+    },
+    "screenwriter": {
+      "name": "Person 40",
+      "eyeColor": "RED",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P425524",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "operator": {
+      "name": "Person 25",
+      "eyeColor": "RED",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P116219",
+      "nationality": "JAPAN",
+      "isEditable": false
+    },
+    "length": 103,
+    "goldenPalmCount": 1,
+    "usaBoxOffice": 68660,
+    "genre": "ACTION",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 55",
+    "coordinates": {
+      "x": -726.4208431817852,
+      "y": 351
+    },
+    "creationDate": null,
+    "oscarCount": 5,
+    "budget": 61563.68237962069,
+    "totalBoxOffice": 176789.85199704114,
+    "mpaaRating": "G",
+    "director": {
+      "name": "Person 4",
+      "eyeColor": "WHITE",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 454,
+        "y": 875,
+        "z": 78.02179664544016
+      },
+      "passportID": "P566118",
+      "nationality": "INDIA",
+      "isEditable": false
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 54",
+      "eyeColor": "WHITE",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 546,
+        "y": 44,
+        "z": 63.45078588779531
+      },
+      "passportID": "P368726",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "length": 67,
+    "goldenPalmCount": 2,
+    "usaBoxOffice": null,
+    "genre": "FANTASY",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 6",
+    "coordinates": {
+      "x": -721.1025471379814,
+      "y": 955
+    },
+    "creationDate": null,
+    "oscarCount": 9,
+    "budget": 99052.23162826552,
+    "totalBoxOffice": 285658.82356691716,
+    "mpaaRating": "NC_17",
+    "director": {
+      "name": "Person 52",
+      "eyeColor": "RED",
+      "hairColor": "WHITE",
+      "location": null,
+      "passportID": "P240835",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 24",
+      "eyeColor": "WHITE",
+      "hairColor": "WHITE",
+      "location": null,
+      "passportID": "P121750",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "length": 84,
+    "goldenPalmCount": 2,
+    "usaBoxOffice": null,
+    "genre": "FANTASY",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 99",
+    "coordinates": {
+      "x": -711.5403457469971,
+      "y": 377
+    },
+    "creationDate": null,
+    "oscarCount": 5,
+    "budget": 44529.86543955238,
+    "totalBoxOffice": 431876.53634130734,
+    "mpaaRating": "NC_17",
+    "director": {
+      "name": "Person 97",
+      "eyeColor": "WHITE",
+      "hairColor": "WHITE",
+      "location": null,
+      "passportID": "P244368",
+      "nationality": "JAPAN",
+      "isEditable": false
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 38",
+      "eyeColor": "RED",
+      "hairColor": "WHITE",
+      "location": null,
+      "passportID": "P242553",
+      "nationality": "JAPAN",
+      "isEditable": true
+    },
+    "length": 150,
+    "goldenPalmCount": 3,
+    "usaBoxOffice": 125644,
+    "genre": "FANTASY",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 81",
+    "coordinates": {
+      "x": -111.01375501066968,
+      "y": 670
+    },
+    "creationDate": null,
+    "oscarCount": 6,
+    "budget": 38049.452566667926,
+    "totalBoxOffice": 130271.75723342961,
+    "mpaaRating": "NC_17",
+    "director": {
+      "name": "Person 27",
+      "eyeColor": "RED",
+      "hairColor": "BLACK",
+      "location": {
+        "x": 170,
+        "y": 770,
+        "z": 14.66794012360787
+      },
+      "passportID": "P531369",
+      "nationality": "RUSSIA",
+      "isEditable": true
+    },
+    "screenwriter": {
+      "name": "Person 88",
+      "eyeColor": "BLACK",
+      "hairColor": "RED",
+      "location": null,
+      "passportID": "P636651",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "operator": {
+      "name": "Person 35",
+      "eyeColor": "BLACK",
+      "hairColor": "RED",
+      "location": {
+        "x": 57,
+        "y": 928,
+        "z": 58.89230016005621
+      },
+      "passportID": "P861790",
+      "nationality": "RUSSIA",
+      "isEditable": true
+    },
+    "length": 135,
+    "goldenPalmCount": 1,
+    "usaBoxOffice": 77814,
+    "genre": "WESTERN",
+    "isEditable": false
+  },
+  {
+    "id": null,
+    "name": "Movie 86",
+    "coordinates": {
+      "x": -339.94088135740094,
+      "y": 962
+    },
+    "creationDate": null,
+    "oscarCount": 10,
+    "budget": 106615.59668909463,
+    "totalBoxOffice": 321014.58417937474,
+    "mpaaRating": "NC_17",
+    "director": {
+      "name": "Person 48",
+      "eyeColor": "BLACK",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P192093",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 9",
+      "eyeColor": "RED",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P935174",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "length": 111,
+    "goldenPalmCount": 2,
+    "usaBoxOffice": 134638,
+    "genre": "ACTION",
+    "isEditable": false
+  },
+  {
+    "id": null,
+    "name": "Movie 90",
+    "coordinates": {
+      "x": -293.99248318388527,
+      "y": 865
+    },
+    "creationDate": null,
+    "oscarCount": 5,
+    "budget": 104921.23016264674,
+    "totalBoxOffice": 73485.92925067799,
+    "mpaaRating": "NC_17",
+    "director": {
+      "name": "Person 59",
+      "eyeColor": "BLACK",
+      "hairColor": "BLACK",
+      "location": {
+        "x": 20,
+        "y": 952,
+        "z": 21.92859774323065
+      },
+      "passportID": "P525263",
+      "nationality": "JAPAN",
+      "isEditable": false
+    },
+    "screenwriter": {
+      "name": "Person 78",
+      "eyeColor": "BLACK",
+      "hairColor": "BLACK",
+      "location": {
+        "x": 748,
+        "y": 10,
+        "z": 37.317266299808274
+      },
+      "passportID": "P141182",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "operator": {
+      "name": "Person 69",
+      "eyeColor": "RED",
+      "hairColor": "WHITE",
+      "location": null,
+      "passportID": "P508813",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "length": 190,
+    "goldenPalmCount": 5,
+    "usaBoxOffice": null,
+    "genre": "ACTION",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 6",
+    "coordinates": {
+      "x": -516.0914385794888,
+      "y": 127
+    },
+    "creationDate": null,
+    "oscarCount": 2,
+    "budget": 94455.2328365585,
+    "totalBoxOffice": 145833.33786077614,
+    "mpaaRating": "G",
+    "director": {
+      "name": "Person 98",
+      "eyeColor": "WHITE",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 824,
+        "y": 712,
+        "z": 96.84662341608542
+      },
+      "passportID": "P689124",
+      "nationality": "INDIA",
+      "isEditable": false
+    },
+    "screenwriter": {
+      "name": "Person 73",
+      "eyeColor": "WHITE",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P625105",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "operator": {
+      "name": "Person 9",
+      "eyeColor": "RED",
+      "hairColor": "WHITE",
+      "location": null,
+      "passportID": "P382541",
+      "nationality": "INDIA",
+      "isEditable": false
+    },
+    "length": 82,
+    "goldenPalmCount": 4,
+    "usaBoxOffice": null,
+    "genre": "ACTION",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 1",
+    "coordinates": {
+      "x": -280.0382587652291,
+      "y": 322
+    },
+    "creationDate": null,
+    "oscarCount": 9,
+    "budget": 49901.855810144785,
+    "totalBoxOffice": 208024.31640701863,
+    "mpaaRating": "NC_17",
+    "director": {
+      "name": "Person 90",
+      "eyeColor": "BLACK",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P604847",
+      "nationality": "RUSSIA",
+      "isEditable": true
+    },
+    "screenwriter": {
+      "name": "Person 25",
+      "eyeColor": "WHITE",
+      "hairColor": "RED",
+      "location": null,
+      "passportID": "P793069",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "operator": {
+      "name": "Person 7",
+      "eyeColor": "WHITE",
+      "hairColor": "RED",
+      "location": null,
+      "passportID": "P538858",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "length": 162,
+    "goldenPalmCount": 5,
+    "usaBoxOffice": 87575,
+    "genre": "WESTERN",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 88",
+    "coordinates": {
+      "x": 34.371572548712834,
+      "y": 33
+    },
+    "creationDate": null,
+    "oscarCount": 3,
+    "budget": 90184.08183295769,
+    "totalBoxOffice": 204635.41174908364,
+    "mpaaRating": "G",
+    "director": {
+      "name": "Person 83",
+      "eyeColor": "BLACK",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P574747",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 12",
+      "eyeColor": "RED",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P884262",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "length": 89,
+    "goldenPalmCount": 1,
+    "usaBoxOffice": 19641,
+    "genre": "WESTERN",
+    "isEditable": false
+  },
+  {
+    "id": null,
+    "name": "Movie 42",
+    "coordinates": {
+      "x": -802.7598451515562,
+      "y": 5
+    },
+    "creationDate": null,
+    "oscarCount": 6,
+    "budget": 83592.85695724975,
+    "totalBoxOffice": 63463.05479495863,
+    "mpaaRating": "NC_17",
+    "director": {
+      "name": "Person 24",
+      "eyeColor": "WHITE",
+      "hairColor": "RED",
+      "location": null,
+      "passportID": "P736223",
+      "nationality": "INDIA",
+      "isEditable": false
+    },
+    "screenwriter": {
+      "name": "Person 26",
+      "eyeColor": "RED",
+      "hairColor": "RED",
+      "location": {
+        "x": 559,
+        "y": 195,
+        "z": 56.80994810968423
+      },
+      "passportID": "P296911",
+      "nationality": "RUSSIA",
+      "isEditable": true
+    },
+    "operator": {
+      "name": "Person 38",
+      "eyeColor": "WHITE",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P792359",
+      "nationality": "JAPAN",
+      "isEditable": true
+    },
+    "length": 190,
+    "goldenPalmCount": 4,
+    "usaBoxOffice": null,
+    "genre": "FANTASY",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 59",
+    "coordinates": {
+      "x": -347.6256642225361,
+      "y": 438
+    },
+    "creationDate": null,
+    "oscarCount": 2,
+    "budget": 59593.39776372553,
+    "totalBoxOffice": 111547.09754999871,
+    "mpaaRating": "G",
+    "director": {
+      "name": "Person 20",
+      "eyeColor": "WHITE",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P241468",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "screenwriter": {
+      "name": "Person 55",
+      "eyeColor": "RED",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P617129",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "operator": {
+      "name": "Person 17",
+      "eyeColor": "WHITE",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P305430",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "length": 114,
+    "goldenPalmCount": 2,
+    "usaBoxOffice": null,
+    "genre": "FANTASY",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 16",
+    "coordinates": {
+      "x": -262.35463106692464,
+      "y": 497
+    },
+    "creationDate": null,
+    "oscarCount": 8,
+    "budget": 45164.368897472275,
+    "totalBoxOffice": 545511.7011565929,
+    "mpaaRating": "PG_13",
+    "director": {
+      "name": "Person 89",
+      "eyeColor": "WHITE",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 703,
+        "y": 98,
+        "z": 47.28483423295774
+      },
+      "passportID": "P238711",
+      "nationality": "RUSSIA",
+      "isEditable": true
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 92",
+      "eyeColor": "BLACK",
+      "hairColor": "BLACK",
+      "location": {
+        "x": 142,
+        "y": 58,
+        "z": 17.985460985437708
+      },
+      "passportID": "P264308",
+      "nationality": "RUSSIA",
+      "isEditable": true
+    },
+    "length": 196,
+    "goldenPalmCount": 1,
+    "usaBoxOffice": 40502,
+    "genre": "ACTION",
+    "isEditable": false
+  },
+  {
+    "id": null,
+    "name": "Movie 6",
+    "coordinates": {
+      "x": -380.97707409863756,
+      "y": 23
+    },
+    "creationDate": null,
+    "oscarCount": 3,
+    "budget": 86303.21328015965,
+    "totalBoxOffice": 471460.2674837727,
+    "mpaaRating": "PG_13",
+    "director": {
+      "name": "Person 2",
+      "eyeColor": "BLACK",
+      "hairColor": "RED",
+      "location": null,
+      "passportID": "P066420",
+      "nationality": "INDIA",
+      "isEditable": false
+    },
+    "screenwriter": {
+      "name": "Person 94",
+      "eyeColor": "RED",
+      "hairColor": "RED",
+      "location": {
+        "x": 927,
+        "y": 997,
+        "z": 29.054358406626445
+      },
+      "passportID": "P699018",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "operator": {
+      "name": "Person 91",
+      "eyeColor": "WHITE",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P978721",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "length": 200,
+    "goldenPalmCount": 4,
+    "usaBoxOffice": null,
+    "genre": "ACTION",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 39",
+    "coordinates": {
+      "x": -63.75907137937895,
+      "y": 933
+    },
+    "creationDate": null,
+    "oscarCount": 7,
+    "budget": 109554.55782137495,
+    "totalBoxOffice": 489474.83399555954,
+    "mpaaRating": "G",
+    "director": {
+      "name": "Person 12",
+      "eyeColor": "WHITE",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 63,
+        "y": 539,
+        "z": 46.739953651177046
+      },
+      "passportID": "P641688",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "screenwriter": {
+      "name": "Person 72",
+      "eyeColor": "RED",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 475,
+        "y": 262,
+        "z": 62.488394534028934
+      },
+      "passportID": "P049309",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "operator": {
+      "name": "Person 35",
+      "eyeColor": "BLACK",
+      "hairColor": "RED",
+      "location": {
+        "x": 333,
+        "y": 484,
+        "z": 70.03593182749555
+      },
+      "passportID": "P233921",
+      "nationality": "JAPAN",
+      "isEditable": false
+    },
+    "length": 137,
+    "goldenPalmCount": 5,
+    "usaBoxOffice": null,
+    "genre": "WESTERN",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 70",
+    "coordinates": {
+      "x": -697.3524213857556,
+      "y": 120
+    },
+    "creationDate": null,
+    "oscarCount": 6,
+    "budget": 15132.357213708037,
+    "totalBoxOffice": 378251.89626636927,
+    "mpaaRating": "NC_17",
+    "director": {
+      "name": "Person 70",
+      "eyeColor": "BLACK",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P392894",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "screenwriter": {
+      "name": "Person 59",
+      "eyeColor": "BLACK",
+      "hairColor": "RED",
+      "location": {
+        "x": 435,
+        "y": 117,
+        "z": 98.78201410574698
+      },
+      "passportID": "P154040",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "operator": {
+      "name": "Person 45",
+      "eyeColor": "RED",
+      "hairColor": "WHITE",
+      "location": null,
+      "passportID": "P325233",
+      "nationality": "RUSSIA",
+      "isEditable": true
+    },
+    "length": 162,
+    "goldenPalmCount": 1,
+    "usaBoxOffice": 50869,
+    "genre": "WESTERN",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 59",
+    "coordinates": {
+      "x": -11.943148586237953,
+      "y": 364
+    },
+    "creationDate": null,
+    "oscarCount": 5,
+    "budget": 33737.4784067757,
+    "totalBoxOffice": 124899.01221276107,
+    "mpaaRating": "PG_13",
+    "director": {
+      "name": "Person 91",
+      "eyeColor": "RED",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P875513",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "screenwriter": {
+      "name": "Person 98",
+      "eyeColor": "WHITE",
+      "hairColor": "RED",
+      "location": {
+        "x": 740,
+        "y": 439,
+        "z": 67.23075992183081
+      },
+      "passportID": "P448254",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "operator": {
+      "name": "Person 85",
+      "eyeColor": "RED",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 924,
+        "y": 522,
+        "z": 67.28038929255187
+      },
+      "passportID": "P792702",
+      "nationality": "JAPAN",
+      "isEditable": false
+    },
+    "length": 198,
+    "goldenPalmCount": 2,
+    "usaBoxOffice": null,
+    "genre": "FANTASY",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 25",
+    "coordinates": {
+      "x": -496.6692652216605,
+      "y": 654
+    },
+    "creationDate": null,
+    "oscarCount": 7,
+    "budget": 64829.446483062326,
+    "totalBoxOffice": 181370.979833393,
+    "mpaaRating": "NC_17",
+    "director": {
+      "name": "Person 7",
+      "eyeColor": "BLACK",
+      "hairColor": "RED",
+      "location": null,
+      "passportID": "P004841",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 44",
+      "eyeColor": "WHITE",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P918557",
+      "nationality": "INDIA",
+      "isEditable": false
+    },
+    "length": 77,
+    "goldenPalmCount": 4,
+    "usaBoxOffice": null,
+    "genre": "FANTASY",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 12",
+    "coordinates": {
+      "x": -70.77514574203826,
+      "y": 259
+    },
+    "creationDate": null,
+    "oscarCount": 4,
+    "budget": 25203.39658472447,
+    "totalBoxOffice": 501328.33342431206,
+    "mpaaRating": "PG_13",
+    "director": {
+      "name": "Person 74",
+      "eyeColor": "BLACK",
+      "hairColor": "RED",
+      "location": {
+        "x": 223,
+        "y": 280,
+        "z": 48.77824765593992
+      },
+      "passportID": "P977856",
+      "nationality": "JAPAN",
+      "isEditable": false
+    },
+    "screenwriter": {
+      "name": "Person 54",
+      "eyeColor": "WHITE",
+      "hairColor": "RED",
+      "location": null,
+      "passportID": "P003647",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "operator": {
+      "name": "Person 88",
+      "eyeColor": "BLACK",
+      "hairColor": "BLACK",
+      "location": {
+        "x": 120,
+        "y": 606,
+        "z": 20.10526510416044
+      },
+      "passportID": "P015960",
+      "nationality": "RUSSIA",
+      "isEditable": true
+    },
+    "length": 191,
+    "goldenPalmCount": 2,
+    "usaBoxOffice": 166729,
+    "genre": "ACTION",
+    "isEditable": false
+  },
+  {
+    "id": null,
+    "name": "Movie 37",
+    "coordinates": {
+      "x": -924.1274058532172,
+      "y": 297
+    },
+    "creationDate": null,
+    "oscarCount": 7,
+    "budget": 55967.67413119903,
+    "totalBoxOffice": 335470.16571041825,
+    "mpaaRating": "PG_13",
+    "director": {
+      "name": "Person 71",
+      "eyeColor": "BLACK",
+      "hairColor": "RED",
+      "location": {
+        "x": 306,
+        "y": 947,
+        "z": 19.25286851596557
+      },
+      "passportID": "P272927",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 0",
+      "eyeColor": "BLACK",
+      "hairColor": "RED",
+      "location": {
+        "x": 602,
+        "y": 427,
+        "z": 92.43596024078012
+      },
+      "passportID": "P673989",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "length": 95,
+    "goldenPalmCount": 3,
+    "usaBoxOffice": 194637,
+    "genre": "FANTASY",
+    "isEditable": false
+  },
+  {
+    "id": null,
+    "name": "Movie 57",
+    "coordinates": {
+      "x": -926.9911019213406,
+      "y": 968
+    },
+    "creationDate": null,
+    "oscarCount": 2,
+    "budget": 79590.08341430676,
+    "totalBoxOffice": 342807.16113933147,
+    "mpaaRating": "NC_17",
+    "director": {
+      "name": "Person 45",
+      "eyeColor": "BLACK",
+      "hairColor": "RED",
+      "location": null,
+      "passportID": "P918938",
+      "nationality": "INDIA",
+      "isEditable": false
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 15",
+      "eyeColor": "WHITE",
+      "hairColor": "RED",
+      "location": {
+        "x": 344,
+        "y": 334,
+        "z": 25.114713464267812
+      },
+      "passportID": "P973834",
+      "nationality": "JAPAN",
+      "isEditable": true
+    },
+    "length": 121,
+    "goldenPalmCount": 3,
+    "usaBoxOffice": null,
+    "genre": "ACTION",
+    "isEditable": false
+  },
+  {
+    "id": null,
+    "name": "Movie 98",
+    "coordinates": {
+      "x": -330.93292854692106,
+      "y": 550
+    },
+    "creationDate": null,
+    "oscarCount": 5,
+    "budget": 31218.73628972886,
+    "totalBoxOffice": 150349.60815387883,
+    "mpaaRating": "PG_13",
+    "director": {
+      "name": "Person 9",
+      "eyeColor": "BLACK",
+      "hairColor": "WHITE",
+      "location": null,
+      "passportID": "P268173",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 6",
+      "eyeColor": "WHITE",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P678879",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "length": 174,
+    "goldenPalmCount": 4,
+    "usaBoxOffice": null,
+    "genre": "WESTERN",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 19",
+    "coordinates": {
+      "x": -670.4215526983994,
+      "y": 278
+    },
+    "creationDate": null,
+    "oscarCount": 10,
+    "budget": 16984.690526126447,
+    "totalBoxOffice": 547767.2321337739,
+    "mpaaRating": "NC_17",
+    "director": {
+      "name": "Person 20",
+      "eyeColor": "RED",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 385,
+        "y": 534,
+        "z": 34.55082613426869
+      },
+      "passportID": "P659384",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 16",
+      "eyeColor": "RED",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P203230",
+      "nationality": "JAPAN",
+      "isEditable": true
+    },
+    "length": 137,
+    "goldenPalmCount": 4,
+    "usaBoxOffice": 126686,
+    "genre": "FANTASY",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 67",
+    "coordinates": {
+      "x": -822.0396418328507,
+      "y": 251
+    },
+    "creationDate": null,
+    "oscarCount": 2,
+    "budget": 76346.16932258138,
+    "totalBoxOffice": 96478.56134850055,
+    "mpaaRating": "PG_13",
+    "director": {
+      "name": "Person 75",
+      "eyeColor": "BLACK",
+      "hairColor": "WHITE",
+      "location": null,
+      "passportID": "P820055",
+      "nationality": "JAPAN",
+      "isEditable": false
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 64",
+      "eyeColor": "WHITE",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 698,
+        "y": 912,
+        "z": 41.64679961682884
+      },
+      "passportID": "P601810",
+      "nationality": "INDIA",
+      "isEditable": false
+    },
+    "length": 83,
+    "goldenPalmCount": 5,
+    "usaBoxOffice": 63161,
+    "genre": "ACTION",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 90",
+    "coordinates": {
+      "x": -746.9857859312074,
+      "y": 88
+    },
+    "creationDate": null,
+    "oscarCount": 6,
+    "budget": 26022.484731755492,
+    "totalBoxOffice": 176600.84810289246,
+    "mpaaRating": "PG_13",
+    "director": {
+      "name": "Person 87",
+      "eyeColor": "RED",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 490,
+        "y": 883,
+        "z": 10.089111829076813
+      },
+      "passportID": "P586110",
+      "nationality": "JAPAN",
+      "isEditable": true
+    },
+    "screenwriter": {
+      "name": "Person 56",
+      "eyeColor": "WHITE",
+      "hairColor": "RED",
+      "location": {
+        "x": 10,
+        "y": 97,
+        "z": 3.8095177496004218
+      },
+      "passportID": "P247080",
+      "nationality": "RUSSIA",
+      "isEditable": true
+    },
+    "operator": {
+      "name": "Person 59",
+      "eyeColor": "BLACK",
+      "hairColor": "BLACK",
+      "location": {
+        "x": 780,
+        "y": 511,
+        "z": 92.31669817724986
+      },
+      "passportID": "P735051",
+      "nationality": "INDIA",
+      "isEditable": false
+    },
+    "length": 81,
+    "goldenPalmCount": 5,
+    "usaBoxOffice": null,
+    "genre": "FANTASY",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 78",
+    "coordinates": {
+      "x": -339.16455640881225,
+      "y": 628
+    },
+    "creationDate": null,
+    "oscarCount": 2,
+    "budget": 91321.99059526155,
+    "totalBoxOffice": 363998.7844852497,
+    "mpaaRating": "NC_17",
+    "director": {
+      "name": "Person 5",
+      "eyeColor": "WHITE",
+      "hairColor": "WHITE",
+      "location": null,
+      "passportID": "P501844",
+      "nationality": "JAPAN",
+      "isEditable": false
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 85",
+      "eyeColor": "RED",
+      "hairColor": "WHITE",
+      "location": null,
+      "passportID": "P685930",
+      "nationality": "RUSSIA",
+      "isEditable": true
+    },
+    "length": 74,
+    "goldenPalmCount": 3,
+    "usaBoxOffice": null,
+    "genre": "FANTASY",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 2",
+    "coordinates": {
+      "x": -231.93523347034306,
+      "y": 730
+    },
+    "creationDate": null,
+    "oscarCount": 5,
+    "budget": 19344.642979525277,
+    "totalBoxOffice": 110219.66988396904,
+    "mpaaRating": "PG_13",
+    "director": {
+      "name": "Person 89",
+      "eyeColor": "BLACK",
+      "hairColor": "BLACK",
+      "location": {
+        "x": 404,
+        "y": 850,
+        "z": 25.142291385569326
+      },
+      "passportID": "P876043",
+      "nationality": "JAPAN",
+      "isEditable": true
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 70",
+      "eyeColor": "BLACK",
+      "hairColor": "RED",
+      "location": {
+        "x": 648,
+        "y": 489,
+        "z": 41.605910166180514
+      },
+      "passportID": "P740146",
+      "nationality": "INDIA",
+      "isEditable": false
+    },
+    "length": 71,
+    "goldenPalmCount": 1,
+    "usaBoxOffice": null,
+    "genre": "WESTERN",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 46",
+    "coordinates": {
+      "x": -197.03447140504102,
+      "y": 993
+    },
+    "creationDate": null,
+    "oscarCount": 7,
+    "budget": 80829.50870589295,
+    "totalBoxOffice": 319384.91853456537,
+    "mpaaRating": "G",
+    "director": {
+      "name": "Person 78",
+      "eyeColor": "WHITE",
+      "hairColor": "WHITE",
+      "location": null,
+      "passportID": "P851772",
+      "nationality": "JAPAN",
+      "isEditable": false
+    },
+    "screenwriter": {
+      "name": "Person 33",
+      "eyeColor": "BLACK",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P638950",
+      "nationality": "RUSSIA",
+      "isEditable": true
+    },
+    "operator": {
+      "name": "Person 25",
+      "eyeColor": "WHITE",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 740,
+        "y": 710,
+        "z": 39.95358188994824
+      },
+      "passportID": "P397522",
+      "nationality": "INDIA",
+      "isEditable": false
+    },
+    "length": 105,
+    "goldenPalmCount": 4,
+    "usaBoxOffice": 71500,
+    "genre": "ACTION",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 4",
+    "coordinates": {
+      "x": 12.921006534959588,
+      "y": 344
+    },
+    "creationDate": null,
+    "oscarCount": 2,
+    "budget": 90873.50044802976,
+    "totalBoxOffice": 201623.93553240437,
+    "mpaaRating": "G",
+    "director": {
+      "name": "Person 3",
+      "eyeColor": "BLACK",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 550,
+        "y": 149,
+        "z": 50.872820166788024
+      },
+      "passportID": "P513315",
+      "nationality": "RUSSIA",
+      "isEditable": true
+    },
+    "screenwriter": {
+      "name": "Person 49",
+      "eyeColor": "BLACK",
+      "hairColor": "RED",
+      "location": {
+        "x": 776,
+        "y": 619,
+        "z": 8.584784962416869
+      },
+      "passportID": "P197243",
+      "nationality": "INDIA",
+      "isEditable": false
+    },
+    "operator": {
+      "name": "Person 34",
+      "eyeColor": "BLACK",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 737,
+        "y": 499,
+        "z": 33.162142340834436
+      },
+      "passportID": "P037764",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "length": 195,
+    "goldenPalmCount": 5,
+    "usaBoxOffice": null,
+    "genre": "WESTERN",
+    "isEditable": false
+  },
+  {
+    "id": null,
+    "name": "Movie 82",
+    "coordinates": {
+      "x": -295.1871715235708,
+      "y": 715
+    },
+    "creationDate": null,
+    "oscarCount": 6,
+    "budget": 35889.05806350931,
+    "totalBoxOffice": 384678.80990410515,
+    "mpaaRating": "NC_17",
+    "director": {
+      "name": "Person 8",
+      "eyeColor": "RED",
+      "hairColor": "RED",
+      "location": null,
+      "passportID": "P054898",
+      "nationality": "JAPAN",
+      "isEditable": false
+    },
+    "screenwriter": {
+      "name": "Person 91",
+      "eyeColor": "BLACK",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P833671",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "operator": {
+      "name": "Person 36",
+      "eyeColor": "RED",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P988661",
+      "nationality": "JAPAN",
+      "isEditable": true
+    },
+    "length": 166,
+    "goldenPalmCount": 3,
+    "usaBoxOffice": 187939,
+    "genre": "ACTION",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 78",
+    "coordinates": {
+      "x": -326.6104663621288,
+      "y": 797
+    },
+    "creationDate": null,
+    "oscarCount": 10,
+    "budget": 10875.292853706966,
+    "totalBoxOffice": 98761.08447310285,
+    "mpaaRating": "G",
+    "director": {
+      "name": "Person 87",
+      "eyeColor": "RED",
+      "hairColor": "WHITE",
+      "location": null,
+      "passportID": "P221109",
+      "nationality": "JAPAN",
+      "isEditable": false
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 47",
+      "eyeColor": "RED",
+      "hairColor": "RED",
+      "location": {
+        "x": 337,
+        "y": 513,
+        "z": 83.1784896587546
+      },
+      "passportID": "P402561",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "length": 173,
+    "goldenPalmCount": 3,
+    "usaBoxOffice": 71031,
+    "genre": "FANTASY",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 30",
+    "coordinates": {
+      "x": -334.6024759059118,
+      "y": 404
+    },
+    "creationDate": null,
+    "oscarCount": 8,
+    "budget": 66096.74982872323,
+    "totalBoxOffice": 360369.0883989382,
+    "mpaaRating": "PG_13",
+    "director": {
+      "name": "Person 98",
+      "eyeColor": "WHITE",
+      "hairColor": "RED",
+      "location": null,
+      "passportID": "P080867",
+      "nationality": "RUSSIA",
+      "isEditable": true
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 53",
+      "eyeColor": "BLACK",
+      "hairColor": "BLACK",
+      "location": {
+        "x": 502,
+        "y": 535,
+        "z": 60.22255689675588
+      },
+      "passportID": "P778787",
+      "nationality": "RUSSIA",
+      "isEditable": true
+    },
+    "length": 123,
+    "goldenPalmCount": 5,
+    "usaBoxOffice": null,
+    "genre": "ACTION",
+    "isEditable": false
+  },
+  {
+    "id": null,
+    "name": "Movie 69",
+    "coordinates": {
+      "x": -66.06770867863895,
+      "y": 715
+    },
+    "creationDate": null,
+    "oscarCount": 10,
+    "budget": 53076.416542915875,
+    "totalBoxOffice": 110133.25341424931,
+    "mpaaRating": "G",
+    "director": {
+      "name": "Person 73",
+      "eyeColor": "RED",
+      "hairColor": "WHITE",
+      "location": null,
+      "passportID": "P724819",
+      "nationality": "JAPAN",
+      "isEditable": false
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 22",
+      "eyeColor": "BLACK",
+      "hairColor": "RED",
+      "location": {
+        "x": 571,
+        "y": 935,
+        "z": 24.24101263622044
+      },
+      "passportID": "P669060",
+      "nationality": "INDIA",
+      "isEditable": false
+    },
+    "length": 66,
+    "goldenPalmCount": 1,
+    "usaBoxOffice": null,
+    "genre": "FANTASY",
+    "isEditable": false
+  },
+  {
+    "id": null,
+    "name": "Movie 79",
+    "coordinates": {
+      "x": -351.2815343059949,
+      "y": 492
+    },
+    "creationDate": null,
+    "oscarCount": 4,
+    "budget": 54995.016468314345,
+    "totalBoxOffice": 524210.0595792104,
+    "mpaaRating": "PG_13",
+    "director": {
+      "name": "Person 20",
+      "eyeColor": "BLACK",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P356194",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 75",
+      "eyeColor": "RED",
+      "hairColor": "RED",
+      "location": {
+        "x": 71,
+        "y": 625,
+        "z": 44.04045384134698
+      },
+      "passportID": "P808079",
+      "nationality": "INDIA",
+      "isEditable": false
+    },
+    "length": 193,
+    "goldenPalmCount": 3,
+    "usaBoxOffice": null,
+    "genre": "FANTASY",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 18",
+    "coordinates": {
+      "x": -352.1787101638281,
+      "y": 125
+    },
+    "creationDate": null,
+    "oscarCount": 4,
+    "budget": 15989.158590950417,
+    "totalBoxOffice": 445764.39326001203,
+    "mpaaRating": "G",
+    "director": {
+      "name": "Person 9",
+      "eyeColor": "BLACK",
+      "hairColor": "RED",
+      "location": {
+        "x": 128,
+        "y": 791,
+        "z": 84.89621732395891
+      },
+      "passportID": "P280241",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 8",
+      "eyeColor": "WHITE",
+      "hairColor": "RED",
+      "location": {
+        "x": 56,
+        "y": 342,
+        "z": 93.05356958397662
+      },
+      "passportID": "P915772",
+      "nationality": "INDIA",
+      "isEditable": false
+    },
+    "length": 139,
+    "goldenPalmCount": 4,
+    "usaBoxOffice": null,
+    "genre": "FANTASY",
+    "isEditable": false
+  },
+  {
+    "id": null,
+    "name": "Movie 54",
+    "coordinates": {
+      "x": -569.3596981520457,
+      "y": 14
+    },
+    "creationDate": null,
+    "oscarCount": 10,
+    "budget": 18754.293413896296,
+    "totalBoxOffice": 484451.0187473137,
+    "mpaaRating": "NC_17",
+    "director": {
+      "name": "Person 46",
+      "eyeColor": "WHITE",
+      "hairColor": "WHITE",
+      "location": null,
+      "passportID": "P258233",
+      "nationality": "RUSSIA",
+      "isEditable": true
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 57",
+      "eyeColor": "BLACK",
+      "hairColor": "RED",
+      "location": {
+        "x": 400,
+        "y": 592,
+        "z": 40.02885474353429
+      },
+      "passportID": "P696145",
+      "nationality": "INDIA",
+      "isEditable": false
+    },
+    "length": 105,
+    "goldenPalmCount": 1,
+    "usaBoxOffice": 193803,
+    "genre": "FANTASY",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 94",
+    "coordinates": {
+      "x": -383.392581242707,
+      "y": 169
+    },
+    "creationDate": null,
+    "oscarCount": 2,
+    "budget": 74764.61233334322,
+    "totalBoxOffice": 194514.9279207711,
+    "mpaaRating": "NC_17",
+    "director": {
+      "name": "Person 76",
+      "eyeColor": "WHITE",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 892,
+        "y": 829,
+        "z": 2.4800143601584224
+      },
+      "passportID": "P631968",
+      "nationality": "JAPAN",
+      "isEditable": false
+    },
+    "screenwriter": {
+      "name": "Person 81",
+      "eyeColor": "RED",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 683,
+        "y": 817,
+        "z": 52.58827545510562
+      },
+      "passportID": "P621170",
+      "nationality": "RUSSIA",
+      "isEditable": true
+    },
+    "operator": {
+      "name": "Person 15",
+      "eyeColor": "WHITE",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 522,
+        "y": 605,
+        "z": 48.66065731200722
+      },
+      "passportID": "P455741",
+      "nationality": "JAPAN",
+      "isEditable": false
+    },
+    "length": 162,
+    "goldenPalmCount": 2,
+    "usaBoxOffice": 12413,
+    "genre": "WESTERN",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 92",
+    "coordinates": {
+      "x": -342.0374814249384,
+      "y": 300
+    },
+    "creationDate": null,
+    "oscarCount": 4,
+    "budget": 49924.97446187372,
+    "totalBoxOffice": 452124.09538367647,
+    "mpaaRating": "G",
+    "director": {
+      "name": "Person 49",
+      "eyeColor": "WHITE",
+      "hairColor": "RED",
+      "location": null,
+      "passportID": "P513098",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 2",
+      "eyeColor": "BLACK",
+      "hairColor": "WHITE",
+      "location": null,
+      "passportID": "P518765",
+      "nationality": "INDIA",
+      "isEditable": false
+    },
+    "length": 169,
+    "goldenPalmCount": 1,
+    "usaBoxOffice": 54689,
+    "genre": "WESTERN",
+    "isEditable": false
+  },
+  {
+    "id": null,
+    "name": "Movie 0",
+    "coordinates": {
+      "x": -320.43486369175196,
+      "y": 281
+    },
+    "creationDate": null,
+    "oscarCount": 3,
+    "budget": 28518.863090679937,
+    "totalBoxOffice": 262821.8446571465,
+    "mpaaRating": "G",
+    "director": {
+      "name": "Person 99",
+      "eyeColor": "WHITE",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P239650",
+      "nationality": "JAPAN",
+      "isEditable": false
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 30",
+      "eyeColor": "RED",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P952378",
+      "nationality": "RUSSIA",
+      "isEditable": true
+    },
+    "length": 116,
+    "goldenPalmCount": 4,
+    "usaBoxOffice": null,
+    "genre": "FANTASY",
+    "isEditable": false
+  },
+  {
+    "id": null,
+    "name": "Movie 34",
+    "coordinates": {
+      "x": -238.8787457891915,
+      "y": 586
+    },
+    "creationDate": null,
+    "oscarCount": 6,
+    "budget": 79812.84018614741,
+    "totalBoxOffice": 105700.25388818639,
+    "mpaaRating": "NC_17",
+    "director": {
+      "name": "Person 70",
+      "eyeColor": "BLACK",
+      "hairColor": "RED",
+      "location": {
+        "x": 130,
+        "y": 336,
+        "z": 14.071981309511605
+      },
+      "passportID": "P577445",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 53",
+      "eyeColor": "BLACK",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P955580",
+      "nationality": "JAPAN",
+      "isEditable": false
+    },
+    "length": 196,
+    "goldenPalmCount": 1,
+    "usaBoxOffice": 25528,
+    "genre": "WESTERN",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 98",
+    "coordinates": {
+      "x": -94.06986863447219,
+      "y": 319
+    },
+    "creationDate": null,
+    "oscarCount": 6,
+    "budget": 87352.87977547105,
+    "totalBoxOffice": 288005.94473874726,
+    "mpaaRating": "PG_13",
+    "director": {
+      "name": "Person 53",
+      "eyeColor": "RED",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P350047",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "screenwriter": {
+      "name": "Person 94",
+      "eyeColor": "RED",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 104,
+        "y": 277,
+        "z": 31.37919837730444
+      },
+      "passportID": "P114678",
+      "nationality": "RUSSIA",
+      "isEditable": true
+    },
+    "operator": {
+      "name": "Person 88",
+      "eyeColor": "RED",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P633965",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "length": 170,
+    "goldenPalmCount": 1,
+    "usaBoxOffice": 54954,
+    "genre": "FANTASY",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 77",
+    "coordinates": {
+      "x": -612.7827013446682,
+      "y": 787
+    },
+    "creationDate": null,
+    "oscarCount": 9,
+    "budget": 95169.29264572535,
+    "totalBoxOffice": 297433.10915778915,
+    "mpaaRating": "NC_17",
+    "director": {
+      "name": "Person 5",
+      "eyeColor": "RED",
+      "hairColor": "WHITE",
+      "location": null,
+      "passportID": "P059865",
+      "nationality": "JAPAN",
+      "isEditable": false
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 15",
+      "eyeColor": "BLACK",
+      "hairColor": "RED",
+      "location": {
+        "x": 54,
+        "y": 810,
+        "z": 55.697668675479925
+      },
+      "passportID": "P396867",
+      "nationality": "JAPAN",
+      "isEditable": false
+    },
+    "length": 145,
+    "goldenPalmCount": 2,
+    "usaBoxOffice": 153169,
+    "genre": "FANTASY",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 61",
+    "coordinates": {
+      "x": -356.5562270097673,
+      "y": 321
+    },
+    "creationDate": null,
+    "oscarCount": 2,
+    "budget": 31302.969928608716,
+    "totalBoxOffice": 449766.1022102901,
+    "mpaaRating": "PG_13",
+    "director": {
+      "name": "Person 32",
+      "eyeColor": "RED",
+      "hairColor": "RED",
+      "location": {
+        "x": 997,
+        "y": 956,
+        "z": 9.380940707239082
+      },
+      "passportID": "P831612",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 48",
+      "eyeColor": "BLACK",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 526,
+        "y": 607,
+        "z": 13.423809576312262
+      },
+      "passportID": "P785413",
+      "nationality": "JAPAN",
+      "isEditable": true
+    },
+    "length": 197,
+    "goldenPalmCount": 3,
+    "usaBoxOffice": 134600,
+    "genre": "WESTERN",
+    "isEditable": false
+  },
+  {
+    "id": null,
+    "name": "Movie 6",
+    "coordinates": {
+      "x": -645.0025326523364,
+      "y": 365
+    },
+    "creationDate": null,
+    "oscarCount": 10,
+    "budget": 88769.34080242547,
+    "totalBoxOffice": 523379.89636529103,
+    "mpaaRating": "NC_17",
+    "director": {
+      "name": "Person 9",
+      "eyeColor": "RED",
+      "hairColor": "BLACK",
+      "location": {
+        "x": 222,
+        "y": 114,
+        "z": 82.71343478511237
+      },
+      "passportID": "P112128",
+      "nationality": "JAPAN",
+      "isEditable": true
+    },
+    "screenwriter": {
+      "name": "Person 13",
+      "eyeColor": "RED",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P058682",
+      "nationality": "JAPAN",
+      "isEditable": false
+    },
+    "operator": {
+      "name": "Person 52",
+      "eyeColor": "RED",
+      "hairColor": "RED",
+      "location": null,
+      "passportID": "P918340",
+      "nationality": "JAPAN",
+      "isEditable": true
+    },
+    "length": 159,
+    "goldenPalmCount": 2,
+    "usaBoxOffice": 169986,
+    "genre": "ACTION",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 49",
+    "coordinates": {
+      "x": -667.7435997537793,
+      "y": 716
+    },
+    "creationDate": null,
+    "oscarCount": 8,
+    "budget": 13085.435587794671,
+    "totalBoxOffice": 381354.32004184066,
+    "mpaaRating": "PG_13",
+    "director": {
+      "name": "Person 90",
+      "eyeColor": "BLACK",
+      "hairColor": "RED",
+      "location": {
+        "x": 24,
+        "y": 505,
+        "z": 18.072753143450583
+      },
+      "passportID": "P657874",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "screenwriter": {
+      "name": "Person 71",
+      "eyeColor": "BLACK",
+      "hairColor": "BLACK",
+      "location": null,
+      "passportID": "P196892",
+      "nationality": "INDIA",
+      "isEditable": true
+    },
+    "operator": {
+      "name": "Person 77",
+      "eyeColor": "RED",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 496,
+        "y": 58,
+        "z": 42.00712657844687
+      },
+      "passportID": "P242296",
+      "nationality": "INDIA",
+      "isEditable": false
+    },
+    "length": 149,
+    "goldenPalmCount": 2,
+    "usaBoxOffice": 29469,
+    "genre": "FANTASY",
+    "isEditable": false
+  },
+  {
+    "id": null,
+    "name": "Movie 15",
+    "coordinates": {
+      "x": -315.4114448083832,
+      "y": 494
+    },
+    "creationDate": null,
+    "oscarCount": 5,
+    "budget": 74144.25702380307,
+    "totalBoxOffice": 184674.39011417486,
+    "mpaaRating": "G",
+    "director": {
+      "name": "Person 47",
+      "eyeColor": "BLACK",
+      "hairColor": "RED",
+      "location": {
+        "x": 302,
+        "y": 760,
+        "z": 44.55767787529316
+      },
+      "passportID": "P858888",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 19",
+      "eyeColor": "BLACK",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 210,
+        "y": 84,
+        "z": 63.28918293823252
+      },
+      "passportID": "P570913",
+      "nationality": "INDIA",
+      "isEditable": false
+    },
+    "length": 114,
+    "goldenPalmCount": 5,
+    "usaBoxOffice": 209579,
+    "genre": "WESTERN",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 8",
+    "coordinates": {
+      "x": -743.1268507177223,
+      "y": 263
+    },
+    "creationDate": null,
+    "oscarCount": 3,
+    "budget": 76309.19554769214,
+    "totalBoxOffice": 124245.76057962407,
+    "mpaaRating": "G",
+    "director": {
+      "name": "Person 12",
+      "eyeColor": "BLACK",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 188,
+        "y": 664,
+        "z": 62.420279719607706
+      },
+      "passportID": "P932727",
+      "nationality": "INDIA",
+      "isEditable": false
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 9",
+      "eyeColor": "BLACK",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 352,
+        "y": 36,
+        "z": 61.875929507820594
+      },
+      "passportID": "P030735",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "length": 72,
+    "goldenPalmCount": 5,
+    "usaBoxOffice": 115470,
+    "genre": "WESTERN",
+    "isEditable": false
+  },
+  {
+    "id": null,
+    "name": "Movie 35",
+    "coordinates": {
+      "x": -585.2115983787555,
+      "y": 100
+    },
+    "creationDate": null,
+    "oscarCount": 9,
+    "budget": 82578.83278822174,
+    "totalBoxOffice": 167862.6533854304,
+    "mpaaRating": "PG_13",
+    "director": {
+      "name": "Person 71",
+      "eyeColor": "BLACK",
+      "hairColor": "RED",
+      "location": {
+        "x": 418,
+        "y": 92,
+        "z": 24.960948398107664
+      },
+      "passportID": "P738998",
+      "nationality": "JAPAN",
+      "isEditable": false
+    },
+    "screenwriter": null,
+    "operator": {
+      "name": "Person 69",
+      "eyeColor": "BLACK",
+      "hairColor": "WHITE",
+      "location": {
+        "x": 43,
+        "y": 460,
+        "z": 64.11286963900227
+      },
+      "passportID": "P790163",
+      "nationality": "JAPAN",
+      "isEditable": true
+    },
+    "length": 159,
+    "goldenPalmCount": 4,
+    "usaBoxOffice": null,
+    "genre": "FANTASY",
+    "isEditable": true
+  },
+  {
+    "id": null,
+    "name": "Movie 65",
+    "coordinates": {
+      "x": -203.27636410920752,
+      "y": 840
+    },
+    "creationDate": null,
+    "oscarCount": 3,
+    "budget": 33045.6886266191,
+    "totalBoxOffice": 485542.8637938429,
+    "mpaaRating": "G",
+    "director": {
+      "name": "Person 84",
+      "eyeColor": "BLACK",
+      "hairColor": "WHITE",
+      "location": null,
+      "passportID": "P209498",
+      "nationality": "INDIA",
+      "isEditable": false
+    },
+    "screenwriter": {
+      "name": "Person 99",
+      "eyeColor": "WHITE",
+      "hairColor": "RED",
+      "location": null,
+      "passportID": "P513181",
+      "nationality": "JAPAN",
+      "isEditable": true
+    },
+    "operator": {
+      "name": "Person 1",
+      "eyeColor": "RED",
+      "hairColor": "WHITE",
+      "location": null,
+      "passportID": "P798714",
+      "nationality": "RUSSIA",
+      "isEditable": false
+    },
+    "length": 195,
+    "goldenPalmCount": 5,
+    "usaBoxOffice": 32312,
+    "genre": "ACTION",
+    "isEditable": true
+  }
+]
